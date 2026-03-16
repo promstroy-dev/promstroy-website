@@ -9,8 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // ── Light surfaces — warm concrete ──────────────────────────────
+        bg:         "#F0E9DF",   // primary light surface; intentional concrete warmth
+        "bg-soft":  "#E2D9CE",   // secondary light; recessed surface variation
+        // ── Dark surfaces — warm charcoal ───────────────────────────────
+        "bg-dark":    "#0F0D0B", // primary dark; warm near-black with charcoal feel
+        "bg-section": "#161310", // elevated dark; sections on dark
+        "bg-mid":     "#161310", // alias kept for existing references
+        "bg-deep":    "#0A0908", // absolute base; mobile nav, footer
+        // ── Typography ──────────────────────────────────────────────────
+        text:           "#171411",  // text on light surfaces
+        "text-muted":   "#8C8278",  // secondary text on light and dark
+        "text-invert":  "#F0EBE3",  // primary text on dark surfaces (warm off-white)
+        // ── Accent — aged brass ─────────────────────────────────────────
+        // NOT orange. Aged metal / architectural hardware. ~7.8:1 on bg-deep.
+        accent:         "#C09A5C",  // warm brass / patinated metal
+        "accent-hover": "#A8843E",  // slightly deeper on hover / press
+        "accent-dim":   "#8A6E38",  // muted variant for secondary emphasis
+        // ── Borders ─────────────────────────────────────────────────────
+        border:       "#D1C9BC",  // warm border on light surfaces
+        "border-dark": "#252018", // barely visible on dark surfaces
+        // ── Card ────────────────────────────────────────────────────────
+        "card-bg": "#FFFFFF",
+      },
+      fontFamily: {
+        heading: ["var(--font-space-grotesk)", "sans-serif"],
+        body:    ["var(--font-inter)", "sans-serif"],
+      },
+      maxWidth: {
+        content: "1280px",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+        "out-circ": "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },

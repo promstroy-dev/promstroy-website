@@ -1,27 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-circ: cubic-bezier(0.22, 1, 0.36, 1);
+  --accent: #C09A5C;
+  --accent-glow: rgba(192, 154, 92, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F0E9DF;
+  color: #171411;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* ── Animation Keyframes ─────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Cinematic Ken Burns — layer A (primary, pushes in) */
+@keyframes kenBurnsA {
+  from { transform: scale(1.10) translateX(0px);   }
+  to   { transform: scale(1.00) translateX(0px);   }
+}
+
+/* Cinematic Ken Burns — layer B (secondary, drifts left) */
+@keyframes kenBurnsB {
+  from { transform: scale(1.06) translateX(12px);  }
+  to   { transform: scale(1.00) translateX(0px);   }
+}
+
+/* Horizontal clip-reveal: content slides in from left edge */
+@keyframes clipRevealX {
+  from { clip-path: inset(0 100% 0 0); opacity: 1; }
+  to   { clip-path: inset(0 0% 0 0);   opacity: 1; }
+}
+
+/* Vertical accent rule drops in from top */
+@keyframes ruleDropY {
+  from { transform: scaleY(0); transform-origin: top; }
+  to   { transform: scaleY(1); transform-origin: top; }
+}
+
+/* Counter value scale-pop when it reaches target */
+@keyframes counterPop {
+  0%   { transform: scale(1);    }
+  60%  { transform: scale(1.04); }
+  100% { transform: scale(1);    }
+}
+
+/* Subtle directional light drift for hero ambience */
+@keyframes lightDrift {
+  0%, 100% { opacity: 0.06; transform: translateX(0)   translateY(0);   }
+  50%       { opacity: 0.09; transform: translateX(30px) translateY(-20px); }
+}
+
+@keyframes accentSlide {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ── Animation Utility Classes ───────────────────────────────────── */
+
+.animate-fade-up {
+  animation: fadeUp 0.72s var(--ease-out-circ) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.55s ease-out forwards;
+}
+
+.animate-ken-burns-a {
+  animation: kenBurnsA 14s var(--ease-out-expo) forwards;
+}
+
+.animate-ken-burns-b {
+  animation: kenBurnsB 18s var(--ease-out-expo) forwards;
+}
+
+/* Keep the old class name for any existing references */
+.animate-ken-burns {
+  animation: kenBurnsA 10s var(--ease-out-circ) forwards;
+}
+
+.animate-clip-reveal {
+  animation: clipRevealX 0.8s var(--ease-out-circ) forwards;
+}
+
+.animate-rule-drop {
+  animation: ruleDropY 0.6s var(--ease-out-circ) forwards;
+}
+
+.animate-counter-pop {
+  animation: counterPop 0.35s ease-out;
+}
+
+.animate-light-drift {
+  animation: lightDrift 12s ease-in-out infinite;
+}
+
+/* Initial hidden state for inView-driven animations */
+.will-animate {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.in-view {
+  animation: fadeUp 0.72s var(--ease-out-circ) forwards;
+}
+
+/* ── Card hover lift ─────────────────────────────────────────────── */
+
+.card-lift {
+  transition: transform 0.26s var(--ease-out-circ), box-shadow 0.26s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+}
+
+/* ── Dark card grain texture via pseudo-element ──────────────────── */
+
+.grain-dark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.038;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ── Light concrete grain texture ───────────────────────────────── */
+
+.grain-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ── Accent glow utility ─────────────────────────────────────────── */
+
+.accent-glow {
+  box-shadow: 0 0 40px var(--accent-glow);
+}
+
+/* ── Architectural rule line ─────────────────────────────────────── */
+
+.rule-accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent) 15%,
+    var(--accent) 85%,
+    transparent 100%
+  );
+  opacity: 0.7;
+}
+
+/* ── Masked image reveal for project cards ───────────────────────── */
+
+.img-reveal {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.6s var(--ease-out-circ);
+}
+
+/* ── Focus ring for accessibility ───────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid #C09A5C;
+  outline-offset: 2px;
+}
+
+/* ── Smooth selection ────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(192, 154, 92, 0.25);
+  color: #171411;
 }
