@@ -8,7 +8,7 @@ export default function ProcessSteps() {
   return (
     <section
       className="py-20 md:py-32 relative overflow-hidden border-y"
-      style={{ background: "#161310", borderColor: "#252018" }}
+      style={{ background: "#13151A", borderColor: "#1E2028" }}
     >
       {/* Background grid — blueprint feel */}
       <div
@@ -69,7 +69,7 @@ export default function ProcessSteps() {
               {i < processSteps.length - 1 && (
                 <div
                   className="hidden md:block absolute top-[18px] left-10 right-0 h-px"
-                  style={{ background: "#252018" }}
+                  style={{ background: "#1E2028" }}
                 />
               )}
 
@@ -80,7 +80,7 @@ export default function ProcessSteps() {
                   style={{
                     border: "1px solid #C09A5C",
                     color: "#C09A5C",
-                    background: "#161310",
+                    background: "#13151A",
                     letterSpacing: "0.02em",
                   }}
                 >

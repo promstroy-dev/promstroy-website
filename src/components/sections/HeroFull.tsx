@@ -1,15 +1,31 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { company } from "@/data/company";
 import { ArrowRight, Phone } from "lucide-react";
 
 export default function HeroFull() {
   const [mounted, setMounted] = useState(false);
+  const [parallaxY, setParallaxY] = useState(0);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setParallaxY(window.scrollY);
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const visible = mounted;
@@ -24,9 +40,9 @@ export default function HeroFull() {
           background: `
             linear-gradient(
               145deg,
-              #1A1610 0%,
-              #0F0D0B 40%,
-              #0A0908 100%
+              #131620 0%,
+              #0D0F13 40%,
+              #090A0C 100%
             )
           `,
         }}
@@ -55,6 +71,83 @@ export default function HeroFull() {
         }}
       />
 
+      {/* ── Cinematic video layer — right half, gradient-masked ───── */}
+      {/* Video: 3363441 — dark crane silhouettes against overcast sky   */}
+      {/* Hidden on mobile via container; <source media> blocks download  */}
+      <div
+        className="absolute right-0 top-0 bottom-0 pointer-events-none hidden md:block"
+        style={{
+          width: "65%",
+          // Mask: left edge fades in slowly so the video stays fully exposed
+          // across the right ~65% — text column on the left stays clean
+          maskImage:
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 22%, rgba(0,0,0,0.90) 40%, black 55%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.55) 22%, rgba(0,0,0,0.90) 40%, black 55%)",
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            opacity: 0.78,
+            objectPosition: "70% center",
+          }}
+        >
+          <source
+            media="(min-width: 768px)"
+            src="/video/hero-loop.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Thin top fade only — sky merges into header area */}
+        <div
+          className="absolute inset-x-0 top-0 h-32 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, rgba(9,10,12,0.85) 0%, transparent 100%)",
+          }}
+        />
+        {/* Thin bottom fade — grounds the silhouettes into the stats bar */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+          style={{
+            background: "linear-gradient(0deg, rgba(9,10,12,0.90) 0%, transparent 100%)",
+          }}
+        />
+      </div>
+
+      {/* ── Industrial glow — welding/spotlight pulse, right side ── */}
+      <div
+        className="absolute pointer-events-none animate-industrial-glow hidden sm:block"
+        style={{
+          right: "-6%",
+          top: "8%",
+          width: "62%",
+          height: "80%",
+          background:
+            "radial-gradient(ellipse 68% 58% at 72% 48%, rgba(192,154,92,0.085) 0%, rgba(192,154,92,0.032) 42%, transparent 68%)",
+        }}
+      />
+
+      {/* ── Light rake — diagonal streak sweeping right half ───────── */}
+      <div className="absolute right-0 top-0 bottom-0 w-[60%] overflow-hidden pointer-events-none hidden lg:block">
+        <div
+          className="absolute animate-light-rake"
+          style={{
+            top: "-15%",
+            left: "5%",
+            width: "22%",
+            height: "130%",
+            background:
+              "linear-gradient(to right, transparent, rgba(240,235,227,0.018) 38%, rgba(240,235,227,0.026) 50%, rgba(240,235,227,0.018) 62%, transparent)",
+          }}
+        />
+      </div>
+
       {/* ── Directional light — top-left atmospheric glow ─────────── */}
       <div
         className="absolute inset-0 pointer-events-none animate-light-drift"
@@ -80,6 +173,7 @@ export default function HeroFull() {
       />
 
       {/* ── Large faint "2008" — structural background year element ── */}
+      {/* Parallax: drifts upward at 0.12× scroll speed — recedes into depth */}
       <div
         className="absolute right-[-2%] bottom-24 pointer-events-none select-none hidden lg:block"
         style={{
@@ -90,6 +184,8 @@ export default function HeroFull() {
           color: "rgba(255,255,255,0.018)",
           letterSpacing: "-0.04em",
           userSelect: "none",
+          transform: `translateY(${parallaxY * -0.12}px)`,
+          willChange: "transform",
         }}
       >
         2008
@@ -233,7 +329,7 @@ export default function HeroFull() {
       {/* ── Stats strip ───────────────────────────────────────────── */}
       <div
         className="relative border-t"
-        style={{ borderColor: "rgba(37,32,24,0.9)", background: "rgba(10,9,8,0.7)" }}
+        style={{ borderColor: "rgba(30,32,40,0.9)", background: "rgba(9,10,12,0.7)" }}
       >
         {/* Brass top accent line */}
         <div

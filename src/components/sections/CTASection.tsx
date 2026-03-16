@@ -18,7 +18,7 @@ export default function CTASection({
   return (
     <section
       className="py-20 md:py-32 relative overflow-hidden"
-      style={{ background: "#0F0D0B" }}
+      style={{ background: "#0D0F13" }}
     >
       {/* Subtle brass ambient — top right */}
       <div
@@ -109,7 +109,7 @@ export default function CTASection({
           >
             <div
               className="p-6 md:p-8 border"
-              style={{ background: "#161310", borderColor: "#252018" }}
+              style={{ background: "#13151A", borderColor: "#1E2028" }}
             >
               <InquiryForm sourcePage={sourcePage} dark />
             </div>

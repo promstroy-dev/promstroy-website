@@ -65,7 +65,7 @@ export default function StatsBanner() {
     <section
       ref={ref}
       className="relative border-b overflow-hidden"
-      style={{ background: "#0F0D0B", borderColor: "#252018" }}
+      style={{ background: "#0D0F13", borderColor: "#1E2028" }}
     >
       {/* Top brass accent */}
       <div
@@ -118,7 +118,7 @@ export default function StatsBanner() {
               {i > 0 && (
                 <div
                   className="hidden md:block absolute left-0 top-2 bottom-2 w-px"
-                  style={{ background: "#252018" }}
+                  style={{ background: "#1E2028" }}
                 />
               )}
 

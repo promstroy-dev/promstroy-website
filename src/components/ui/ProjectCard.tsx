@@ -11,10 +11,10 @@ export default function ProjectCard({ project }: Props) {
     <Link
       href={`/proekty/${project.slug}`}
       className="group block overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2"
-      style={{ background: "#161310", border: "1px solid #252018" }}
+      style={{ background: "#13151A", border: "1px solid #1E2028" }}
     >
       {/* ── Image / Placeholder area ──────────────────────────────── */}
-      <div className="aspect-[4/3] relative overflow-hidden" style={{ background: "#0F0D0B" }}>
+      <div className="aspect-[4/3] relative overflow-hidden" style={{ background: "#0D0F13" }}>
 
         {/* Architectural blueprint grid — refined placeholder */}
         <div
@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: Props) {
                 rgba(192,154,92,0.04) 48px,
                 rgba(192,154,92,0.04) 49px
               ),
-              linear-gradient(145deg, #1A1610 0%, #0F0D0B 100%)
+              linear-gradient(145deg, #131620 0%, #0D0F13 100%)
             `,
           }}
         />
@@ -62,7 +62,7 @@ export default function ProjectCard({ project }: Props) {
           <span
             className="inline-block text-[10px] font-semibold uppercase px-2.5 py-1"
             style={{
-              background: "rgba(10,9,8,0.75)",
+              background: "rgba(9,10,12,0.75)",
               color: "#C09A5C",
               letterSpacing: "0.18em",
               backdropFilter: "blur(4px)",
@@ -99,7 +99,7 @@ export default function ProjectCard({ project }: Props) {
       {/* ── Card body ────────────────────────────────────────────── */}
       <div
         className="p-5 border-t"
-        style={{ borderColor: "rgba(37,32,24,0.6)" }}
+        style={{ borderColor: "rgba(30,32,40,0.6)" }}
       >
         <h3
           className="font-heading font-semibold leading-snug mb-2.5 transition-colors duration-200"
@@ -114,9 +114,9 @@ export default function ProjectCard({ project }: Props) {
           style={{ color: "rgba(140,130,120,0.75)" }}
         >
           {project.area && <span>{project.area}</span>}
-          {project.area && <span style={{ color: "#252018" }}>·</span>}
+          {project.area && <span style={{ color: "#1E2028" }}>·</span>}
           <span>{project.year}</span>
-          <span style={{ color: "#252018" }}>·</span>
+          <span style={{ color: "#1E2028" }}>·</span>
           <span>{project.city}</span>
         </div>
       </div>

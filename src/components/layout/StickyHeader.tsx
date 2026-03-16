@@ -24,7 +24,7 @@ export default function StickyHeader() {
           scrolled ? "border-border-dark shadow-2xl" : "border-transparent"
         }`}
         style={scrolled ? {
-          background: "rgba(10,9,8,0.96)",
+          background: "rgba(9,10,12,0.96)",
           backdropFilter: "blur(12px)",
         } : {
           background: "transparent",
@@ -62,7 +62,7 @@ export default function StickyHeader() {
                 {servicesOpen && (
                   <div
                     className="absolute top-full left-0 mt-3 w-68 py-1.5 shadow-2xl border border-border-dark"
-                    style={{ background: "#0F0D0B" }}
+                    style={{ background: "#0D0F13" }}
                   >
                     {services.map((s) => (
                       <Link

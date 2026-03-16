@@ -12,7 +12,7 @@ export default function ProjectsPreview() {
   return (
     <section
       className="py-20 md:py-32 relative overflow-hidden"
-      style={{ background: "#0F0D0B" }}
+      style={{ background: "#0D0F13" }}
     >
       {/* Background structural grid */}
       <div

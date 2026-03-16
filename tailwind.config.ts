@@ -12,11 +12,14 @@ const config: Config = {
         // ── Light surfaces — warm concrete ──────────────────────────────
         bg:         "#F0E9DF",   // primary light surface; intentional concrete warmth
         "bg-soft":  "#E2D9CE",   // secondary light; recessed surface variation
-        // ── Dark surfaces — warm charcoal ───────────────────────────────
-        "bg-dark":    "#0F0D0B", // primary dark; warm near-black with charcoal feel
-        "bg-section": "#161310", // elevated dark; sections on dark
-        "bg-mid":     "#161310", // alias kept for existing references
-        "bg-deep":    "#0A0908", // absolute base; mobile nav, footer
+        // ── Dark surfaces — cool steel ──────────────────────────────────
+        // Shifted from warm-brown to cool-steel to harmonize with the
+        // construction video (overcast sky, crane silhouettes). The brass
+        // accent now reads as warm hardware against a cold structural ground.
+        "bg-dark":    "#0D0F13", // primary dark; cool steel near-black
+        "bg-section": "#13151A", // elevated dark; steel surface on dark
+        "bg-mid":     "#13151A", // alias kept for existing references
+        "bg-deep":    "#090A0C", // absolute base; mobile nav, footer
         // ── Typography ──────────────────────────────────────────────────
         text:           "#171411",  // text on light surfaces
         "text-muted":   "#8C8278",  // secondary text on light and dark
@@ -28,7 +31,7 @@ const config: Config = {
         "accent-dim":   "#8A6E38",  // muted variant for secondary emphasis
         // ── Borders ─────────────────────────────────────────────────────
         border:       "#D1C9BC",  // warm border on light surfaces
-        "border-dark": "#252018", // barely visible on dark surfaces
+        "border-dark": "#1E2028", // barely visible on dark surfaces (cool steel)
         // ── Card ────────────────────────────────────────────────────────
         "card-bg": "#FFFFFF",
       },

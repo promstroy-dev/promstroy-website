@@ -7,7 +7,7 @@ export default function PageHero({ title, subtitle }: Props) {
   return (
     <section
       className="border-b pt-32 pb-14 relative overflow-hidden"
-      style={{ background: "#0F0D0B", borderColor: "#252018" }}
+      style={{ background: "#0D0F13", borderColor: "#1E2028" }}
     >
       {/* Brass left rule — gradient fade */}
       <div
