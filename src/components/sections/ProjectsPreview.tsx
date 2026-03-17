@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ui/ProjectCard";
+import TiltCard from "@/components/ui/TiltCard";
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import { ArrowRight } from "lucide-react";
@@ -8,6 +10,7 @@ import { ArrowRight } from "lucide-react";
 export default function ProjectsPreview() {
   const preview = projects.slice(0, 3);
   const { ref, inView } = useInView<HTMLDivElement>();
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
     <section
@@ -73,17 +76,31 @@ export default function ProjectsPreview() {
           </Link>
         </div>
 
-        {/* Cards */}
+        {/* Cards — spotlight: active card full opacity, neighbors dim */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {preview.map((p, i) => (
+            // Outer: handles spotlight opacity (separate from animation layer)
             <div
               key={p.id}
-              className={`transition-all duration-600 ${
-                inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
-              }`}
-              style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+              style={{
+                opacity: activeCard !== null && activeCard !== i ? 0.45 : 1,
+                transition: "opacity 0.25s ease",
+              }}
+              onMouseEnter={() => setActiveCard(i)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              <ProjectCard project={p} />
+              {/* Mid: scroll-reveal animation */}
+              <div
+                className={`transition-all duration-600 ${
+                  inView ? "animate-fade-up" : "opacity-0 translate-y-5"
+                }`}
+                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+              >
+                {/* Inner: 3D tilt — brass specular on dark steel surface */}
+                <TiltCard specular="brass" maxTilt={5}>
+                  <ProjectCard project={p} />
+                </TiltCard>
+              </div>
             </div>
           ))}
         </div>

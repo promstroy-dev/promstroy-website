@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { company } from "@/data/company";
@@ -10,12 +10,31 @@ export default function StickyHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Keyboard: close dropdown on Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
+
+  const openServices = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setServicesOpen(true);
+  };
+
+  const scheduleClose = () => {
+    closeTimeoutRef.current = setTimeout(() => setServicesOpen(false), 120);
+  };
 
   return (
     <>
@@ -51,24 +70,43 @@ export default function StickyHeader() {
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
               <div
-                className="relative group"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
+                className="relative"
+                onMouseEnter={openServices}
+                onMouseLeave={scheduleClose}
               >
-                <button className="flex items-center gap-1.5 text-sm font-medium text-text-invert/70 hover:text-text-invert transition-colors duration-200">
-                  Услуги <ChevronDown size={12} className="opacity-50" />
+                <button
+                  className="flex items-center gap-1.5 text-sm font-medium text-text-invert/70 hover:text-text-invert transition-colors duration-200"
+                  aria-haspopup="true"
+                  aria-expanded={servicesOpen}
+                  onClick={() => setServicesOpen((v) => !v)}
+                >
+                  Услуги
+                  <ChevronDown
+                    size={12}
+                    className={`opacity-50 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
+
+                {/* Invisible hover bridge — fills the gap between button and menu */}
+                {servicesOpen && (
+                  <div className="absolute top-full left-0 right-0 h-3" aria-hidden="true" />
+                )}
 
                 {servicesOpen && (
                   <div
-                    className="absolute top-full left-0 mt-3 w-68 py-1.5 shadow-2xl border border-border-dark"
+                    className="absolute top-full left-0 mt-3 w-72 py-1.5 shadow-2xl border border-border-dark"
                     style={{ background: "#0D0F13" }}
+                    onMouseEnter={openServices}
+                    onMouseLeave={scheduleClose}
+                    role="menu"
                   >
                     {services.map((s) => (
                       <Link
                         key={s.id}
                         href={`/uslugi/${s.slug}`}
-                        className="block px-4 py-2.5 text-sm text-text-invert/65 hover:text-accent hover:bg-bg-section transition-colors duration-150"
+                        role="menuitem"
+                        onClick={() => setServicesOpen(false)}
+                        className="block px-4 py-2.5 text-sm text-text-invert/65 hover:text-accent hover:bg-bg-section transition-colors duration-150 focus:outline-none focus:text-accent focus:bg-bg-section"
                       >
                         {s.title}
                       </Link>

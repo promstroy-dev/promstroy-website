@@ -7,7 +7,11 @@ import { ArrowRight, Phone } from "lucide-react";
 export default function HeroFull() {
   const [mounted, setMounted] = useState(false);
   const [parallaxY, setParallaxY] = useState(0);
-  const rafRef = useRef<number>(0);
+  // Normalized mouse position: -0.5 → +0.5
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const rafRef     = useRef<number>(0);
+  const mouseRafRef = useRef<number>(0);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -28,10 +32,26 @@ export default function HeroFull() {
     };
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    cancelAnimationFrame(mouseRafRef.current);
+    mouseRafRef.current = requestAnimationFrame(() => {
+      setMouse({
+        x: (e.clientX - rect.left) / rect.width  - 0.5,
+        y: (e.clientY - rect.top)  / rect.height - 0.5,
+      });
+    });
+  };
+
   const visible = mounted;
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-bg-deep">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex flex-col overflow-hidden bg-bg-deep"
+      onMouseMove={handleMouseMove}
+    >
 
       {/* ── Background Layer A — primary dark gradient (Ken Burns in) ─ */}
       <div
@@ -173,7 +193,7 @@ export default function HeroFull() {
       />
 
       {/* ── Large faint "2008" — structural background year element ── */}
-      {/* Parallax: drifts upward at 0.12× scroll speed — recedes into depth */}
+      {/* Parallax: scroll + shallow mouse drift (middle depth layer) */}
       <div
         className="absolute right-[-2%] bottom-24 pointer-events-none select-none hidden lg:block"
         style={{
@@ -184,7 +204,8 @@ export default function HeroFull() {
           color: "rgba(255,255,255,0.018)",
           letterSpacing: "-0.04em",
           userSelect: "none",
-          transform: `translateY(${parallaxY * -0.12}px)`,
+          // No CSS transition — scroll+mouse both driven by RAF (smooth at 60fps)
+          transform: `translateY(${parallaxY * -0.12}px) translateX(${mouse.x * 18}px)`,
           willChange: "transform",
         }}
       >
@@ -214,6 +235,21 @@ export default function HeroFull() {
           opacity: 0.65,
         }}
       />
+      {/* Architect's dimension ticks — cross the brass rule at intervals */}
+      {/* 5 evenly-spaced tick marks: subtle horizontal lines, like a scale bar */}
+      {[22, 35, 50, 65, 78].map((pct) => (
+        <div
+          key={pct}
+          className="absolute left-0 pointer-events-none hidden sm:block"
+          style={{
+            top: `${pct}%`,
+            width: "8px",
+            height: "1px",
+            background: "#C09A5C",
+            opacity: 0.28,
+          }}
+        />
+      ))}
 
       {/* ── Vertical year label — right structural detail ─────────── */}
       <div
@@ -229,7 +265,15 @@ export default function HeroFull() {
       </div>
 
       {/* ── Main content ──────────────────────────────────────────── */}
-      <div className="relative flex-1 flex flex-col justify-center max-w-content mx-auto px-6 md:px-8 pt-32 pb-10 w-full">
+      {/* Foreground layer: moves opposite to background (pops toward viewer) */}
+      <div
+        className="relative flex-1 flex flex-col justify-center max-w-content mx-auto px-6 md:px-8 pt-32 pb-10 w-full"
+        style={{
+          transform: `translateX(${mouse.x * -5}px) translateY(${mouse.y * -3}px)`,
+          transition: "transform 1.0s cubic-bezier(0.19, 1, 0.22, 1)",
+          willChange: "transform",
+        }}
+      >
 
         {/* Eyebrow — clipped reveal */}
         <div

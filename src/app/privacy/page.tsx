@@ -4,18 +4,18 @@ import Footer from "@/components/layout/Footer";
 
 export default function PrivacyPage() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <StickyHeader />
-      <main>
+      <main className="flex-1">
         <PageHero title="Политика конфиденциальности" />
         <section className="py-20 bg-bg">
-          <div className="max-w-content mx-auto px-4 md:px-8 max-w-2xl">
+          <div className="max-w-2xl mx-auto px-4 md:px-8">
             {/* TODO: replace with real privacy policy */}
             <p className="text-text-muted leading-relaxed">Политика конфиденциальности — в процессе подготовки. По вопросам обработки персональных данных обращайтесь по телефону +7 (927) 711-11-03.</p>
           </div>
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

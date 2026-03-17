@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import { services } from "@/data/services";
 import ServiceCard from "@/components/ui/ServiceCard";
+import TiltCard from "@/components/ui/TiltCard";
 import { useInView } from "@/hooks/useInView";
 
 interface Props {
@@ -9,6 +11,7 @@ interface Props {
 
 export default function ServicesOverview({ expanded = false }: Props) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
     <section className="py-20 md:py-32 bg-bg relative overflow-hidden">
@@ -49,17 +52,31 @@ export default function ServicesOverview({ expanded = false }: Props) {
           </p>
         </div>
 
-        {/* Cards grid */}
+        {/* Cards grid — spotlight: active card full opacity, others dim */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s, i) => (
+            // Outer: handles spotlight opacity
             <div
               key={s.id}
-              className={`transition-all duration-600 ${
-                inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
-              }`}
-              style={{ animationDelay: `${0.08 + i * 0.09}s` }}
+              style={{
+                opacity: activeCard !== null && activeCard !== i ? 0.45 : 1,
+                transition: "opacity 0.25s ease",
+              }}
+              onMouseEnter={() => setActiveCard(i)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              <ServiceCard service={s} expanded={expanded} />
+              {/* Mid: scroll-reveal animation */}
+              <div
+                className={`transition-all duration-600 ${
+                  inView ? "animate-fade-up" : "opacity-0 translate-y-5"
+                }`}
+                style={{ animationDelay: `${0.08 + i * 0.09}s` }}
+              >
+                {/* Inner: 3D tilt + specular */}
+                <TiltCard specular="light" maxTilt={4}>
+                  <ServiceCard service={s} expanded={expanded} />
+                </TiltCard>
+              </div>
             </div>
           ))}
         </div>

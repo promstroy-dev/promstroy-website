@@ -65,15 +65,22 @@ export default function ProcessSteps() {
               }`}
               style={{ animationDelay: `${0.06 + i * 0.1}s` }}
             >
-              {/* Connector line between steps — desktop */}
+              {/* Connector line — draws in from left when section enters view */}
               {i < processSteps.length - 1 && (
                 <div
-                  className="hidden md:block absolute top-[18px] left-10 right-0 h-px"
-                  style={{ background: "#1E2028" }}
+                  className="hidden md:block absolute top-[19px] h-px origin-left"
+                  style={{
+                    left: "calc(2.5rem + 1px)",
+                    right: 0,
+                    // Base steel line always present
+                    background: "linear-gradient(to right, rgba(192,154,92,0.45) 0%, rgba(30,32,40,0.9) 35%, #1E2028 100%)",
+                    transform: inView ? "scaleX(1)" : "scaleX(0)",
+                    transition: `transform 0.9s cubic-bezier(0.19, 1, 0.22, 1) ${0.18 + i * 0.16}s`,
+                  }}
                 />
               )}
 
-              {/* Step number — refined brass border style */}
+              {/* Step number badge — scales in on reveal */}
               <div className="flex-shrink-0 relative z-10">
                 <div
                   className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center font-heading font-bold text-sm"
@@ -82,6 +89,9 @@ export default function ProcessSteps() {
                     color: "#C09A5C",
                     background: "#13151A",
                     letterSpacing: "0.02em",
+                    transform: inView ? "scale(1)" : "scale(0.65)",
+                    opacity: inView ? 1 : 0,
+                    transition: `transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) ${0.06 + i * 0.1}s, opacity 0.35s ease ${0.06 + i * 0.1}s`,
                   }}
                 >
                   {step.step}
