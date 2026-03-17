@@ -2,6 +2,7 @@ import PageHero from "@/components/sections/PageHero";
 import InquiryForm from "@/components/ui/InquiryForm";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
+import Image from "next/image";
 import { Phone, Send, MapPin, Clock } from "lucide-react";
 import { company } from "@/data/company";
 import type { Metadata } from "next";
@@ -69,14 +70,20 @@ export default function KontaktyPage() {
                   </div>
                 </div>
 
-                {/* Telegram QR placeholder */}
-                <div className="mt-10 p-6 bg-bg-mid/10 border border-border rounded-lg text-center">
-                  {/* TODO: replace with real QR asset provided by owner */}
-                  <div className="w-32 h-32 bg-bg-mid mx-auto rounded flex items-center justify-center mb-3">
-                    <span className="text-text-muted text-xs">QR-код</span>
-                  </div>
+                {/* Telegram QR */}
+                <div className="mt-10 p-6 border border-border text-center" style={{ background: "rgba(84,119,146,0.05)" }}>
+                  <a href={`https://t.me/${company.telegram.replace("@", "")}`} className="inline-block mb-3">
+                    <Image
+                      src="/images/qr_tg.avif"
+                      alt="QR-код Telegram ПромСтрой"
+                      width={128}
+                      height={128}
+                      className="mx-auto"
+                      style={{ imageRendering: "crisp-edges" }}
+                    />
+                  </a>
                   <p className="text-text-muted text-sm">Напишите нам в Telegram</p>
-                  <p className="font-semibold text-text">{company.telegram}</p>
+                  <p className="font-semibold text-text mt-1">{company.telegram}</p>
                 </div>
 
                 {/* Map placeholder */}

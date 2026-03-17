@@ -26,19 +26,19 @@ export default function ServiceCard({ service, expanded = false }: Props) {
       {/* Brass bottom reveal on hover */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-350 origin-left"
-        style={{ background: "#C09A5C" }}
+        style={{ background: "#C4AE94" }}
       />
 
       {/* Top brass accent — always visible, very subtle */}
       <div
         className="absolute top-0 left-0 w-10 h-[2px]"
-        style={{ background: "#C09A5C", opacity: 0.4 }}
+        style={{ background: "#C4AE94", opacity: 0.4 }}
       />
 
       {/* Icon — structural, minimal */}
       <div
         className="mb-6 transition-transform duration-220 group-hover:scale-105 origin-left"
-        style={{ color: "#C09A5C" }}
+        style={{ color: "#C4AE94" }}
       >
         {icons[service.icon] ?? <Building2 size={22} />}
       </div>
@@ -57,7 +57,7 @@ export default function ServiceCard({ service, expanded = false }: Props) {
         <ul className="flex flex-col gap-1.5 mb-5">
           {service.items.map((item, i) => (
             <li key={i} className="text-sm text-text-muted flex items-start gap-2.5">
-              <span className="flex-shrink-0 mt-[6px] w-3 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+              <span className="flex-shrink-0 mt-[6px] w-3 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
               {item}
             </li>
           ))}
@@ -69,7 +69,7 @@ export default function ServiceCard({ service, expanded = false }: Props) {
         <Link
           href={`/uslugi/${service.slug}`}
           className="inline-flex items-center gap-1.5 text-sm font-semibold group/link"
-          style={{ color: "#C09A5C" }}
+          style={{ color: "#C4AE94" }}
         >
           Подробнее
           <ArrowRight

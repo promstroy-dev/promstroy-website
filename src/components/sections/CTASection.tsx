@@ -18,13 +18,13 @@ export default function CTASection({
   return (
     <section
       className="py-20 md:py-32 relative overflow-hidden"
-      style={{ background: "#0D0F13" }}
+      style={{ background: "#1A2B3D" }}
     >
       {/* Subtle brass ambient — top right */}
       <div
         className="absolute top-0 right-0 w-[600px] h-[400px] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at top right, rgba(192,154,92,0.06) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse at top right, rgba(196,174,148,0.06) 0%, transparent 65%)",
         }}
       />
 
@@ -35,8 +35,8 @@ export default function CTASection({
           background: `linear-gradient(
             to bottom,
             transparent 0%,
-            #C09A5C 15%,
-            #C09A5C 85%,
+            #C4AE94 15%,
+            #C4AE94 85%,
             transparent 100%
           )`,
           opacity: 0.35,
@@ -54,10 +54,10 @@ export default function CTASection({
           >
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-5 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+              <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
               <span
                 className="text-[10px] uppercase font-medium"
-                style={{ color: "#8C8278", letterSpacing: "0.26em" }}
+                style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
               >
                 Связаться с нами
               </span>
@@ -92,7 +92,7 @@ export default function CTASection({
                      style={{ color: "rgba(240,235,227,0.55)" }}>
                   <span
                     className="flex-shrink-0 w-1 h-1 rounded-full"
-                    style={{ background: "#C09A5C" }}
+                    style={{ background: "#C4AE94" }}
                   />
                   {item}
                 </div>
@@ -109,7 +109,7 @@ export default function CTASection({
           >
             <div
               className="p-6 md:p-8 border"
-              style={{ background: "#13151A", borderColor: "#1E2028" }}
+              style={{ background: "#213448", borderColor: "#1E3348" }}
             >
               <InquiryForm sourcePage={sourcePage} dark />
             </div>

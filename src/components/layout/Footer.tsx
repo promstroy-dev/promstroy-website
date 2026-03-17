@@ -11,7 +11,7 @@ export default function Footer() {
       <div
         className="h-[1px]"
         style={{
-          background: "linear-gradient(90deg, transparent 5%, rgba(192,154,92,0.25) 30%, rgba(192,154,92,0.25) 70%, transparent 95%)",
+          background: "linear-gradient(90deg, transparent 5%, rgba(196,174,148,0.22) 30%, rgba(196,174,148,0.22) 70%, transparent 95%)",
         }}
       />
 

@@ -8,7 +8,7 @@ export default function ProcessSteps() {
   return (
     <section
       className="py-20 md:py-32 relative overflow-hidden border-y"
-      style={{ background: "#13151A", borderColor: "#1E2028" }}
+      style={{ background: "#213448", borderColor: "#1E3348" }}
     >
       {/* Background grid — blueprint feel */}
       <div
@@ -35,10 +35,10 @@ export default function ProcessSteps() {
           }`}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-5 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+            <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
             <span
               className="text-[10px] uppercase font-medium"
-              style={{ color: "#8C8278", letterSpacing: "0.26em" }}
+              style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
             >
               Процесс работы
             </span>
@@ -73,7 +73,7 @@ export default function ProcessSteps() {
                     left: "calc(2.5rem + 1px)",
                     right: 0,
                     // Base steel line always present
-                    background: "linear-gradient(to right, rgba(192,154,92,0.45) 0%, rgba(30,32,40,0.9) 35%, #1E2028 100%)",
+                    background: "linear-gradient(to right, rgba(196,174,148,0.40) 0%, rgba(30,51,72,0.9) 35%, #1E3348 100%)",
                     transform: inView ? "scaleX(1)" : "scaleX(0)",
                     transition: `transform 0.9s cubic-bezier(0.19, 1, 0.22, 1) ${0.18 + i * 0.16}s`,
                   }}
@@ -85,9 +85,9 @@ export default function ProcessSteps() {
                 <div
                   className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center font-heading font-bold text-sm"
                   style={{
-                    border: "1px solid #C09A5C",
-                    color: "#C09A5C",
-                    background: "#13151A",
+                    border: "1px solid #C4AE94",
+                    color: "#C4AE94",
+                    background: "#213448",
                     letterSpacing: "0.02em",
                     transform: inView ? "scale(1)" : "scale(0.65)",
                     opacity: inView ? 1 : 0,
@@ -107,7 +107,7 @@ export default function ProcessSteps() {
                 </h3>
                 <p
                   className="text-xs leading-relaxed"
-                  style={{ color: "#8C8278" }}
+                  style={{ color: "#7A8E98" }}
                 >
                   {step.body}
                 </p>

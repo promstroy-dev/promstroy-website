@@ -61,7 +61,7 @@ export default function TrustBlock() {
               style={{ animationDelay: `${0.06 + i * 0.08}s` }}
             >
               {/* Icon block — CSS group-hover */}
-              <div className="flex-shrink-0 w-10 h-10 border border-border flex items-center justify-center text-accent transition-all duration-250 group-hover:bg-accent group-hover:border-accent group-hover:text-white">
+              <div className="flex-shrink-0 w-10 h-10 border border-border flex items-center justify-center text-accent transition-all duration-250 group-hover:bg-accent group-hover:border-accent group-hover:text-bg-deep">
                 <Icon size={17} />
               </div>
 

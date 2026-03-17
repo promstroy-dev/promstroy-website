@@ -84,13 +84,15 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
   };
 
   const borderClass = (field: "name" | "phone") => {
-    if (errors[field] && touched[field]) return dark ? "border-red-500/70" : "border-red-400";
-    return dark ? "border-border-dark focus:border-accent" : "border-border focus:border-accent";
+    if (errors[field] && touched[field]) return dark ? "border-red-500/60" : "border-red-400";
+    return dark
+      ? "border-[rgba(196,174,148,0.20)] focus:border-[rgba(196,174,148,0.50)]"
+      : "border-border focus:border-accent";
   };
 
   const inputBase = `w-full px-4 py-3 text-sm outline-none transition-colors duration-200 ${
     dark
-      ? "bg-bg-dark text-text-invert placeholder:text-text-muted"
+      ? "bg-[rgba(255,255,255,0.07)] text-text-invert placeholder:text-[rgba(240,235,227,0.38)]"
       : "bg-white text-text placeholder:text-text-muted"
   }`;
 
@@ -99,10 +101,10 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
       <div className={`py-8 text-center ${dark ? "text-text-invert" : "text-text"}`}>
         <div
           className="inline-flex items-center justify-center w-10 h-10 mb-4"
-          style={{ background: "rgba(192,154,92,0.12)", border: "1px solid rgba(192,154,92,0.3)" }}
+          style={{ background: "rgba(196,174,148,0.12)", border: "1px solid rgba(196,174,148,0.3)" }}
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M3 9L7.5 13.5L15 5" stroke="#C09A5C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M3 9L7.5 13.5L15 5" stroke="#C4AE94" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
         <p className="text-base font-heading font-semibold mb-1">Заявка принята</p>
@@ -151,7 +153,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
 
       {/* Message */}
       <textarea
-        className={`${inputBase} border resize-none ${dark ? "border-border-dark focus:border-accent" : "border-border focus:border-accent"}`}
+        className={`${inputBase} border resize-none ${dark ? "border-[rgba(196,174,148,0.20)] focus:border-[rgba(196,174,148,0.50)]" : "border-border focus:border-accent"}`}
         placeholder="Описание задачи (необязательно)"
         rows={3}
         value={message}
@@ -163,7 +165,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
         type="submit"
         disabled={status === "loading"}
         className="disabled:opacity-60 font-semibold py-3.5 px-6 transition-all duration-200 hover:-translate-y-0.5 text-sm flex items-center justify-center gap-2"
-        style={{ background: "#C09A5C", color: "#0A0908", letterSpacing: "0.06em" }}
+        style={{ background: "#C4AE94", color: "#0A1520", letterSpacing: "0.06em" }}
       >
         {status === "loading" ? (
           <>

@@ -33,10 +33,10 @@ export default function ServicesOverview({ expanded = false }: Props) {
           }`}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-5 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+            <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
             <span
               className="text-[10px] uppercase font-medium"
-              style={{ color: "#8C8278", letterSpacing: "0.26em" }}
+              style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
             >
               Направления работ
             </span>

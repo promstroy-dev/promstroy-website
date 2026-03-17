@@ -66,7 +66,7 @@ export default function TiltCard({
 
   const specularGradient =
     specular === "brass"
-      ? `radial-gradient(circle 160px at ${mx}% ${my}%, rgba(192,154,92,0.09) 0%, transparent 65%)`
+      ? `radial-gradient(circle 160px at ${mx}% ${my}%, rgba(84,119,146,0.10) 0%, transparent 65%)`
       : specular === "light"
       ? `radial-gradient(circle 180px at ${mx}% ${my}%, rgba(255,255,255,0.07) 0%, transparent 65%)`
       : "none";

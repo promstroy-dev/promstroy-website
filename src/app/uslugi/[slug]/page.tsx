@@ -72,7 +72,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                   <p className="text-text-muted text-sm mb-4">Расскажите о задаче — перезвоним в течение 2 часов</p>
                   <a
                     href="/kontakty"
-                    className="block text-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 rounded transition-colors text-sm"
+                    className="block text-center bg-accent hover:bg-accent-hover text-bg-deep font-semibold py-3 transition-colors text-sm"
                   >
                     Оставить заявку
                   </a>

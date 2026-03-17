@@ -9,8 +9,10 @@
   --font-inter: 'Inter', sans-serif;
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-out-circ: cubic-bezier(0.22, 1, 0.36, 1);
-  --accent: #C09A5C;
-  --accent-glow: rgba(192, 154, 92, 0.12);
+  --accent: #C4AE94;
+  --accent-glow: rgba(196, 174, 148, 0.14);
+  --accent-blue: #547792;
+  --accent-blue-light: #94B4C1;
 }
 
 html {
@@ -18,8 +20,8 @@ html {
 }
 
 body {
-  background-color: #F0E9DF;
-  color: #171411;
+  background-color: #EAE0CF;
+  color: #1A2B3D;
   font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -230,15 +232,15 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Focus ring for accessibility ───────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid #C09A5C;
+  outline: 2px solid #547792;
   outline-offset: 2px;
 }
 
 /* ── Smooth selection ────────────────────────────────────────────── */
 
 ::selection {
-  background: rgba(192, 154, 92, 0.25);
-  color: #171411;
+  background: rgba(84, 119, 146, 0.22);
+  color: #1A2B3D;
 }
 
 /* ── Respect reduced-motion preferences ─────────────────────────── */

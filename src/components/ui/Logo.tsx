@@ -6,10 +6,10 @@
  * element of commercial construction. It naturally echoes the Cyrillic П from
  * ПромСтрой while reading as an architectural drawing, not a letter.
  *
- * Mark: portal frame in aged brass (#C09A5C).
+ * Mark: portal frame in warm stone (#C4AE94).
  * Wordmark: single unified color — no split coloring.
  *   Light variant: #F0EBE3
- *   Default variant: #171411
+ *   Default variant: #1A2B3D
  *
  * To swap in final logo: replace the three shapes in PortalMark.
  * The component API and sizing remain unchanged.
@@ -28,8 +28,8 @@ const SIZES = {
   lg: { mark: 32, wordmarkSize: "text-xl",   tracking: "tracking-[0.20em]", gap: "gap-3"   },
 };
 
-// Aged brass — primary accent carrier for the brand mark
-const BRASS = "#C09A5C";
+// Warm stone — primary accent carrier for the brand mark
+const BRASS = "#C4AE94";
 
 /**
  * "Портальная рама" — structural portal frame mark.
@@ -76,7 +76,7 @@ export default function Logo({
   const { mark, wordmarkSize, tracking, gap } = SIZES[size];
 
   // Wordmark is unified — no split coloring
-  const textColor = light ? "#F0EBE3" : "#171411";
+  const textColor = light ? "#F0EBE3" : "#1A2B3D";
 
   return (
     <span

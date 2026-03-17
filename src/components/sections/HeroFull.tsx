@@ -60,9 +60,9 @@ export default function HeroFull() {
           background: `
             linear-gradient(
               145deg,
-              #131620 0%,
-              #0D0F13 40%,
-              #090A0C 100%
+              #0D1A28 0%,
+              #0A1520 40%,
+              #060F18 100%
             )
           `,
         }}
@@ -128,14 +128,14 @@ export default function HeroFull() {
         <div
           className="absolute inset-x-0 top-0 h-32 pointer-events-none"
           style={{
-            background: "linear-gradient(180deg, rgba(9,10,12,0.85) 0%, transparent 100%)",
+            background: "linear-gradient(180deg, rgba(6,10,16,0.85) 0%, transparent 100%)",
           }}
         />
         {/* Thin bottom fade — grounds the silhouettes into the stats bar */}
         <div
           className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
           style={{
-            background: "linear-gradient(0deg, rgba(9,10,12,0.90) 0%, transparent 100%)",
+            background: "linear-gradient(0deg, rgba(6,10,16,0.90) 0%, transparent 100%)",
           }}
         />
       </div>
@@ -149,7 +149,7 @@ export default function HeroFull() {
           width: "62%",
           height: "80%",
           background:
-            "radial-gradient(ellipse 68% 58% at 72% 48%, rgba(192,154,92,0.085) 0%, rgba(192,154,92,0.032) 42%, transparent 68%)",
+            "radial-gradient(ellipse 68% 58% at 72% 48%, rgba(196,174,148,0.085) 0%, rgba(196,174,148,0.032) 42%, transparent 68%)",
         }}
       />
 
@@ -174,7 +174,7 @@ export default function HeroFull() {
         style={{
           background: `radial-gradient(
             ellipse 60% 50% at 15% 20%,
-            rgba(192,154,92,0.06) 0%,
+            rgba(196,174,148,0.06) 0%,
             transparent 70%
           )`,
         }}
@@ -187,7 +187,7 @@ export default function HeroFull() {
           background: `linear-gradient(
             130deg,
             transparent 55%,
-            rgba(192,154,92,0.04) 100%
+            rgba(196,174,148,0.04) 100%
           )`,
         }}
       />
@@ -228,8 +228,8 @@ export default function HeroFull() {
           background: `linear-gradient(
             to bottom,
             transparent 0%,
-            #C09A5C 12%,
-            #C09A5C 88%,
+            #C4AE94 12%,
+            #C4AE94 88%,
             transparent 100%
           )`,
           opacity: 0.65,
@@ -245,7 +245,7 @@ export default function HeroFull() {
             top: `${pct}%`,
             width: "8px",
             height: "1px",
-            background: "#C09A5C",
+            background: "#C4AE94",
             opacity: 0.28,
           }}
         />
@@ -281,10 +281,10 @@ export default function HeroFull() {
           style={{ transitionDelay: "0.05s" }}
         >
           <span className="inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.30em]"
-                style={{ color: "#C09A5C" }}>
+                style={{ color: "#C4AE94" }}>
             <span
               className="inline-block h-px w-8"
-              style={{ background: "#C09A5C", opacity: 0.8 }}
+              style={{ background: "#C4AE94", opacity: 0.8 }}
             />
             Самара · Коммерческое строительство
           </span>
@@ -300,7 +300,7 @@ export default function HeroFull() {
             style={{ fontSize: "clamp(42px, 6.5vw, 88px)", letterSpacing: "-0.02em" }}
           >
             Коммерческое<br />
-            <span style={{ color: "#C09A5C" }}>строительство</span><br />
+            <span style={{ color: "#C4AE94" }}>строительство</span><br />
             и ремонт
           </h1>
         </div>
@@ -341,8 +341,8 @@ export default function HeroFull() {
             href="/kontakty"
             className="inline-flex items-center gap-2.5 font-semibold px-8 py-4 text-sm tracking-wide transition-all duration-250 hover:-translate-y-0.5"
             style={{
-              background: "#C09A5C",
-              color: "#0A0908",
+              background: "#C4AE94",
+              color: "#0A1520",
               letterSpacing: "0.06em",
             }}
           >
@@ -370,46 +370,6 @@ export default function HeroFull() {
         </div>
       </div>
 
-      {/* ── Stats strip ───────────────────────────────────────────── */}
-      <div
-        className="relative border-t"
-        style={{ borderColor: "rgba(30,32,40,0.9)", background: "rgba(9,10,12,0.7)" }}
-      >
-        {/* Brass top accent line */}
-        <div
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(90deg, transparent, #C09A5C 30%, #C09A5C 70%, transparent)", opacity: 0.25 }}
-        />
-
-        <div className="max-w-content mx-auto px-6 md:px-8 py-7 md:py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x"
-               style={{ '--tw-divide-opacity': '0.2' } as React.CSSProperties}>
-            {company.stats.map((s, i) => (
-              <div
-                key={i}
-                className={`${i > 0 ? "md:pl-10" : ""} ${i < 3 ? "md:pr-10" : ""}`}
-              >
-                <p
-                  className="font-heading font-bold leading-none mb-1.5"
-                  style={{
-                    fontSize: "clamp(26px, 3.2vw, 40px)",
-                    color: "#C09A5C",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {s.value}
-                </p>
-                <p
-                  className="text-[10px] uppercase tracking-widest"
-                  style={{ color: "rgba(240,235,227,0.35)" }}
-                >
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

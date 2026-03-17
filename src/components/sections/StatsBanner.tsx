@@ -65,12 +65,12 @@ export default function StatsBanner() {
     <section
       ref={ref}
       className="relative border-b overflow-hidden"
-      style={{ background: "#0D0F13", borderColor: "#1E2028" }}
+      style={{ background: "#1A2B3D", borderColor: "#1E3348" }}
     >
       {/* Top brass accent */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent 5%, #C09A5C 30%, #C09A5C 70%, transparent 95%)", opacity: 0.3 }}
+        style={{ background: "linear-gradient(90deg, transparent 5%, #C4AE94 30%, #C4AE94 70%, transparent 95%)", opacity: 0.3 }}
       />
 
       {/* Background structural texture */}
@@ -94,7 +94,7 @@ export default function StatsBanner() {
           className={`mb-14 transition-all duration-600 ${inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"}`}
         >
           <div className="flex items-center gap-3">
-            <div className="w-5 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+            <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
             <span
               className="text-[10px] uppercase font-medium"
               style={{ color: "rgba(140,130,120,1)", letterSpacing: "0.26em" }}
@@ -118,7 +118,7 @@ export default function StatsBanner() {
               {i > 0 && (
                 <div
                   className="hidden md:block absolute left-0 top-2 bottom-2 w-px"
-                  style={{ background: "#1E2028" }}
+                  style={{ background: "#1E3348" }}
                 />
               )}
 
@@ -127,7 +127,7 @@ export default function StatsBanner() {
                   className="font-heading font-bold leading-none mb-3"
                   style={{
                     fontSize: "clamp(48px, 6vw, 88px)",
-                    color: "#C09A5C",
+                    color: "#C4AE94",
                     letterSpacing: "-0.03em",
                   }}
                 >

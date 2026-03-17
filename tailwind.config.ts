@@ -9,29 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // ── Light surfaces — warm concrete ──────────────────────────────
-        bg:         "#F0E9DF",   // primary light surface; intentional concrete warmth
-        "bg-soft":  "#E2D9CE",   // secondary light; recessed surface variation
-        // ── Dark surfaces — cool steel ──────────────────────────────────
-        // Shifted from warm-brown to cool-steel to harmonize with the
-        // construction video (overcast sky, crane silhouettes). The brass
-        // accent now reads as warm hardware against a cold structural ground.
-        "bg-dark":    "#0D0F13", // primary dark; cool steel near-black
-        "bg-section": "#13151A", // elevated dark; steel surface on dark
-        "bg-mid":     "#13151A", // alias kept for existing references
-        "bg-deep":    "#090A0C", // absolute base; mobile nav, footer
+        // ── Light surfaces — warm stone/travertine ───────────────────────
+        bg:         "#EAE0CF",   // primary light surface; warm stone/Portland cement
+        "bg-soft":  "#D8CCB8",   // recessed light surface; deeper warm stone
+        // ── Dark surfaces — deep naval steel ────────────────────────────
+        // Deep naval darks from Palette F direction. The warm stone accent
+        // now reads as travertine/concrete against a structural steel ground.
+        "bg-dark":    "#1A2B3D", // primary dark; deep naval steel
+        "bg-section": "#213448", // elevated dark; steel surface on dark
+        "bg-mid":     "#213448", // alias kept for existing references
+        "bg-deep":    "#0A1520", // absolute base; mobile nav, footer, hero
         // ── Typography ──────────────────────────────────────────────────
-        text:           "#171411",  // text on light surfaces
-        "text-muted":   "#8C8278",  // secondary text on light and dark
+        text:           "#1A2B3D",  // text on light surfaces (deep naval)
+        "text-muted":   "#7A8E98",  // secondary text on light and dark
         "text-invert":  "#F0EBE3",  // primary text on dark surfaces (warm off-white)
-        // ── Accent — aged brass ─────────────────────────────────────────
-        // NOT orange. Aged metal / architectural hardware. ~7.8:1 on bg-deep.
-        accent:         "#C09A5C",  // warm brass / patinated metal
-        "accent-hover": "#A8843E",  // slightly deeper on hover / press
-        "accent-dim":   "#8A6E38",  // muted variant for secondary emphasis
+        // ── Accent — warm stone/travertine ──────────────────────────────
+        // Architectural material accent. Travertine/stone against steel.
+        // Replaces dated brass/gold — same warm-over-cool tension, more modern.
+        accent:         "#C4AE94",  // warm stone / travertine
+        "accent-hover": "#B49E84",  // slightly deeper on hover / press
+        "accent-dim":   "#A08C74",  // muted variant for secondary emphasis
+        // ── Steel blue — interactive secondary ──────────────────────────
+        "accent-blue":       "#547792",  // structural steel blue; links, focus
+        "accent-blue-light": "#94B4C1",  // light steel; hover states, muted on dark
         // ── Borders ─────────────────────────────────────────────────────
-        border:       "#D1C9BC",  // warm border on light surfaces
-        "border-dark": "#1E2028", // barely visible on dark surfaces (cool steel)
+        border:       "#D0C4B0",  // warm stone border on light surfaces
+        "border-dark": "#1E3348", // barely visible on dark surfaces (naval)
         // ── Card ────────────────────────────────────────────────────────
         "card-bg": "#FFFFFF",
       },

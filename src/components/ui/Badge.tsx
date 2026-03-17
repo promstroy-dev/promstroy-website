@@ -7,11 +7,11 @@ export default function Badge({ label }: Props) {
     <span
       className="inline-block text-[10px] font-semibold px-2.5 py-1 uppercase"
       style={{
-        background: "rgba(9,10,12,0.75)",
-        color: "#C09A5C",
+        background: "rgba(8,14,22,0.80)",
+        color: "#94B4C1",
         letterSpacing: "0.18em",
         backdropFilter: "blur(4px)",
-        border: "1px solid rgba(192,154,92,0.25)",
+        border: "1px solid rgba(84,119,146,0.30)",
       }}
     >
       {label}

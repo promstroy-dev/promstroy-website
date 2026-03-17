@@ -15,7 +15,7 @@ export default function ProjectsPreview() {
   return (
     <section
       className="py-20 md:py-32 relative overflow-hidden"
-      style={{ background: "#0D0F13" }}
+      style={{ background: "#1A2B3D" }}
     >
       {/* Background structural grid */}
       <div
@@ -41,10 +41,10 @@ export default function ProjectsPreview() {
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-5 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+              <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
               <span
                 className="text-[10px] uppercase font-medium"
-                style={{ color: "#8C8278", letterSpacing: "0.26em" }}
+                style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
               >
                 Реализованные объекты
               </span>
@@ -61,7 +61,7 @@ export default function ProjectsPreview() {
             </h2>
             <p
               className="text-sm max-w-md leading-relaxed"
-              style={{ color: "#8C8278" }}
+              style={{ color: "#7A8E98" }}
             >
               Завершённые объекты коммерческого строительства и ремонта в Самаре
             </p>

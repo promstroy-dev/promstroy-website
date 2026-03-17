@@ -43,7 +43,7 @@ export default function StickyHeader() {
           scrolled ? "border-border-dark shadow-2xl" : "border-transparent"
         }`}
         style={scrolled ? {
-          background: "rgba(9,10,12,0.96)",
+          background: "rgba(8,14,22,0.97)",
           backdropFilter: "blur(12px)",
         } : {
           background: "transparent",
@@ -54,7 +54,7 @@ export default function StickyHeader() {
           <div
             className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none"
             style={{
-              background: "linear-gradient(90deg, transparent 5%, rgba(192,154,92,0.30) 30%, rgba(192,154,92,0.30) 70%, transparent 95%)",
+              background: "linear-gradient(90deg, transparent 5%, rgba(196,174,148,0.28) 30%, rgba(196,174,148,0.28) 70%, transparent 95%)",
             }}
           />
         )}
@@ -95,7 +95,7 @@ export default function StickyHeader() {
                 {servicesOpen && (
                   <div
                     className="absolute top-full left-0 mt-3 w-72 py-1.5 shadow-2xl border border-border-dark"
-                    style={{ background: "#0D0F13" }}
+                    style={{ background: "#0D1A28" }}
                     onMouseEnter={openServices}
                     onMouseLeave={scheduleClose}
                     role="menu"
@@ -144,8 +144,8 @@ export default function StickyHeader() {
                 href="/kontakty"
                 className="hidden md:block text-sm font-semibold px-5 py-2.5 transition-all duration-200 hover:-translate-y-px hover:bg-accent-hover"
                 style={{
-                  background: "#C09A5C",
-                  color: "#0A0908",
+                  background: "#C4AE94",
+                  color: "#0A1520",
                   letterSpacing: "0.04em",
                 }}
               >

@@ -7,7 +7,7 @@ export default function PageHero({ title, subtitle }: Props) {
   return (
     <section
       className="border-b pt-32 pb-14 relative overflow-hidden"
-      style={{ background: "#0D0F13", borderColor: "#1E2028" }}
+      style={{ background: "#1A2B3D", borderColor: "#1E3348" }}
     >
       {/* Brass left rule — gradient fade */}
       <div
@@ -16,8 +16,8 @@ export default function PageHero({ title, subtitle }: Props) {
           background: `linear-gradient(
             to bottom,
             transparent 0%,
-            #C09A5C 15%,
-            #C09A5C 85%,
+            #C4AE94 15%,
+            #C4AE94 85%,
             transparent 100%
           )`,
           opacity: 0.5,
@@ -28,7 +28,7 @@ export default function PageHero({ title, subtitle }: Props) {
       <div
         className="absolute top-0 right-0 w-[400px] h-[250px] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at top right, rgba(192,154,92,0.05) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse at top right, rgba(196,174,148,0.05) 0%, transparent 65%)",
         }}
       />
 
@@ -48,10 +48,10 @@ export default function PageHero({ title, subtitle }: Props) {
 
       <div className="relative max-w-content mx-auto px-6 md:px-8">
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-4 h-px" style={{ background: "#C09A5C", opacity: 0.7 }} />
+          <div className="w-4 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
           <span
             className="text-[10px] uppercase font-medium"
-            style={{ color: "#8C8278", letterSpacing: "0.26em" }}
+            style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
           >
             ПромСтрой
           </span>
@@ -69,7 +69,7 @@ export default function PageHero({ title, subtitle }: Props) {
         {subtitle && (
           <p
             className="text-base md:text-lg max-w-xl leading-relaxed"
-            style={{ color: "#8C8278" }}
+            style={{ color: "#7A8E98" }}
           >
             {subtitle}
           </p>

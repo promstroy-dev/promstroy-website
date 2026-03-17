@@ -87,10 +87,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <div>
                 <div className="bg-card-bg rounded-lg p-6 border border-border">
                   <h3 className="font-heading font-semibold text-text mb-4">Обсудить похожий проект</h3>
-                  <a href="tel:+79277111103" className="block text-center border border-accent text-accent hover:bg-accent hover:text-white font-semibold py-3 rounded transition-colors text-sm mb-3">
+                  <a href="tel:+79277111103" className="block text-center border border-accent text-accent hover:bg-accent hover:text-bg-deep font-semibold py-3 transition-colors text-sm mb-3">
                     Позвонить
                   </a>
-                  <a href="https://t.me/skpromstroy_samara" className="block text-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 rounded transition-colors text-sm">
+                  <a href="https://t.me/skpromstroy_samara" className="block text-center bg-accent hover:bg-accent-hover text-bg-deep font-semibold py-3 transition-colors text-sm">
                     Написать в Telegram
                   </a>
                 </div>

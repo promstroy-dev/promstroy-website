@@ -25,7 +25,7 @@ export default function UslugiPage() {
             <p className="text-text-muted mb-4">Не нашли нужную услугу? Расскажите о задаче — решим.</p>
             <a
               href="/kontakty"
-              className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded transition-colors text-sm"
+              className="inline-block bg-accent hover:bg-accent-hover text-bg-deep font-semibold px-6 py-3 transition-colors text-sm"
             >
               Обсудить задачу
             </a>
