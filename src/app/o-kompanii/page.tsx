@@ -35,15 +35,28 @@ export default function OKompaniiPage() {
                 </p>
                 {/* TODO: replace placeholder paragraph with content from owner */}
               </div>
-              {/* Team placeholder */}
-              <div className="bg-bg-mid rounded-lg p-8 flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-bg-dark flex items-center justify-center mb-4">
-                  <span className="text-text-muted text-3xl">👤</span>
-                </div>
-                {/* TODO: replace with owner name and photo */}
-                <p className="font-heading font-semibold text-text-invert text-lg">[Имя руководителя]</p>
-                <p className="text-text-muted text-sm mt-1">Руководитель</p>
-                <p className="text-xs text-text-muted mt-4">[Фото и биография — в процессе подготовки]</p>
+              {/* Team block — populated when owner provides content */}
+              <div
+                className="rounded-lg p-8 flex flex-col gap-5"
+                style={{ background: "#213448", border: "1px solid #1E3348" }}
+              >
+                <div
+                  className="w-10 h-px"
+                  style={{ background: "rgba(196,174,148,0.5)" }}
+                />
+                <p className="font-heading font-semibold text-text-invert text-lg">Алимбеков Олег</p>
+                <p className="text-sm" style={{ color: "rgba(148,180,193,0.7)" }}>Руководитель ПромСтрой</p>
+                <p className="text-text-muted text-sm leading-relaxed">
+                  ПромСтрой — команда специалистов с практическим опытом в коммерческом строительстве
+                  Самарского региона. Беремся за объекты, от которых отказываются другие.
+                </p>
+                <a
+                  href="/kontakty"
+                  className="inline-flex items-center gap-2 text-sm font-medium"
+                  style={{ color: "#C4AE94" }}
+                >
+                  Связаться с нами →
+                </a>
               </div>
             </div>
           </div>
@@ -60,21 +73,7 @@ export default function OKompaniiPage() {
               {/* TODO: replace with real content — СРО, лицензии */}
             </div>
 
-            {/* Testimonials */}
-            <h2 className="font-heading font-bold text-text text-3xl mt-16 mb-10">Отзывы клиентов</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-card-bg rounded-lg p-6 border border-border">
-                  <p className="text-text-muted text-sm leading-relaxed mb-4 italic">
-                    {/* TODO: replace with real testimonials from owner */}
-                    &laquo;Работали с ПромСтрой по ремонту нашего офиса. Всё сделали в срок, качество соответствует договору. Рекомендуем.&raquo;
-                  </p>
-                  <p className="font-semibold text-text text-sm">[Имя клиента]</p>
-                  <p className="text-text-muted text-xs">[Компания]</p>
-                  {/* TODO: replace with real content */}
-                </div>
-              ))}
-            </div>
+            {/* Testimonials — shown when real content is available */}
           </div>
         </section>
 

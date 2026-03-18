@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/data/company";
 import { ArrowRight, Phone } from "lucide-react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function HeroFull() {
   const [mounted, setMounted] = useState(false);
@@ -12,6 +13,7 @@ export default function HeroFull() {
   const rafRef     = useRef<number>(0);
   const mouseRafRef = useRef<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -19,6 +21,7 @@ export default function HeroFull() {
   }, []);
 
   useEffect(() => {
+    if (reducedMotion) return; // skip parallax for reduced-motion preference
     const handleScroll = () => {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
@@ -30,9 +33,10 @@ export default function HeroFull() {
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [reducedMotion]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (reducedMotion) return;
     const rect = sectionRef.current?.getBoundingClientRect();
     if (!rect) return;
     cancelAnimationFrame(mouseRafRef.current);
@@ -111,6 +115,7 @@ export default function HeroFull() {
           muted
           loop
           playsInline
+          preload="metadata"
           poster="/images/hero-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover"
           style={{

@@ -21,7 +21,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "ratelimit">("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [touched, setTouched] = useState<{ name?: boolean; phone?: boolean }>({});
 
@@ -75,6 +75,8 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
       });
       if (res.ok) {
         setStatus("success");
+      } else if (res.status === 429) {
+        setStatus("ratelimit");
       } else {
         setStatus("error");
       }
@@ -183,6 +185,11 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
       {status === "error" && (
         <p className="text-red-400 text-sm text-center">
           Ошибка отправки. Позвоните нам напрямую.
+        </p>
+      )}
+      {status === "ratelimit" && (
+        <p className="text-sm text-center" style={{ color: "#C4AE94" }}>
+          Слишком много попыток. Попробуйте через 15 минут или позвоните нам.
         </p>
       )}
     </form>

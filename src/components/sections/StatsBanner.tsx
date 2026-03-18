@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/data/company";
 import { useInView } from "@/hooks/useInView";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 /** Parse "18", "4", "[N]+", "Самара" → { num, prefix, suffix } */
 function parseCounter(value: string): { num: number | null; prefix: string; suffix: string } {
@@ -17,10 +18,17 @@ function CounterNumber({ value, inView }: { value: string; inView: boolean }) {
   const [display, setDisplay] = useState(num !== null ? 0 : null);
   const started = useRef(false);
   const numRef = useRef<HTMLSpanElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!inView || num === null || started.current) return;
     started.current = true;
+
+    // Skip animation if user prefers reduced motion — jump straight to final value
+    if (reducedMotion) {
+      setDisplay(num);
+      return;
+    }
 
     const duration = 1600;
     const start = performance.now();
@@ -43,7 +51,7 @@ function CounterNumber({ value, inView }: { value: string; inView: boolean }) {
     };
 
     requestAnimationFrame(tick);
-  }, [inView, num]);
+  }, [inView, num, reducedMotion]);
 
   if (num === null) {
     return <>{value}</>;
@@ -60,6 +68,8 @@ function CounterNumber({ value, inView }: { value: string; inView: boolean }) {
 
 export default function StatsBanner() {
   const { ref, inView } = useInView<HTMLDivElement>();
+  // Only show stats that have a non-empty value
+  const stats = company.stats.filter((s) => s.value.trim() !== "");
 
   return (
     <section
@@ -104,9 +114,9 @@ export default function StatsBanner() {
           </div>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-          {company.stats.map((s, i) => (
+        {/* Stats grid — columns adapt to number of visible stats */}
+        <div className={`grid gap-0 grid-cols-2 ${stats.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"}`}>
+          {stats.map((s, i) => (
             <div
               key={i}
               className={`relative transition-all duration-600 ${
@@ -122,7 +132,7 @@ export default function StatsBanner() {
                 />
               )}
 
-              <div className={`${i > 0 ? "md:pl-12" : ""} ${i < 3 ? "md:pr-12" : ""} pl-0 pr-0 pb-8 md:pb-0`}>
+              <div className={`${i > 0 ? "md:pl-12" : ""} ${i < stats.length - 1 ? "md:pr-12" : ""} pl-0 pr-0 pb-8 md:pb-0`}>
                 <p
                   className="font-heading font-bold leading-none mb-3"
                   style={{

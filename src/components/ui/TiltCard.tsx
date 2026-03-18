@@ -15,7 +15,7 @@
  *   </TiltCard>
  */
 
-import { useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { useRef, useState, useEffect, type ReactNode, type CSSProperties } from "react";
 
 interface Props {
   children: ReactNode;
@@ -32,17 +32,23 @@ export default function TiltCard({
   maxTilt = 5,
   specular = "light",
 }: Props) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const rafRef  = useRef<number>(0);
+  const cardRef   = useRef<HTMLDivElement>(null);
+  const rafRef    = useRef<number>(0);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [rotX,   setRotX]   = useState(0);
   const [rotY,   setRotY]   = useState(0);
   const [mx,     setMx]     = useState(50);   // specular X %
   const [my,     setMy]     = useState(50);   // specular Y %
   const [active, setActive] = useState(false);
 
+  // Disable tilt on touch-primary devices
+  useEffect(() => {
+    setIsTouchDevice(window.matchMedia("(hover: none)").matches);
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = cardRef.current;
-    if (!el) return;
+    if (!el || isTouchDevice) return;
     cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const rect = el.getBoundingClientRect();
@@ -55,7 +61,7 @@ export default function TiltCard({
     });
   };
 
-  const handleMouseEnter = () => setActive(true);
+  const handleMouseEnter = () => { if (!isTouchDevice) setActive(true); };
 
   const handleMouseLeave = () => {
     cancelAnimationFrame(rafRef.current);

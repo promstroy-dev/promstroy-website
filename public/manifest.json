@@ -1,0 +1,17 @@
+{
+  "name": "ПромСтрой — Коммерческое строительство",
+  "short_name": "ПромСтрой",
+  "description": "Коммерческое строительство и ремонт в Самаре с 2008 года",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0A1520",
+  "theme_color": "#1A2B3D",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

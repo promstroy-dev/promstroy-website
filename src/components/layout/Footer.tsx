@@ -29,7 +29,11 @@ export default function Footer() {
               Коммерческое строительство<br />в Самаре с 2008 года
             </p>
             <p className="text-xs text-text-muted">© {year} ПромСтрой. Все права защищены.</p>
-            <p className="text-xs text-text-muted mt-1">{company.inn} · {company.ogrn}</p>
+            {(company.inn || company.ogrn) && (
+              <p className="text-xs text-text-muted mt-1">
+                {[company.inn, company.ogrn].filter(Boolean).join(" · ")}
+              </p>
+            )}
           </div>
 
           {/* Col 2: Navigation */}
@@ -92,7 +96,9 @@ export default function Footer() {
                   {company.telegram}
                 </a>
               </CopyButton>
-              <p className="text-sm text-text-muted">{company.email}</p>
+              {company.email && (
+                <p className="text-sm text-text-muted">{company.email}</p>
+              )}
             </div>
           </div>
 
@@ -109,7 +115,9 @@ export default function Footer() {
               >
                 Политика конфиденциальности
               </Link>
-              <p className="text-xs mt-2 leading-relaxed text-text-muted">{company.address}</p>
+              {company.address && (
+                <p className="text-xs mt-2 leading-relaxed text-text-muted">{company.address}</p>
+              )}
             </div>
           </div>
         </div>
