@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
 import { Phone, Send } from "lucide-react";
 import { company } from "@/data/company";
 import Logo from "@/components/ui/Logo";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -60,22 +62,36 @@ export default function Footer() {
               Контакты
             </p>
             <div className="flex flex-col gap-2.5 text-sm">
-              <a
-                href={`tel:${company.phone}`}
-                className="flex items-center gap-2.5 hover:text-accent transition-colors duration-200"
+              {/* Phone: click to call | copy icon */}
+              <CopyButton
+                text={company.phone}
+                className="hover:text-accent transition-colors duration-200"
                 style={{ color: "rgba(240,235,227,0.55)" }}
               >
                 <Phone size={13} className="text-accent flex-shrink-0" />
-                {company.phoneDisplay}
-              </a>
-              <a
-                href={`https://t.me/${company.telegram.replace("@", "")}`}
-                className="flex items-center gap-2.5 hover:text-accent transition-colors duration-200"
+                <a
+                  href={`tel:${company.phone}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="hover:text-accent transition-colors duration-200"
+                >
+                  {company.phoneDisplay}
+                </a>
+              </CopyButton>
+              {/* Telegram: click to open | copy icon */}
+              <CopyButton
+                text={company.telegram}
+                className="hover:text-accent transition-colors duration-200"
                 style={{ color: "rgba(240,235,227,0.55)" }}
               >
                 <Send size={13} className="text-accent flex-shrink-0" />
-                {company.telegram}
-              </a>
+                <a
+                  href={`https://t.me/${company.telegram.replace("@", "")}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="hover:text-accent transition-colors duration-200"
+                >
+                  {company.telegram}
+                </a>
+              </CopyButton>
               <p className="text-sm text-text-muted">{company.email}</p>
             </div>
           </div>

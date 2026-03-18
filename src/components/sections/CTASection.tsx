@@ -76,23 +76,24 @@ export default function CTASection({
 
             <p
               className="leading-relaxed mb-10 max-w-sm text-sm"
-              style={{ color: "rgba(140,130,120,0.90)" }}
+              style={{ color: "rgba(148,180,193,0.72)" }}
             >
               {subtitle}
             </p>
 
             {/* Trust signals */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3.5">
               {[
                 "Ответим в течение 2 часов",
                 "Бесплатный выезд на объект",
                 "Работаем официально, с договором",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-sm"
-                     style={{ color: "rgba(240,235,227,0.55)" }}>
+                     style={{ color: "rgba(240,235,227,0.52)" }}>
+                  {/* Architectural tick mark — rectangular, zero-radius */}
                   <span
-                    className="flex-shrink-0 w-1 h-1 rounded-full"
-                    style={{ background: "#C4AE94" }}
+                    className="flex-shrink-0 w-3 h-px"
+                    style={{ background: "#C4AE94", opacity: 0.8 }}
                   />
                   {item}
                 </div>
@@ -108,9 +109,18 @@ export default function CTASection({
             style={{ transitionDelay: "0.12s" }}
           >
             <div
-              className="p-6 md:p-8 border"
-              style={{ background: "#213448", borderColor: "#1E3348" }}
+              className="p-6 md:p-8 border relative overflow-hidden"
+              style={{
+                background: "#1D3044",
+                borderColor: "#1E3348",
+                boxShadow: "inset 0 1px 0 rgba(196,174,148,0.08), inset 0 0 0 1px rgba(30,51,72,0.6)",
+              }}
             >
+              {/* Warm corner ambient — top right */}
+              <div
+                className="absolute top-0 right-0 w-40 h-40 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse at top right, rgba(196,174,148,0.05) 0%, transparent 70%)" }}
+              />
               <InquiryForm sourcePage={sourcePage} dark />
             </div>
           </div>

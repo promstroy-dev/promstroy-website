@@ -336,25 +336,19 @@ export default function HeroFull() {
           className={`flex flex-wrap items-center gap-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           style={{ transitionDelay: "0.40s" }}
         >
-          {/* Primary CTA — solid brass */}
+          {/* Primary CTA — warm stone material */}
           <Link
             href="/kontakty"
-            className="inline-flex items-center gap-2.5 font-semibold px-8 py-4 text-sm tracking-wide transition-all duration-250 hover:-translate-y-0.5"
-            style={{
-              background: "#C4AE94",
-              color: "#0A1520",
-              letterSpacing: "0.06em",
-            }}
+            className="btn-primary gap-2.5 px-8 py-4 text-sm"
           >
             Обсудить проект
             <ArrowRight size={15} />
           </Link>
 
-          {/* Secondary CTA — ghost */}
+          {/* Secondary CTA — warm stone ghost */}
           <Link
             href="/proekty"
-            className="inline-flex items-center gap-2.5 font-semibold px-8 py-4 text-sm border border-text-invert/20 hover:border-text-invert/50 text-text-invert/70 hover:text-text-invert transition-all duration-250 hover:-translate-y-0.5"
-            style={{ letterSpacing: "0.04em" }}
+            className="btn-ghost-dark inline-flex items-center gap-2.5 px-8 py-4 text-sm"
           >
             Смотреть проекты
           </Link>

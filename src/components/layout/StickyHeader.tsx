@@ -94,19 +94,32 @@ export default function StickyHeader() {
 
                 {servicesOpen && (
                   <div
-                    className="absolute top-full left-0 mt-3 w-72 py-1.5 shadow-2xl border border-border-dark"
-                    style={{ background: "#0D1A28" }}
+                    className="absolute top-full left-0 mt-3 w-72 py-2 shadow-2xl border border-border-dark overflow-hidden"
+                    style={{
+                      background: "#0D1A28",
+                      boxShadow: "0 20px 48px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.25)",
+                    }}
                     onMouseEnter={openServices}
                     onMouseLeave={scheduleClose}
                     role="menu"
                   >
+                    {/* Warm top micro-rule — architectural header accent */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none"
+                      style={{ background: "linear-gradient(90deg, rgba(196,174,148,0.45) 0%, rgba(196,174,148,0.12) 60%, transparent 100%)" }}
+                    />
+                    {/* Left warm rule */}
+                    <div
+                      className="absolute left-0 top-0 bottom-0 w-[2px] pointer-events-none"
+                      style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(196,174,148,0.30) 20%, rgba(196,174,148,0.30) 80%, transparent 100%)" }}
+                    />
                     {services.map((s) => (
                       <Link
                         key={s.id}
                         href={`/uslugi/${s.slug}`}
                         role="menuitem"
                         onClick={() => setServicesOpen(false)}
-                        className="block px-4 py-2.5 text-sm text-text-invert/65 hover:text-accent hover:bg-bg-section transition-colors duration-150 focus:outline-none focus:text-accent focus:bg-bg-section"
+                        className="block pl-5 pr-4 py-3 text-sm text-text-invert/60 hover:text-accent hover:bg-bg-section transition-colors duration-150 focus:outline-none focus:text-accent focus:bg-bg-section"
                       >
                         {s.title}
                       </Link>
@@ -142,12 +155,7 @@ export default function StickyHeader() {
 
               <Link
                 href="/kontakty"
-                className="hidden md:block text-sm font-semibold px-5 py-2.5 transition-all duration-200 hover:-translate-y-px hover:bg-accent-hover"
-                style={{
-                  background: "#C4AE94",
-                  color: "#0A1520",
-                  letterSpacing: "0.04em",
-                }}
+                className="hidden md:block btn-primary text-sm px-5 py-2.5"
               >
                 Обсудить проект
               </Link>

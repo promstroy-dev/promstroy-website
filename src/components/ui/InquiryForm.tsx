@@ -92,7 +92,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
 
   const inputBase = `w-full px-4 py-3 text-sm outline-none transition-colors duration-200 ${
     dark
-      ? "bg-[rgba(255,255,255,0.07)] text-text-invert placeholder:text-[rgba(240,235,227,0.38)]"
+      ? "bg-[rgba(8,14,22,0.42)] text-text-invert placeholder:text-[rgba(148,180,193,0.38)]"
       : "bg-white text-text placeholder:text-text-muted"
   }`;
 
@@ -164,8 +164,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="disabled:opacity-60 font-semibold py-3.5 px-6 transition-all duration-200 hover:-translate-y-0.5 text-sm flex items-center justify-center gap-2"
-        style={{ background: "#C4AE94", color: "#0A1520", letterSpacing: "0.06em" }}
+        className="btn-primary disabled:opacity-60 py-3.5 px-6 text-sm justify-center gap-2 w-full"
       >
         {status === "loading" ? (
           <>
