@@ -1,6 +1,7 @@
 "use client";
 import { Shield, Clock, Wrench, FileCheck, HandCoins, Award } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import RevealText from "@/components/ui/RevealText";
 
 const reasons = [
   { Icon: Clock,      title: "18 лет опыта",          body: "С 2008 года работаем на рынке коммерческого строительства Самары. Сотни реализованных объектов." },
@@ -29,11 +30,11 @@ export default function TrustBlock() {
 
         {/* Header */}
         <div
-          className={`mb-14 transition-all duration-600 ${
+          className={`mb-4 transition-all duration-600 ${
             inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
           }`}
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3">
             <div className="w-5 h-px bg-accent opacity-70" />
             <span
               className="text-[10px] uppercase font-medium text-text-muted"
@@ -42,13 +43,14 @@ export default function TrustBlock() {
               Наши принципы
             </span>
           </div>
-          <h2
-            className="font-heading font-bold text-text"
-            style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em" }}
-          >
-            Почему выбирают ПромСтрой
-          </h2>
         </div>
+        <RevealText
+          inView={inView}
+          className="font-heading font-bold text-text mb-14"
+          style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em" }}
+        >
+          Почему выбирают ПромСтрой
+        </RevealText>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">

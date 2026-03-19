@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { processSteps } from "@/data/process";
 import { useInView } from "@/hooks/useInView";
+import RevealText from "@/components/ui/RevealText";
 
 export default function ProcessSteps() {
   const { ref, inView } = useInView<HTMLDivElement>();
@@ -34,11 +35,11 @@ export default function ProcessSteps() {
 
         {/* Header */}
         <div
-          className={`mb-16 transition-all duration-600 ${
+          className={`mb-4 transition-all duration-600 ${
             inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
           }`}
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3">
             <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
             <span
               className="text-[10px] uppercase font-medium"
@@ -47,17 +48,18 @@ export default function ProcessSteps() {
               Процесс работы
             </span>
           </div>
-          <h2
-            className="font-heading font-bold"
-            style={{
-              fontSize: "clamp(28px, 3.5vw, 48px)",
-              color: "#F0EBE3",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Как мы работаем
-          </h2>
         </div>
+        <RevealText
+          inView={inView}
+          className="font-heading font-bold mb-16"
+          style={{
+            fontSize: "clamp(28px, 3.5vw, 48px)",
+            color: "#F0EBE3",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Как мы работаем
+        </RevealText>
 
         {/* Steps grid */}
         <div className="flex flex-col md:grid md:grid-cols-5 gap-0">

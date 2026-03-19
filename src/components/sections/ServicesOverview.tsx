@@ -4,6 +4,7 @@ import { services } from "@/data/services";
 import ServiceCard from "@/components/ui/ServiceCard";
 import TiltCard from "@/components/ui/TiltCard";
 import { useInView } from "@/hooks/useInView";
+import RevealText from "@/components/ui/RevealText";
 
 interface Props {
   expanded?: boolean;
@@ -28,11 +29,11 @@ export default function ServicesOverview({ expanded = false }: Props) {
 
         {/* Header */}
         <div
-          className={`mb-12 transition-all duration-600 ${
+          className={`mb-4 transition-all duration-600 ${
             inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
           }`}
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3">
             <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
             <span
               className="text-[10px] uppercase font-medium"
@@ -41,16 +42,22 @@ export default function ServicesOverview({ expanded = false }: Props) {
               Направления работ
             </span>
           </div>
-          <h2
-            className="font-heading font-bold text-text mb-3"
-            style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em" }}
-          >
-            Наши услуги
-          </h2>
-          <p className="text-text-muted max-w-md text-sm leading-relaxed">
-            Один подрядчик — полный цикл. От фундамента до финишной отделки.
-          </p>
         </div>
+        <RevealText
+          inView={inView}
+          className="font-heading font-bold text-text mb-3"
+          style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em" }}
+        >
+          Наши услуги
+        </RevealText>
+        <p
+          className={`text-text-muted max-w-md text-sm leading-relaxed mb-12 transition-all duration-600 ${
+            inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
+          }`}
+          style={{ animationDelay: "0.32s" }}
+        >
+          Один подрядчик — полный цикл. От фундамента до финишной отделки.
+        </p>
 
         {/* Cards grid — spotlight: active card full opacity, others dim */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

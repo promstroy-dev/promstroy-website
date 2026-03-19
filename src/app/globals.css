@@ -199,6 +199,8 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(180deg, #CDB89E 0%, #BBA488 100%);
   color: #0A1520;
   letter-spacing: 0.06em;
@@ -210,6 +212,29 @@ h1, h2, h3, h4, h5, h6 {
     transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.22s ease,
     background 0.22s ease;
+}
+
+/* Radial brightness burst from center on hover */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  padding-top: 120%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.13);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.55s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 }
 
 .btn-primary:hover {
@@ -326,6 +351,18 @@ h1, h2, h3, h4, h5, h6 {
 ::selection {
   background: rgba(84, 119, 146, 0.22);
   color: #1A2B3D;
+}
+
+/* ── Gradient-masked stat numbers (brass → steel → brass) ───────── */
+
+.stat-value-masked {
+  /* Fallback for non-supporting browsers */
+  color: #C4AE94;
+  /* Gradient mask applied in supporting browsers */
+  background: linear-gradient(135deg, #C4AE94 0%, #547792 48%, #C4AE94 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ── Respect reduced-motion preferences ─────────────────────────── */

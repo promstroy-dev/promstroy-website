@@ -8,12 +8,18 @@ import Logo from "@/components/ui/Logo";
 
 export default function StickyHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 50);
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? y / total : 0);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -68,6 +74,17 @@ export default function StickyHeader() {
             }}
           />
         )}
+
+        {/* Scroll progress bar — brass → steel trace at bottom of header */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[1.5px] origin-left pointer-events-none"
+          style={{
+            background: "linear-gradient(90deg, rgba(196,174,148,0.9) 0%, rgba(84,119,146,0.6) 100%)",
+            transform: `scaleX(${scrollProgress})`,
+            opacity: scrolled ? 1 : 0,
+            transition: "opacity 0.4s ease",
+          }}
+        />
 
         <div className="max-w-content mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">

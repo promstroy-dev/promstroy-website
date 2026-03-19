@@ -134,10 +134,9 @@ export default function StatsBanner() {
 
               <div className={`${i > 0 ? "md:pl-12" : ""} ${i < stats.length - 1 ? "md:pr-12" : ""} pl-0 pr-0 pb-8 md:pb-0`}>
                 <p
-                  className="font-heading font-bold leading-none mb-3"
+                  className="stat-value-masked font-heading font-bold leading-none mb-3"
                   style={{
                     fontSize: "clamp(48px, 6vw, 88px)",
-                    color: "#C4AE94",
                     letterSpacing: "-0.03em",
                   }}
                 >
