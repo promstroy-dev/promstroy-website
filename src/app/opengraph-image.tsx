@@ -81,7 +81,7 @@ export default function OGImage() {
             maxWidth: "700px",
           }}
         >
-          Коммерческое строительство и ремонт с 2008 года
+          Коммерческое строительство и ремонт с 2015 года
         </div>
 
         {/* Bottom accent */}

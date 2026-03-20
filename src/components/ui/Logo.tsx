@@ -1,18 +1,23 @@
 /**
- * Logo component — ПромСтрой
+ * Logo — ПромСтрой
  *
- * Direction: "Портальная рама" — structural portal frame mark.
- * The portal frame (two columns + horizontal beam) is the defining structural
- * element of commercial construction. It naturally echoes the Cyrillic П from
- * ПромСтрой while reading as an architectural drawing, not a letter.
+ * Mark: structural portal frame in axonometric (isometric) view.
+ * Drawn as a STROKE-BASED outline — no filled masses — so it reads
+ * unambiguously as П (arch/portal) at every size, never as Т.
  *
- * Mark: portal frame in warm stone (#C4AE94).
- * Wordmark: single unified color — no split coloring.
- *   Light variant: #F0EBE3
- *   Default variant: #1A2B3D
+ * Geometry (viewBox 28×28):
+ *   Frame   — 22w × 18h, origin (3,7).
+ *   Columns — 4 units wide each. Inner void 14w × 14h.
+ *   Beam    — 4 units tall (y 7→11).
  *
- * To swap in final logo: replace the three shapes in PortalMark.
- * The component API and sizing remain unchanged.
+ * 3D construction:
+ *   Depth vector (+3, −3) → upper-right.
+ *   Top face   — brass-filled parallelogram (3,7 / 25,7 / 28,4 / 6,4).
+ *   Right face — brass-filled parallelogram (25,7 / 28,4 / 28,22 / 25,25).
+ *   Outer depth edges — (3,7)→(6,4) and (25,7)→(28,4), back top (6,4)→(28,4).
+ *   Inner beam soffit — two diagonal lines + back soffit line.
+ *
+ * Wordmark: ПРОМСТРОЙ — Space Grotesk 700, tracking 0.10–0.13em.
  */
 
 interface LogoProps {
@@ -23,46 +28,58 @@ interface LogoProps {
 }
 
 const SIZES = {
-  sm: { mark: 18, wordmarkSize: "text-sm",   tracking: "tracking-[0.16em]", gap: "gap-2"   },
-  md: { mark: 24, wordmarkSize: "text-base", tracking: "tracking-[0.18em]", gap: "gap-2.5" },
-  lg: { mark: 32, wordmarkSize: "text-xl",   tracking: "tracking-[0.20em]", gap: "gap-3"   },
+  sm: { mark: 18, wordmarkSize: "text-sm",   tracking: "tracking-[0.10em]", gap: "gap-2.5" },
+  md: { mark: 24, wordmarkSize: "text-base", tracking: "tracking-[0.12em]", gap: "gap-3"   },
+  lg: { mark: 30, wordmarkSize: "text-xl",   tracking: "tracking-[0.13em]", gap: "gap-3.5" },
 };
 
-// Warm stone — primary accent carrier for the brand mark
 const BRASS = "#C4AE94";
 
-/**
- * "Портальная рама" — structural portal frame mark.
- * viewBox: 0 0 26 26. Open bottom — a frame, not a box.
- * Elements: horizontal beam (top) + left column + right column.
- * Column width equals beam height for structural proportion.
- *
- * Three options provided as comments — uncomment to switch direction:
- *   A) Portal frame (П) — recommended, used by default
- *   B) T-joint (horizontal bar + center post drop)
- *   C) Steel cross-section (concentric rectangles)
- */
-function PortalMark({ px }: { px: number }) {
-  const h = Math.round(px * 1.0); // square mark
+function IsometricMark({ px }: { px: number }) {
   return (
     <svg
       width={px}
-      height={h}
-      viewBox="0 0 26 26"
+      height={px}
+      viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* ── Option A: Portal Frame (recommended) ──────────────────── */}
-      {/* Horizontal beam — structural top chord */}
-      <rect x="0" y="0" width="26" height="5" rx="0.5" fill={BRASS} />
-      {/* Left column — structural support */}
-      <rect x="0" y="5" width="5" height="21" fill={BRASS} />
-      {/* Right column — structural support */}
-      <rect x="21" y="5" width="5" height="21" fill={BRASS} />
-      {/* Corner haunches — subtle structural joint detail at top-inner corners */}
-      <polygon points="5,5 5,9 9,5" fill={BRASS} opacity="0.55" />
-      <polygon points="21,5 21,9 17,5" fill={BRASS} opacity="0.55" />
+      {/* Top face of beam — brass parallelogram (depth going upper-right) */}
+      <polygon
+        points="3,7 25,7 28,4 6,4"
+        fill={BRASS}
+        opacity="0.18"
+      />
+
+      {/* Right face of right column — thin brass parallelogram */}
+      <polygon
+        points="25,7 28,4 28,22 25,25"
+        fill={BRASS}
+        opacity="0.12"
+      />
+
+      {/* Main П portal frame — stroke outline, no heavy fill */}
+      {/* Path: outer left col → beam top → outer right col → inner right → soffit → inner left → close */}
+      <path
+        d="M3 25 L3 7 L25 7 L25 25 L21 25 L21 11 L7 11 L7 25 Z"
+        fill={BRASS}
+        fillOpacity="0.07"
+        stroke={BRASS}
+        strokeWidth="1.75"
+        strokeLinejoin="miter"
+      />
+
+      {/* Outer depth edge lines — front corners to back */}
+      <line x1="3"  y1="7" x2="6"  y2="4" stroke={BRASS} strokeWidth="1.5" opacity="0.65" />
+      <line x1="25" y1="7" x2="28" y2="4" stroke={BRASS} strokeWidth="1.5" opacity="0.65" />
+      {/* Back beam top edge */}
+      <line x1="6"  y1="4" x2="28" y2="4" stroke={BRASS} strokeWidth="1"   opacity="0.42" />
+
+      {/* Inner beam soffit depth — beam ceiling in 3D */}
+      <line x1="7"  y1="11" x2="10" y2="8" stroke={BRASS} strokeWidth="0.75" opacity="0.30" />
+      <line x1="21" y1="11" x2="24" y2="8" stroke={BRASS} strokeWidth="0.75" opacity="0.30" />
+      <line x1="10" y1="8"  x2="24" y2="8" stroke={BRASS} strokeWidth="0.5"  opacity="0.20" />
     </svg>
   );
 }
@@ -74,8 +91,6 @@ export default function Logo({
   className = "",
 }: LogoProps) {
   const { mark, wordmarkSize, tracking, gap } = SIZES[size];
-
-  // Wordmark is unified — no split coloring
   const textColor = light ? "#F0EBE3" : "#1A2B3D";
 
   return (
@@ -83,12 +98,12 @@ export default function Logo({
       className={`inline-flex items-center ${gap} select-none ${className}`}
       aria-label="ПромСтрой"
     >
-      {variant !== "wordmark" && <PortalMark px={mark} />}
+      {variant !== "wordmark" && <IsometricMark px={mark} />}
 
       {variant !== "mark" && (
         <span
-          className={`font-heading font-bold ${wordmarkSize} ${tracking} leading-none`}
-          style={{ color: textColor }}
+          className={`font-bold ${wordmarkSize} ${tracking} leading-none`}
+          style={{ color: textColor, fontFamily: "var(--font-exo2), sans-serif" }}
         >
           ПРОМСТРОЙ
         </span>

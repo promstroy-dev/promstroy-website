@@ -152,6 +152,22 @@ export default function StatsBanner() {
             </div>
           ))}
         </div>
+
+        {/* Geographic anchor — preserves regional context without occupying a stat slot */}
+        <div
+          className={`mt-14 pt-8 border-t flex items-center gap-4 transition-all duration-600 ${
+            inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
+          }`}
+          style={{ borderColor: "#1E3348", animationDelay: "0.45s" }}
+        >
+          <div className="w-3 h-px flex-shrink-0" style={{ background: "#C4AE94", opacity: 0.5 }} />
+          <span
+            className="text-[10px] uppercase font-medium"
+            style={{ color: "rgba(140,130,120,0.65)", letterSpacing: "0.22em" }}
+          >
+            Самара и Самарская область
+          </span>
+        </div>
       </div>
     </section>
   );

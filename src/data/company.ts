@@ -3,7 +3,7 @@ import { CompanyData } from "@/types";
 export const company: CompanyData = {
   name: "ПромСтрой",
   shortName: "ПромСтрой",
-  founded: 2008,
+  founded: 2015,
   phone: "+79277111103",
   phoneDisplay: "+7 (927) 711-11-03",
   telegram: "@skpromstroy_samara",
@@ -12,9 +12,9 @@ export const company: CompanyData = {
   inn: "632507052478",
   ogrn: "324632700128069",
   stats: [
-    { value: "18",      label: "лет на рынке"       },
+    { value: "11",      label: "лет на рынке"       },
     { value: "4",       label: "направления работ"   },
-    { value: "Самара",  label: "и область"            },
+    { value: "2015",    label: "год основания"          },
     // TODO: add завершённых объектов when real count is confirmed
   ],
 };

@@ -26,7 +26,7 @@ export default function Footer() {
               <Logo size="md" light />
             </div>
             <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(240,235,227,0.45)" }}>
-              Коммерческое строительство<br />в Самаре с 2008 года
+              Коммерческое строительство<br />в Самаре с 2015 года
             </p>
             <p className="text-xs text-text-muted">© {year} ПромСтрой. Все права защищены.</p>
             <p className="text-xs text-text-muted mt-1">ИП Алимбеков О.В.</p>

@@ -49,7 +49,7 @@ export default function FAQSection() {
 
         {/* Header */}
         <div
-          className={`mb-14 transition-all duration-600 ${
+          className={`mb-10 transition-all duration-600 ${
             inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
           }`}
         >
@@ -77,7 +77,7 @@ export default function FAQSection() {
             return (
               <div
                 key={i}
-                className={`border-b transition-all duration-600 ${
+                className={`relative border-b transition-all duration-600 ${
                   inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
                 } ${i === 0 ? "border-t" : ""}`}
                 style={{
@@ -85,14 +85,23 @@ export default function FAQSection() {
                   animationDelay: `${0.06 + i * 0.07}s`,
                 }}
               >
+                {/* Left active indicator */}
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] origin-top transition-transform duration-300"
+                  style={{
+                    background: "linear-gradient(to bottom, #C4AE94, rgba(196,174,148,0.4))",
+                    transform: isOpen ? "scaleY(1)" : "scaleY(0)",
+                  }}
+                />
+
                 <button
-                  className="w-full flex items-start justify-between gap-6 py-5 text-left group"
+                  className="w-full flex items-start justify-between gap-6 py-5 pl-4 text-left group"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
                 >
                   <span
                     className="font-heading font-semibold text-sm md:text-base leading-snug transition-colors duration-200"
-                    style={{ color: isOpen ? "#1A2B3D" : "rgba(26,43,61,0.75)" }}
+                    style={{ color: isOpen ? "#1A2B3D" : "rgba(26,43,61,0.82)" }}
                   >
                     {faq.q}
                   </span>
@@ -113,7 +122,7 @@ export default function FAQSection() {
                 <div className={`accordion-body ${isOpen ? "open" : ""}`}>
                   <div className="accordion-inner">
                     <p
-                      className="pb-6 text-sm leading-relaxed max-w-2xl"
+                      className="pl-4 pb-6 text-sm leading-relaxed max-w-2xl"
                       style={{ color: "#7A8E98" }}
                     >
                       {faq.a}

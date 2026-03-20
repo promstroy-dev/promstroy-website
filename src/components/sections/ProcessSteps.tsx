@@ -139,8 +139,8 @@ export default function ProcessSteps() {
                 <div className="md:pr-5 pb-8 md:pb-0">
                   {/* Step number hint on mobile */}
                   <p
-                    className="md:hidden text-[9px] uppercase font-semibold mb-1"
-                    style={{ color: "rgba(196,174,148,0.45)", letterSpacing: "0.22em" }}
+                    className="md:hidden text-[10px] uppercase font-semibold mb-1"
+                    style={{ color: "rgba(196,174,148,0.55)", letterSpacing: "0.22em" }}
                   >
                     Шаг {step.step}
                   </p>
@@ -160,7 +160,7 @@ export default function ProcessSteps() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "0.8rem",
-                      color: isActive ? "rgba(148,180,193,0.85)" : "rgba(122,142,152,0.65)",
+                      color: isActive ? "rgba(148,180,193,0.88)" : "rgba(148,180,193,0.72)",
                       transition: "color 0.22s ease",
                     }}
                   >

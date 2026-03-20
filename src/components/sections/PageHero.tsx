@@ -1,12 +1,13 @@
 interface Props {
   title: string;
   subtitle?: string;
+  label?: string;
 }
 
-export default function PageHero({ title, subtitle }: Props) {
+export default function PageHero({ title, subtitle, label = "ПромСтрой" }: Props) {
   return (
     <section
-      className="border-b pt-32 pb-14 relative overflow-hidden"
+      className="border-b pt-32 pb-16 relative overflow-hidden"
       style={{ background: "#1A2B3D", borderColor: "#1E3348" }}
     >
       {/* Brass left rule — gradient fade */}
@@ -53,7 +54,7 @@ export default function PageHero({ title, subtitle }: Props) {
             className="text-[10px] uppercase font-medium"
             style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
           >
-            ПромСтрой
+            {label}
           </span>
         </div>
         <h1

@@ -124,13 +124,17 @@ export default function ProjectCard({ project }: Props) {
           </div>
         </div>
 
-        {/* Placeholder state label — bottom center */}
-        <div className="absolute bottom-3 left-0 right-0 flex justify-center pointer-events-none">
+        {/* Placeholder state label — bottom left, styled as a deliberate tag */}
+        <div className="absolute bottom-3 left-3 pointer-events-none">
           <span
-            className="text-[8px] uppercase tracking-[0.24em] font-medium"
-            style={{ color: "rgba(84,119,146,0.35)" }}
+            className="inline-block text-[9px] uppercase tracking-[0.20em] font-medium px-2 py-0.5"
+            style={{
+              color: "rgba(84,119,146,0.65)",
+              background: "rgba(8,14,22,0.55)",
+              border: "1px solid rgba(84,119,146,0.15)",
+            }}
           >
-            Фото готовится
+            Фото · в работе
           </span>
         </div>
       </div>
@@ -138,12 +142,12 @@ export default function ProjectCard({ project }: Props) {
       {/* ── Card body ───────────────────────────────────────────── */}
       <div
         className="px-4 pt-4 pb-5"
-        style={{ borderTop: "1px solid rgba(30,51,72,0.8)" }}
+        style={{ borderTop: "1px solid rgba(84,119,146,0.14)" }}
       >
         {/* Title */}
         <h3
           className="font-heading font-semibold leading-snug mb-3 transition-colors duration-200"
-          style={{ fontSize: "0.925rem", color: "rgba(240,235,227,0.88)" }}
+          style={{ fontSize: "0.925rem", color: "rgba(240,235,227,0.90)" }}
         >
           <span className="group-hover:text-[#94B4C1] transition-colors duration-200">
             {project.title}
@@ -156,25 +160,25 @@ export default function ProjectCard({ project }: Props) {
             <>
               <span
                 className="text-[10px] uppercase tracking-wider font-medium"
-                style={{ color: "rgba(148,180,193,0.60)" }}
+                style={{ color: "rgba(148,180,193,0.70)" }}
               >
                 {project.area}
               </span>
               <span
-                className="mx-2.5 w-1 h-px flex-shrink-0"
-                style={{ background: "rgba(148,180,193,0.25)", display: "inline-block" }}
+                className="mx-2.5 flex-shrink-0 w-px h-3"
+                style={{ background: "rgba(84,119,146,0.30)", display: "inline-block" }}
               />
             </>
           )}
           <span
-            className="text-[10px] uppercase tracking-wider"
-            style={{ color: "rgba(148,180,193,0.45)" }}
+            className="text-[10px] uppercase tracking-wider font-medium"
+            style={{ color: "rgba(148,180,193,0.55)" }}
           >
             {project.year}
           </span>
           <span
-            className="mx-2.5 w-1 h-px flex-shrink-0"
-            style={{ background: "rgba(148,180,193,0.25)", display: "inline-block" }}
+            className="mx-2.5 flex-shrink-0 w-px h-3"
+            style={{ background: "rgba(84,119,146,0.30)", display: "inline-block" }}
           />
           <span
             className="text-[10px] uppercase tracking-wider"
@@ -182,6 +186,20 @@ export default function ProjectCard({ project }: Props) {
           >
             {project.city}
           </span>
+          {project.works && project.works.length > 0 && (
+            <>
+              <span
+                className="mx-2.5 flex-shrink-0 w-px h-3"
+                style={{ background: "rgba(84,119,146,0.30)", display: "inline-block" }}
+              />
+              <span
+                className="text-[10px] uppercase tracking-wider"
+                style={{ color: "rgba(148,180,193,0.40)" }}
+              >
+                {project.works.length} работ
+              </span>
+            </>
+          )}
         </div>
       </div>
     </Link>

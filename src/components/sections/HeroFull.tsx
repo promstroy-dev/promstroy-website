@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/data/company";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function HeroFull() {
@@ -197,7 +197,7 @@ export default function HeroFull() {
         }}
       />
 
-      {/* ── Large faint "2008" — structural background year element ── */}
+      {/* ── Large faint "2015" — structural background year element ── */}
       {/* Parallax: scroll + shallow mouse drift (middle depth layer) */}
       <div
         className="absolute right-[-2%] bottom-24 pointer-events-none select-none hidden lg:block"
@@ -214,7 +214,7 @@ export default function HeroFull() {
           willChange: "transform",
         }}
       >
-        2008
+        2015
       </div>
 
       {/* ── Noise grain overlay ───────────────────────────────────── */}
@@ -265,7 +265,7 @@ export default function HeroFull() {
           className="text-[9px] font-medium uppercase tracking-[0.32em] whitespace-nowrap"
           style={{ color: "rgba(240,235,227,0.20)" }}
         >
-          САМАРА · С 2008 ГОДА
+          САМАРА · С 2015 ГОДА
         </span>
       </div>
 
@@ -358,14 +358,6 @@ export default function HeroFull() {
             Смотреть проекты
           </Link>
 
-          {/* Phone — desktop only */}
-          <a
-            href={`tel:${company.phone}`}
-            className="hidden md:inline-flex items-center gap-2 text-sm ml-2 text-text-invert/40 hover:text-text-invert/75 transition-colors duration-200"
-          >
-            <Phone size={13} className="text-accent" />
-            {company.phoneDisplay}
-          </a>
         </div>
       </div>
 

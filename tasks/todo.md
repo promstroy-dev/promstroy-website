@@ -80,6 +80,62 @@
 
 ---
 
+---
+
+# Cross-page Consistency & Polish Pass — 2026-03-20
+
+## Stats ✅
+- [x] company.ts: replaced "Самара / и область" with "2015 / год основания" — all 3 stats now numeric
+- [x] StatsBanner: added geographic anchor line ("Самара и Самарская область") below stats grid
+
+## Project Cards ✅
+- [x] "Фото готовится" label replaced with styled tag "Фото · в работе" (more intentional, higher opacity)
+- [x] Added works count to metadata row if project.works.length > 0
+- [x] Card body separator border strengthened (rgba(84,119,146,0.14))
+- [x] Metadata pill separators changed from horizontal dashes to vertical lines (h-3 w-px)
+
+## Service Detail CTA Card ✅
+- [x] Removed rounded-lg (inconsistent with architectural language)
+- [x] Added top structural rule + left accent rule (matches system card pattern)
+- [x] Button now uses .btn-primary class
+- [x] Added phone call option below CTA button
+
+## Project Detail Page ✅
+- [x] Gallery placeholder: replaced rounded-lg bg-bg-mid with architectural blueprint-grid treatment
+- [x] CTA card: same architectural treatment as service detail card
+
+## About Page ✅
+- [x] Right card: full hierarchy overhaul — structural marks, section label, name/role, separator, body, region, CTA
+- [x] Removed placeholder "Лицензии и допуски — раздел в разработке" block
+- [x] Replaced with intentional horizontal "Документы" row with real copy and CTA link
+
+## FAQ Section ✅
+- [x] Reduced header mb-14 → mb-10 (tighter rhythm)
+- [x] Added left border indicator on open accordion row (brass gradient)
+- [x] Open row: button and answer text indented pl-4 to align with left indicator
+- [x] Closed question text opacity: 0.75 → 0.82
+
+## Trust Block ✅
+- [x] duration-250 → duration-200 (standard Tailwind class)
+
+## Process Steps ✅
+- [x] Body text at rest: rgba(122,142,152,0.65) → rgba(148,180,193,0.72) — improved contrast
+- [x] Mobile "Шаг N" label: text-[9px] → text-[10px]
+
+## Page Hero Consistency ✅
+- [x] Added label prop to PageHero (default: "ПромСтрой")
+- [x] Bottom padding: pb-14 → pb-16
+- [x] O kompanii page: label="О компании"
+- [x] Proekty page: label="Проекты"
+- [x] Uslugi page + service detail: label="Услуги"
+- [x] Kontakty page: label="Контакты" + added subtitle
+- [x] Service detail PageHero: label="Услуги"
+
+## Form/CTA System ✅
+- [x] uslugi/page.tsx: bottom CTA button uses .btn-primary, section has border-t
+
+---
+
 ## Remaining — Requires Owner Content
 - [ ] Real project photos → /public/images/projects/ → fill images[] arrays in projects.ts
 - [ ] About page: real team lead info (name/photo/role)
@@ -87,9 +143,9 @@
 - [ ] company.ts: completed projects count confirmed → add to stats array
 - [ ] Yandex.Metrica: family sends 8-digit counter ID → add as NEXT_PUBLIC_METRICA_ID in Vercel env vars (script + form goal already wired)
 - [ ] Yandex Webmaster Tools: family sends meta-tag verification code → add as NEXT_PUBLIC_YANDEX_VERIFICATION in Vercel env vars (tag already wired in layout.tsx) → family clicks "Проверить"
-- [ ] Yandex.Business listing: family creates listing at business.yandex.ru (entirely owner-side)
-- [ ] Domain DNS: sk-promstroy.ru pending propagation — check Vercel Domains panel, hit Refresh when green
-- [ ] SITE_URL env var in Vercel: update from promstroy-samara.ru → https://sk-promstroy.ru once domain verified
+- [x] Yandex.Business listing: created ✅ (confirmed 2026-03-20, owner-side)
+- [x] Domain DNS: sk-promstroy.ru — DNS servers set in nic.ru, Vercel confirmed configuration, domain live ✅ (2026-03-20)
+- [x] SITE_URL env var in Vercel: updated to https://sk-promstroy.ru ✅ (2026-03-20)
 - [ ] Brand name confirmed: ПромСтрой (trade name, legal entity is ИП Алимбеков О.В.)
 
 ## Post-Launch / Growth (defer)

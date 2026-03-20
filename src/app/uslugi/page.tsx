@@ -18,14 +18,15 @@ export default function UslugiPage() {
         <PageHero
           title="Наши услуги"
           subtitle="Один подрядчик — полный цикл. От фундамента до финишной отделки."
+          label="Услуги"
         />
         <ServicesOverview expanded />
-        <div className="py-16 bg-bg">
+        <div className="py-16 bg-bg border-t border-border">
           <div className="max-w-content mx-auto px-4 md:px-8 text-center">
-            <p className="text-text-muted mb-4">Не нашли нужную услугу? Расскажите о задаче — решим.</p>
+            <p className="text-text-muted mb-5 text-sm">Не нашли нужную услугу? Расскажите о задаче — решим.</p>
             <a
               href="/kontakty"
-              className="inline-block bg-accent hover:bg-accent-hover text-bg-deep font-semibold px-6 py-3 transition-colors text-sm"
+              className="btn-primary text-sm px-8 py-3"
             >
               Обсудить задачу
             </a>

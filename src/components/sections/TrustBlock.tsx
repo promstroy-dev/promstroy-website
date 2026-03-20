@@ -4,7 +4,7 @@ import { useInView } from "@/hooks/useInView";
 import RevealText from "@/components/ui/RevealText";
 
 const reasons = [
-  { Icon: Clock,      title: "18 лет опыта",          body: "С 2008 года работаем на рынке коммерческого строительства Самары. Сотни реализованных объектов." },
+  { Icon: Clock,      title: "11 лет опыта",          body: "С 2015 года работаем на рынке коммерческого строительства Самары. Сотни реализованных объектов." },
   { Icon: Wrench,     title: "Полный цикл",            body: "Один подрядчик от фундамента до финишной отделки. Никаких разрывов между бригадами." },
   { Icon: Shield,     title: "Беремся за сложное",     body: "Аварийные работы, несущие конструкции, нестандартные объекты — берёмся там, где другие отказывают." },
   { Icon: FileCheck,  title: "Лицензии и допуски",     body: "Работаем официально, с исполнительной документацией. СРО и необходимые допуски в наличии." },
@@ -63,7 +63,7 @@ export default function TrustBlock() {
               style={{ animationDelay: `${0.06 + i * 0.08}s` }}
             >
               {/* Icon block — CSS group-hover */}
-              <div className="flex-shrink-0 w-10 h-10 border border-border flex items-center justify-center text-accent transition-all duration-250 group-hover:bg-accent group-hover:border-accent group-hover:text-bg-deep">
+              <div className="flex-shrink-0 w-10 h-10 border border-border flex items-center justify-center text-accent transition-all duration-200 group-hover:bg-accent group-hover:border-accent group-hover:text-bg-deep">
                 <Icon size={17} />
               </div>
 

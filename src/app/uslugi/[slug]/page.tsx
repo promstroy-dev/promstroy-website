@@ -65,7 +65,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       />
       <StickyHeader />
       <main>
-        <PageHero title={service.title} />
+        <PageHero title={service.title} label="Услуги" />
         <section className="py-20 bg-bg">
           <div className="max-w-content mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
@@ -83,15 +83,54 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 </ul>
               </div>
               <div>
-                <div className="bg-card-bg rounded-lg p-6 border border-border sticky top-24">
-                  <h3 className="font-heading font-semibold text-text mb-1">Обсудить проект</h3>
-                  <p className="text-text-muted text-sm mb-4">Расскажите о задаче — перезвоним в течение 2 часов</p>
-                  <a
-                    href="/kontakty"
-                    className="block text-center bg-accent hover:bg-accent-hover text-bg-deep font-semibold py-3 transition-colors text-sm"
-                  >
-                    Оставить заявку
-                  </a>
+                <div
+                  className="relative overflow-hidden sticky top-24"
+                  style={{
+                    background: "#213448",
+                    border: "1px solid #1E3348",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+                  }}
+                >
+                  {/* Top structural rule */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, #C4AE94 0%, rgba(196,174,148,0.3) 60%, transparent 100%)", opacity: 0.6 }}
+                  />
+                  {/* Left accent rule */}
+                  <div
+                    className="absolute top-0 left-0 bottom-0 w-[2px] pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to bottom, transparent 0%, #C4AE94 20%, #C4AE94 80%, transparent 100%)",
+                      opacity: 0.45,
+                    }}
+                  />
+
+                  <div className="p-6 pl-8">
+                    <div className="flex items-center gap-2 mb-5">
+                      <div className="w-3 h-px flex-shrink-0" style={{ background: "#C4AE94", opacity: 0.6 }} />
+                      <span className="text-[10px] uppercase font-medium" style={{ color: "#7A8E98", letterSpacing: "0.22em" }}>
+                        Консультация
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-semibold mb-2 leading-snug" style={{ fontSize: "1.05rem", color: "#F0EBE3" }}>
+                      Обсудить проект
+                    </h3>
+                    <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.75)" }}>
+                      Расскажите о задаче — перезвоним в течение 2 часов
+                    </p>
+                    <a
+                      href="tel:+79277111103"
+                      className="btn-call-ghost block text-center text-sm font-semibold py-3 mb-3"
+                    >
+                      Позвонить
+                    </a>
+                    <a
+                      href="/kontakty"
+                      className="btn-primary w-full justify-center text-sm py-3"
+                    >
+                      Оставить заявку
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
