@@ -42,3 +42,28 @@
 
 ### L10: Video preload
 **Rule**: Add `preload="metadata"` to `<video>` elements so the browser only loads metadata (dimensions, duration) rather than the full video on page load.
+
+---
+
+## Process Rules (apply every session)
+
+### L11: Update todo.md and lessons.md after every completed iteration — mandatory
+**Rule**: After completing any meaningful unit of work (a feature, a fix, a content update, a sprint), immediately:
+1. Mark completed items `[x]` in `tasks/todo.md`
+2. Add new `[ ]` items for anything discovered or deferred
+3. Add a new lesson to `tasks/lessons.md` if a correction or non-obvious pattern was encountered
+Do not wait for the user to ask. This is a default action, not an optional step.
+
+### L12: ИП legal display pattern for Russian business websites
+**Rule**: For ИП (Individual Entrepreneur) clients, the legal footer block should read:
+`ИП [Фамилия И.О.] · ИНН [12 digits] · ОГРНИП [15 digits]`
+The brand/trade name on the website does NOT need to match the legal entity name — this is standard practice in Russia. The ОГРН for ИП is 15 digits and prefixed with 3 (ОГРНИП), not 13 digits like ООО/АО.
+
+### L13: Home address for ИП — display carefully
+**Rule**: Russian ИП businesses often register at a home address (кв. = apartment). Add it to `company.ts` for legal completeness but display it subtly in the footer — not in hero sections or contact CTAs. The owner may want to replace it with a commercial address later.
+
+### L14: Project constraint = trust signal
+**Rule**: When filling project descriptions, always surface operational constraints (стеснённые условия, no lifting equipment, work without stopping adjacent businesses, closed indoor workspace) as proof of skill, not just as background facts. These are exactly the differentiators B2B clients care about when choosing a contractor.
+
+### L15: ОКН (Объект культурного наследия) projects are premium credentials
+**Rule**: If a client has worked on a listed heritage building (ОКН), treat it as a premium trust signal and feature it prominently in the portfolio. Heritage work requires government approval, coordination with preservation authorities, and specialist methods — it signals a level of trust and institutional capability that ordinary construction projects don't.

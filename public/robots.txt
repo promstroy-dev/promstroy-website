@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://promstroy-samara.ru/sitemap.xml
+Sitemap: https://sk-promstroy.ru/sitemap.xml

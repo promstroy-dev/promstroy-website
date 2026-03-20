@@ -8,9 +8,9 @@ export const company: CompanyData = {
   phoneDisplay: "+7 (927) 711-11-03",
   telegram: "@skpromstroy_samara",
   email: "alimbekov.promstroy@gmail.com",
-  address: "",      // TODO: add real office address
-  inn: "",          // TODO: add ИНН
-  ogrn: "",         // TODO: add ОГРН
+  address: "443124, г. Самара, Просека 6-я, д. 144, кв. 11",
+  inn: "632507052478",
+  ogrn: "324632700128069",
   stats: [
     { value: "18",      label: "лет на рынке"       },
     { value: "4",       label: "направления работ"   },

@@ -16,6 +16,8 @@ const icons: Record<string, React.ReactNode> = {
   Network: <Network size={36} className="text-accent" />,
 };
 
+const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
+
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -37,16 +39,30 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
   // Type mapping for related projects
   const typeMap: Record<string, string[]> = {
-    "stroitelstvo-pod-klyuch": ["Склад", "Офис"],
-    "remont-i-renovaciya": ["Офис", "Ресторан"],
-    "konstruktivnye-raboty": ["Торговый центр"],
-    "inzhenernye-seti": ["Торговый центр"],
+    "stroitelstvo-pod-klyuch": ["Склад", "Офис", "Магазин", "Торговый центр"],
+    "remont-i-renovaciya": ["Офис", "Ресторан", "Реставрация"],
+    "konstruktivnye-raboty": ["Торговый центр", "Склад", "Магазин"],
+    "inzhenernye-seti": ["Торговый центр", "Склад"],
   };
   const relatedTypes = typeMap[service.slug] ?? [];
   const related = projects.filter((p) => relatedTypes.includes(p.type)).slice(0, 2);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Услуги", item: `${siteUrl}/uslugi` },
+      { "@type": "ListItem", position: 3, name: service.title },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <StickyHeader />
       <main>
         <PageHero title={service.title} />

@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://promstroy-samara.ru",
+  siteUrl: process.env.SITE_URL || "https://sk-promstroy.ru",
   generateRobotsTxt: false, // We manage robots.txt manually
   changefreq: "weekly",
   priority: 0.7,

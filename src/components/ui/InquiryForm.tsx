@@ -75,6 +75,10 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
       });
       if (res.ok) {
         setStatus("success");
+        // Yandex.Metrica goal — fires only when counter is configured
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const w = window as any;
+        if (typeof w.ym === "function") w.ym(w.__METRICA_ID, "reachGoal", "lead");
       } else if (res.status === 429) {
         setStatus("ratelimit");
       } else {

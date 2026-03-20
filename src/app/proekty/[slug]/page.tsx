@@ -12,6 +12,8 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
+const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
@@ -26,8 +28,22 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   const related = projects.filter((p) => p.id !== project.id && p.type === project.type).slice(0, 2);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Проекты", item: `${siteUrl}/proekty` },
+      { "@type": "ListItem", position: 3, name: project.title },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <StickyHeader />
       <main>
         {/* Breadcrumb */}

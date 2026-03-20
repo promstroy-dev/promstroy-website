@@ -29,9 +29,13 @@ export default function Footer() {
               Коммерческое строительство<br />в Самаре с 2008 года
             </p>
             <p className="text-xs text-text-muted">© {year} ПромСтрой. Все права защищены.</p>
+            <p className="text-xs text-text-muted mt-1">ИП Алимбеков О.В.</p>
             {(company.inn || company.ogrn) && (
-              <p className="text-xs text-text-muted mt-1">
-                {[company.inn, company.ogrn].filter(Boolean).join(" · ")}
+              <p className="text-xs text-text-muted mt-0.5">
+                {[
+                  company.inn  && `ИНН ${company.inn}`,
+                  company.ogrn && `ОГРНИП ${company.ogrn}`,
+                ].filter(Boolean).join(" · ")}
               </p>
             )}
           </div>

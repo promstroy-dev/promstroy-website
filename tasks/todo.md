@@ -48,19 +48,51 @@
 - [x] JSON-LD: enriched with real fields (url, areaServed, priceRange)
 - [x] Privacy page: production-safe content
 
-## Remaining — Requires Owner Content (BLOCKING FOR REAL LAUNCH)
-- [ ] company.ts: add real email
-- [ ] company.ts: add real office address
-- [ ] company.ts: add ИНН and ОГРН
-- [ ] company.ts: add real completed projects count → add back to stats array
-- [ ] About page: add real team lead name/photo (replace the team block)
-- [ ] About page: add real client testimonials
-- [ ] /public/images/og.jpg: 1200×630 OG image for social sharing
-  → then uncomment openGraph.images in layout.tsx
-- [ ] robots.txt: confirm domain name (currently promstroy-samara.ru)
+---
+
+# Business Value Sprint — 2026-03-19
+
+## SEO / Schema ✅
+- [x] FAQ JSON-LD (FAQPage schema) added to homepage — enables rich snippets in Google + Yandex
+- [x] BreadcrumbList JSON-LD added to /proekty/[slug] pages
+- [x] BreadcrumbList JSON-LD added to /uslugi/[slug] pages
+- [x] OG image: auto-generated via next/og (opengraph-image.tsx) — dark branded design
+- [x] OG image comment removed from layout.tsx metadata (now handled automatically)
+
+## UX / Conversion ✅
+- [x] MobileContactBar component: fixed bottom bar on mobile — Позвонить + Telegram
+- [x] MobileContactBar added to root layout (every page)
+
+## Real Content ✅
+- [x] Restaurant project (ул. Ленинградская, 51): filled with real data — 300 м², 2025, 5 works, professional description
+- [x] Нежилое здание ул. Чекистов: filled — 1300 м², 2026, 17 works, генподрядчик note
+- [x] Торговый центр Усть-Кинельский: filled — 800 м², 2024, 16 works, генподрядчик note
+- [x] Магазин Усть-Кинельский: filled — 250 м², 2025, 4 works
+- [x] Дом купца Иванова (ОКН), ул. Венцека: filled — 1600 м², 2023, heritage restoration
+- [x] typeMap in uslugi/[slug] updated to cover new project types (Склад, Магазин, Реставрация)
+
+## Legal / Trust ✅
+- [x] company.ts: ИНН 632507052478 added
+- [x] company.ts: ОГРНИП 324632700128069 added
+- [x] company.ts: legal address added (443124, г. Самара, Просека 6-я, д. 144, кв. 11)
+- [x] Footer: shows "ИП Алимбеков О.В." + labeled ИНН/ОГРНИП
 - [x] Set NEXT_PUBLIC_FORMSPREE_ID for fallback delivery (xgonrzje) ✅
 
-## Post-Launch
-- [ ] Yandex.Metrica analytics
+---
+
+## Remaining — Requires Owner Content
+- [ ] Real project photos → /public/images/projects/ → fill images[] arrays in projects.ts
+- [ ] About page: real team lead info (name/photo/role)
+- [ ] About page: real client testimonials (2–3 quotes)
+- [ ] company.ts: completed projects count confirmed → add to stats array
+- [ ] Yandex.Metrica: family sends 8-digit counter ID → add as NEXT_PUBLIC_METRICA_ID in Vercel env vars (script + form goal already wired)
+- [ ] Yandex Webmaster Tools: family sends meta-tag verification code → add as NEXT_PUBLIC_YANDEX_VERIFICATION in Vercel env vars (tag already wired in layout.tsx) → family clicks "Проверить"
+- [ ] Yandex.Business listing: family creates listing at business.yandex.ru (entirely owner-side)
+- [ ] Domain DNS: sk-promstroy.ru pending propagation — check Vercel Domains panel, hit Refresh when green
+- [ ] SITE_URL env var in Vercel: update from promstroy-samara.ru → https://sk-promstroy.ru once domain verified
+- [ ] Brand name confirmed: ПромСтрой (trade name, legal entity is ИП Алимбеков О.В.)
+
+## Post-Launch / Growth (defer)
 - [ ] Apple touch icon (192×192 PNG)
-- [ ] Real project photos in /public/images/projects/
+- [ ] CRM integration when lead volume justifies it
+- [ ] Blog/news section when content person available

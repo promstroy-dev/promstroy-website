@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import BackToTop from "@/components/ui/BackToTop";
+import MobileContactBar from "@/components/layout/MobileContactBar";
 
-const siteUrl = process.env.SITE_URL ?? "https://promstroy-samara.ru";
+const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -18,8 +19,6 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     siteName: "ПромСтрой",
     url: "/",
-    // OG image: add /public/images/og.jpg (1200×630) when ready
-    // images: [{ url: "/images/og.jpg", width: 1200, height: 630 }],
   },
 };
 
@@ -57,10 +56,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Yandex Webmaster ownership verification — set NEXT_PUBLIC_YANDEX_VERIFICATION in Vercel env vars */}
+        {process.env.NEXT_PUBLIC_YANDEX_VERIFICATION && (
+          <meta name="yandex-verification" content={process.env.NEXT_PUBLIC_YANDEX_VERIFICATION} />
+        )}
+        {/* Yandex.Metrica — set NEXT_PUBLIC_METRICA_ID in Vercel env vars */}
+        {process.env.NEXT_PUBLIC_METRICA_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__METRICA_ID=${process.env.NEXT_PUBLIC_METRICA_ID};
+
+                (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();
+                for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+                (window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+                ym(${process.env.NEXT_PUBLIC_METRICA_ID},'init',{
+                  clickmap: true,
+                  trackLinks: true,
+                  accurateTrackBounce: true,
+                  webvisor: true
+                });
+              `,
+            }}
+          />
+        )}
       </head>
       <body>
         {children}
         <BackToTop />
+        <MobileContactBar />
       </body>
     </html>
   );
