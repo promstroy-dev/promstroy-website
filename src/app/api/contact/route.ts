@@ -8,10 +8,12 @@ const WINDOW_MS  = 15 * 60 * 1000; // 15 minutes
 
 const ipLog = new Map<string, number[]>();
 
+// On Vercel, x-forwarded-for is set by the Vercel edge — the first value is
+// the real client IP. x-real-ip is also injected by Vercel as a convenience.
 function getClientIp(req: NextRequest): string {
   return (
-    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
     req.headers.get("x-real-ip") ??
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
     "unknown"
   );
 }
@@ -51,9 +53,28 @@ function validatePhone(raw: string): boolean {
   return /^(\+7|8)\d{10}$/.test(clean);
 }
 
+/** Validate that the request originates from this site (defense-in-depth CSRF guard).
+ *  Browsers always send an Origin header for cross-origin POST requests;
+ *  same-origin and programmatic requests may omit it, so we allow absent Origin. */
+function isValidOrigin(req: NextRequest): boolean {
+  const origin = req.headers.get("origin");
+  if (!origin) return true; // non-browser / same-origin requests have no Origin header
+  const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
+  try {
+    return origin === new URL(siteUrl).origin;
+  } catch {
+    return false;
+  }
+}
+
 // ── Route handler ──────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
+  // Origin check — blocks cross-origin form submissions from other domains
+  if (!isValidOrigin(req)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   // Rate limiting
   const ip = getClientIp(req);
   if (isRateLimited(ip)) {
@@ -69,6 +90,13 @@ export async function POST(req: NextRequest) {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  // Honeypot: bots fill hidden fields, humans don't.
+  // Silently return success so bots think the submission worked.
+  const honeypot = typeof body._hp === "string" ? body._hp : "";
+  if (honeypot) {
+    return NextResponse.json({ ok: true });
   }
 
   // Extract and sanitize fields
@@ -111,8 +139,7 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({ chat_id: chatId, text, parse_mode: "MarkdownV2" }),
       });
       if (res.ok) return NextResponse.json({ ok: true });
-      const errBody = await res.text().catch(() => "");
-      console.error("Telegram delivery failed:", res.status, errBody);
+      console.error("Telegram delivery failed:", res.status);
     } catch (err) {
       console.error("Telegram fetch error:", err);
     }
@@ -134,6 +161,6 @@ export async function POST(req: NextRequest) {
   }
 
   // All channels failed — return 500 so the form shows the "call us" message
-  console.error("Form delivery failed: all channels exhausted for IP:", ip);
+  console.error("Form delivery: all channels exhausted");
   return NextResponse.json({ error: "Delivery failed" }, { status: 500 });
 }

@@ -88,6 +88,8 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  // Honeypot — hidden from humans, visible to bots. Must stay empty.
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "ratelimit">("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [touched, setTouched] = useState<{ name?: boolean; phone?: boolean }>({});
@@ -138,7 +140,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, message, source_page: sourcePage }),
+        body: JSON.stringify({ name, phone, message, source_page: sourcePage, _hp: honeypot }),
       });
       if (res.ok) {
         setStatus("success");
@@ -188,6 +190,17 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
+      {/* Honeypot trap — visually hidden, must stay empty; bots fill it */}
+      <input
+        type="text"
+        name="_hp"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", opacity: 0, height: 0, width: 0, zIndex: -1, pointerEvents: "none" }}
+      />
       {/* Name */}
       <div>
         <input
