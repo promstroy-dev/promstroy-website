@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import BackToTop from "@/components/ui/BackToTop";
 import MobileContactBar from "@/components/layout/MobileContactBar";
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BackToTop />
         <MobileContactBar />
         <PageTransitionOverlay />
+        <Analytics />
       </body>
     </html>
   );
