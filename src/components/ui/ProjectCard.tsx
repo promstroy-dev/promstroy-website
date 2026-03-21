@@ -2,12 +2,14 @@
 import Link from "next/link";
 import { Project } from "@/types";
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 
 interface Props {
   project: Project;
 }
 
 export default function ProjectCard({ project }: Props) {
+  const [hovered, setHovered] = useState(false);
   return (
     <Link
       href={`/proekty/${project.slug}`}
@@ -19,12 +21,14 @@ export default function ProjectCard({ project }: Props) {
         transition: "transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease, border-color 0.28s ease",
       }}
       onMouseEnter={(e) => {
+        setHovered(true);
         const el = e.currentTarget;
         el.style.transform = "translateY(-6px)";
         el.style.boxShadow = "0 24px 60px rgba(0,0,0,0.42), 0 6px 18px rgba(0,0,0,0.24)";
         el.style.borderColor = "rgba(196,174,148,0.18)";
       }}
       onMouseLeave={(e) => {
+        setHovered(false);
         const el = e.currentTarget;
         el.style.transform = "translateY(0)";
         el.style.boxShadow = "0 2px 8px rgba(0,0,0,0.20)";
@@ -77,6 +81,22 @@ export default function ProjectCard({ project }: Props) {
             {/* Haunch triangles */}
             <polygon points="6,5.5 1,10 6,10" fill="#547792" opacity="0.5" />
             <polygon points="20,5.5 25,10 20,10" fill="#547792" opacity="0.5" />
+            {/* Stroke-draw outline — draws on hover */}
+            <path
+              d="M 1 25.5 L 1 1 L 25 1 L 25 25.5"
+              stroke="#94B4C1"
+              strokeWidth="1.0"
+              fill="none"
+              strokeLinecap="square"
+              strokeDasharray="75"
+              strokeDashoffset={hovered ? 0 : 75}
+              style={{
+                transition: hovered
+                  ? "stroke-dashoffset 0.72s cubic-bezier(0.19, 1, 0.22, 1)"
+                  : "stroke-dashoffset 0.35s ease-in",
+                opacity: 0.55,
+              }}
+            />
           </svg>
         </div>
 

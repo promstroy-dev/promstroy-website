@@ -136,7 +136,33 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+/* Digit slot animation — directional number roll (motion.dev style) */
+@keyframes digitDown {
+  from { transform: translateY(-55%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes digitUp {
+  from { transform: translateY(55%);  opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Vertical clip reveal — card rises from below (construction direction) */
+@keyframes clipRevealY {
+  from { clip-path: inset(105% 0 0% 0); }
+  to   { clip-path: inset(0%   0 0% 0); }
+}
+
+/* Page transition overlay — wipes upward revealing new page */
+@keyframes pageReveal {
+  from { clip-path: inset(0 0 0%    0); }
+  to   { clip-path: inset(0 0 100% 0); }
+}
+
 /* ── Animation Utility Classes ───────────────────────────────────── */
+
+.animate-clip-reveal-y {
+  animation: clipRevealY 0.72s var(--ease-out-expo) both;
+}
 
 .animate-fade-up {
   animation: fadeUp 0.72s var(--ease-out-circ) forwards;
@@ -401,6 +427,16 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* ── Hide scrollbar (mobile carousels) ──────────────────────────── */
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* ── Respect reduced-motion preferences ─────────────────────────── */

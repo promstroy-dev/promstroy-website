@@ -57,9 +57,7 @@ export default function TrustBlock() {
           {reasons.map(({ Icon, title, body }, i) => (
             <div
               key={i}
-              className={`flex gap-5 group transition-all duration-600 ${
-                inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
-              }`}
+              className={`flex gap-5 group ${inView ? "animate-clip-reveal-y" : "invisible"}`}
               style={{ animationDelay: `${0.06 + i * 0.08}s` }}
             >
               {/* Icon block — CSS group-hover */}

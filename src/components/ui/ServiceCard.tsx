@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Building2, Hammer, Wrench, Network } from "lucide-react";
 import { Service } from "@/types";
@@ -18,6 +19,7 @@ interface Props {
 
 export default function ServiceCard({ service, expanded = false, index }: Props) {
   const cardNumber = index !== undefined ? String(index + 1).padStart(2, "0") : undefined;
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div
@@ -29,12 +31,14 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
         transition: "transform 0.30s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.30s ease, border-color 0.30s ease",
       }}
       onMouseEnter={(e) => {
+        setHovered(true);
         const el = e.currentTarget;
         el.style.transform = "translateY(-7px)";
         el.style.boxShadow = "0 24px 52px rgba(26,43,61,0.13), 0 6px 18px rgba(196,174,148,0.12), inset 0 1px 0 rgba(255,255,255,0.70)";
         el.style.borderColor = "#C4AE94";
       }}
       onMouseLeave={(e) => {
+        setHovered(false);
         const el = e.currentTarget;
         el.style.transform = "translateY(0)";
         el.style.boxShadow = "0 1px 3px rgba(26,43,61,0.06), inset 0 1px 0 rgba(255,255,255,0.60)";
@@ -106,11 +110,37 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
 
         {/* Description */}
         <p
-          className="text-sm leading-relaxed mb-5"
+          className="text-sm leading-relaxed mb-4"
           style={{ color: "#6B7E8A" }}
         >
           {service.description}
         </p>
+
+        {/* Hover-reveal: first 3 work items peek from below the description */}
+        {service.items && service.items.length > 0 && (
+          <div
+            className="overflow-hidden"
+            style={{
+              maxHeight: hovered ? "6rem" : "0",
+              opacity: hovered ? 1 : 0,
+              transition:
+                "max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease",
+              marginBottom: hovered ? "1rem" : "0",
+            }}
+          >
+            <ul className="flex flex-col gap-1.5 pt-1 border-t" style={{ borderColor: "rgba(196,174,148,0.18)" }}>
+              {service.items.slice(0, 3).map((item, i) => (
+                <li key={i} className="text-xs flex items-start gap-2 pt-1.5" style={{ color: "#7A8E98" }}>
+                  <span
+                    className="flex-shrink-0 mt-[6px] w-2 h-px"
+                    style={{ background: "#C4AE94", opacity: 0.55 }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Items (expanded view) */}
         {expanded && (

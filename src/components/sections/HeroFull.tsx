@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import MagneticButton from "@/components/ui/MagneticButton";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function HeroFull() {
@@ -341,21 +342,25 @@ export default function HeroFull() {
           style={{ transitionDelay: "0.40s" }}
         >
           {/* Primary CTA — warm stone material */}
-          <Link
-            href="/kontakty"
-            className="btn-primary gap-2.5 px-8 py-4 text-sm"
-          >
-            Обсудить проект
-            <ArrowRight size={15} />
-          </Link>
+          <MagneticButton>
+            <Link
+              href="/kontakty"
+              className="btn-primary gap-2.5 px-8 py-4 text-sm"
+            >
+              Обсудить проект
+              <ArrowRight size={15} />
+            </Link>
+          </MagneticButton>
 
           {/* Secondary CTA — warm stone ghost */}
-          <Link
-            href="/proekty"
-            className="btn-ghost-dark inline-flex items-center gap-2.5 px-8 py-4 text-sm"
-          >
-            Смотреть проекты
-          </Link>
+          <MagneticButton>
+            <Link
+              href="/proekty"
+              className="btn-ghost-dark inline-flex items-center gap-2.5 px-8 py-4 text-sm"
+            >
+              Смотреть проекты
+            </Link>
+          </MagneticButton>
 
         </div>
       </div>

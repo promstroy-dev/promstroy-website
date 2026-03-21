@@ -38,7 +38,7 @@ export default function KontaktyPage() {
           />
           {/* Faint background text */}
           <div
-            className="absolute right-0 bottom-0 pointer-events-none select-none font-heading font-bold leading-none"
+            className="absolute right-0 bottom-0 pointer-events-none select-none font-heading font-bold leading-none hidden md:block"
             aria-hidden="true"
             style={{
               fontSize: "clamp(80px, 16vw, 200px)",

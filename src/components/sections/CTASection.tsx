@@ -1,6 +1,7 @@
 "use client";
 import InquiryForm from "@/components/ui/InquiryForm";
 import { useInView } from "@/hooks/useInView";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 interface Props {
   headline?: string;
@@ -27,6 +28,7 @@ export default function CTASection({
           background: "radial-gradient(ellipse at top right, rgba(196,174,148,0.06) 0%, transparent 65%)",
         }}
       />
+      <CursorGlow />
 
       {/* Brass vertical rule — left edge */}
       <div

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { services } from "@/data/services";
 import ServiceCard from "@/components/ui/ServiceCard";
 import TiltCard from "@/components/ui/TiltCard";
@@ -14,7 +14,9 @@ export default function ServicesOverview({ expanded = false }: Props) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [mouse, setMouse] = useState({ x: 50, y: 40 });
+  const [scrollPct, setScrollPct] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const scrollRafRef = useRef<number>(0);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const rect = sectionRef.current?.getBoundingClientRect();
@@ -23,6 +25,26 @@ export default function ServicesOverview({ expanded = false }: Props) {
       x: ((e.clientX - rect.left) / rect.width) * 100,
       y: ((e.clientY - rect.top) / rect.height) * 100,
     });
+  }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      setScrollPct(Math.max(0, Math.min(1, (vh - rect.top) / (rect.height + vh))));
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(scrollRafRef.current);
+      scrollRafRef.current = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(scrollRafRef.current);
+    };
   }, []);
 
   return (
@@ -68,7 +90,8 @@ export default function ServicesOverview({ expanded = false }: Props) {
           fontSize: "clamp(100px, 20vw, 260px)",
           color: "rgba(196,174,148,0.045)",
           letterSpacing: "-0.04em",
-          transform: "translateY(15%)",
+          transform: `translateY(${15 - scrollPct * 22}%)`,
+          willChange: "transform",
         }}
       >
         УСЛУГИ
@@ -115,10 +138,11 @@ export default function ServicesOverview({ expanded = false }: Props) {
         </p>
 
         {/* Cards grid — spotlight: active card full opacity, others dim */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-4 px-4 pb-4 md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid md:gap-5 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s, i) => (
             <div
               key={s.id}
+              className="snap-start shrink-0 w-[82vw] sm:w-[48vw] md:w-auto"
               style={{
                 opacity: activeCard !== null && activeCard !== i ? 0.42 : 1,
                 transition: "opacity 0.28s ease",
@@ -127,9 +151,7 @@ export default function ServicesOverview({ expanded = false }: Props) {
               onMouseLeave={() => setActiveCard(null)}
             >
               <div
-                className={`transition-all duration-600 ${
-                  inView ? "animate-fade-up" : "opacity-0 translate-y-5"
-                }`}
+                className={inView ? "animate-clip-reveal-y" : "invisible"}
                 style={{ animationDelay: `${0.08 + i * 0.09}s` }}
               >
                 <TiltCard specular="light" maxTilt={4}>

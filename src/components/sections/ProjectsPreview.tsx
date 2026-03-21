@@ -6,6 +6,7 @@ import TiltCard from "@/components/ui/TiltCard";
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import { ArrowRight } from "lucide-react";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 export default function ProjectsPreview() {
   const preview = projects.slice(0, 3);
@@ -31,6 +32,7 @@ export default function ProjectsPreview() {
         }}
       />
 
+      <CursorGlow />
       <div ref={ref} className="relative max-w-content mx-auto px-4 md:px-8">
 
         {/* Header */}
@@ -77,11 +79,12 @@ export default function ProjectsPreview() {
         </div>
 
         {/* Cards — spotlight: active card full opacity, neighbors dim */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-4 px-4 pb-4 md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid md:grid-cols-3 md:gap-5">
           {preview.map((p, i) => (
             // Outer: handles spotlight opacity (separate from animation layer)
             <div
               key={p.id}
+              className="snap-start shrink-0 w-[82vw] md:w-auto"
               style={{
                 opacity: activeCard !== null && activeCard !== i ? 0.45 : 1,
                 transition: "opacity 0.25s ease",
@@ -91,9 +94,7 @@ export default function ProjectsPreview() {
             >
               {/* Mid: scroll-reveal animation */}
               <div
-                className={`transition-all duration-600 ${
-                  inView ? "animate-fade-up" : "opacity-0 translate-y-5"
-                }`}
+                className={inView ? "animate-clip-reveal-y" : "invisible"}
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
                 {/* Inner: 3D tilt — brass specular on dark steel surface */}

@@ -182,7 +182,7 @@ export default function StickyHeader() {
 
               <Link
                 href="/kontakty"
-                className="hidden md:block btn-primary text-sm px-5 py-2.5"
+                className="hidden lg:block btn-primary text-sm px-5 py-2.5"
               >
                 Обсудить проект
               </Link>

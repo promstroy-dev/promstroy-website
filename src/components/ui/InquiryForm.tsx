@@ -1,5 +1,72 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import MagneticButton from "@/components/ui/MagneticButton";
+
+const MAX_CHARS = 500;
+
+// Single digit cell — remounts (via key) when digit changes, triggering CSS animation
+function AnimatedDigit({ digit, dir }: { digit: string; dir: "down" | "up" }) {
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        animation: `${dir === "down" ? "digitDown" : "digitUp"} 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both`,
+      }}
+    >
+      {digit}
+    </span>
+  );
+}
+
+function CharCounter({ remaining, dark }: { remaining: number; dark: boolean }) {
+  // Track previous value to determine scroll direction
+  const prevRef = useRef(remaining);
+  const dir: "down" | "up" = remaining <= prevRef.current ? "down" : "up";
+  useEffect(() => { prevRef.current = remaining; });
+
+  const pct = (MAX_CHARS - remaining) / MAX_CHARS;
+  const r = 7;
+  const circ = 2 * Math.PI * r;
+  const color =
+    pct < 0.8
+      ? dark ? "rgba(148,180,193,0.55)" : "rgba(122,142,152,0.7)"
+      : pct < 0.95
+      ? "#C4AE94"
+      : "#ef4444";
+
+  const digits = String(remaining).split("");
+
+  return (
+    <div className="flex items-center justify-end gap-1.5 mt-1.5 pr-0.5">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden>
+        <circle
+          cx="9" cy="9" r={r} fill="none"
+          stroke={dark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)"}
+          strokeWidth="2"
+        />
+        <circle
+          cx="9" cy="9" r={r} fill="none"
+          stroke={color}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeDasharray={circ}
+          strokeDashoffset={circ * (1 - pct)}
+          transform="rotate(-90 9 9)"
+          style={{ transition: "stroke-dashoffset 0.1s ease, stroke 0.25s ease" }}
+        />
+      </svg>
+      {/* Digit roll — each digit animates independently on change */}
+      <span
+        className="text-[11px] tabular-nums flex"
+        style={{ color, overflow: "hidden", lineHeight: 1 }}
+      >
+        {digits.map((d, i) => (
+          <AnimatedDigit key={`${i}-${d}`} digit={d} dir={dir} />
+        ))}
+      </span>
+    </div>
+  );
+}
 
 interface Props {
   sourcePage: string;
@@ -157,34 +224,41 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
         )}
       </div>
 
-      {/* Message */}
-      <textarea
-        className={`${inputBase} border resize-none ${dark ? "border-[rgba(196,174,148,0.20)] focus:border-[rgba(196,174,148,0.50)]" : "border-border focus:border-accent"}`}
-        placeholder="Описание задачи (необязательно)"
-        rows={3}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+      {/* Message + character counter */}
+      <div>
+        <textarea
+          className={`${inputBase} border resize-none ${dark ? "border-[rgba(196,174,148,0.20)] focus:border-[rgba(196,174,148,0.50)]" : "border-border focus:border-accent"}`}
+          placeholder="Описание задачи (необязательно)"
+          rows={3}
+          value={message}
+          onChange={(e) => setMessage(e.target.value.slice(0, 500))}
+        />
+        {message.length > 0 && (
+          <CharCounter remaining={MAX_CHARS - message.length} dark={dark} />
+        )}
+      </div>
 
       {/* Submit */}
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="btn-primary disabled:opacity-60 py-3.5 px-6 text-sm justify-center gap-2 w-full"
-      >
-        {status === "loading" ? (
-          <>
-            <span
-              className="inline-block w-4 h-4 border-2 rounded-full animate-spin"
-              style={{ borderColor: "rgba(10,9,8,0.2)", borderTopColor: "#0A0908" }}
-              aria-hidden="true"
-            />
-            Отправляем...
-          </>
-        ) : (
-          "Отправить заявку"
-        )}
-      </button>
+      <MagneticButton className="w-full" strength={5}>
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="btn-primary disabled:opacity-60 py-3.5 px-6 text-sm justify-center gap-2 w-full"
+        >
+          {status === "loading" ? (
+            <>
+              <span
+                className="inline-block w-4 h-4 border-2 rounded-full animate-spin"
+                style={{ borderColor: "rgba(10,9,8,0.2)", borderTopColor: "#0A0908" }}
+                aria-hidden="true"
+              />
+              Отправляем...
+            </>
+          ) : (
+            "Отправить заявку"
+          )}
+        </button>
+      </MagneticButton>
 
       {status === "error" && (
         <p className="text-red-400 text-sm text-center">

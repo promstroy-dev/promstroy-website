@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import BackToTop from "@/components/ui/BackToTop";
 import MobileContactBar from "@/components/layout/MobileContactBar";
+import PageTransitionOverlay from "@/components/PageTransitionOverlay";
 
 const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <BackToTop />
         <MobileContactBar />
+        <PageTransitionOverlay />
       </body>
     </html>
   );

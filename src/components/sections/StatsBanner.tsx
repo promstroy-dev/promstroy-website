@@ -33,21 +33,33 @@ function CounterNumber({ value, inView }: { value: string; inView: boolean }) {
     const duration = 1600;
     const start = performance.now();
 
+    let frame = 0;
     const tick = (now: number) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // ease-out quart — heavier deceleration for weight
       const eased = 1 - Math.pow(1 - progress, 4);
       const current = Math.round(eased * num);
-      setDisplay(current);
+      frame++;
 
-      // Pop animation when complete
-      if (progress >= 1 && numRef.current) {
-        numRef.current.classList.add("animate-counter-pop");
-        setTimeout(() => numRef.current?.classList.remove("animate-counter-pop"), 400);
+      // Scramble effect: random digit flickers, probability drops as progress rises
+      const scrambleChance = Math.max(0, 1 - progress * 1.5);
+      if (frame % 3 === 0 && Math.random() < scrambleChance && num > 1) {
+        setDisplay(Math.floor(Math.random() * (num + 1)));
+      } else {
+        setDisplay(current);
       }
 
-      if (progress < 1) requestAnimationFrame(tick);
+      // Pop animation when complete — lock to final value
+      if (progress >= 1) {
+        setDisplay(num);
+        if (numRef.current) {
+          numRef.current.classList.add("animate-counter-pop");
+          setTimeout(() => numRef.current?.classList.remove("animate-counter-pop"), 400);
+        }
+        return;
+      }
+
+      requestAnimationFrame(tick);
     };
 
     requestAnimationFrame(tick);

@@ -12,9 +12,8 @@ export const company: CompanyData = {
   inn: "632507052478",
   ogrn: "324632700128069",
   stats: [
-    { value: "11",      label: "лет на рынке"       },
-    { value: "4",       label: "направления работ"   },
-    { value: "2015",    label: "год основания"          },
-    // TODO: add завершённых объектов when real count is confirmed
+    { value: "11",       label: "лет на рынке"    },
+    { value: "50+",      label: "объектов сдано"  },
+    { value: "10 000+",  label: "м² построено"    },
   ],
 };
