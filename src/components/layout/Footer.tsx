@@ -228,13 +228,13 @@ export default function Footer() {
           </div>
           <Link
             href="/kontakty"
-            className="group inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 flex-shrink-0 transition-colors duration-200 hover:bg-accent hover:text-[#1A2B3D]"
+            className="group inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 flex-shrink-0 transition-colors duration-200 hover:bg-accent/15"
             style={{
               color: "#C4AE94",
               border: "1px solid rgba(196,174,148,0.25)",
             }}
           >
-            <RollLink>Начать проект</RollLink>
+            Начать проект
             <ArrowRight size={11} />
           </Link>
         </div>

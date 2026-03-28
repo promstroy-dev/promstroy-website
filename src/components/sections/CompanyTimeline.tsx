@@ -129,6 +129,9 @@ export default function CompanyTimeline() {
   useEffect(() => {
     if (reducedMotion) return;
 
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktop) return;
+
     yearEls.current = sectionRef.current?.querySelectorAll(".timeline-year") ?? null;
 
     let rafId: number;

@@ -84,7 +84,7 @@ export default function ProjectsPreview() {
             // Outer: handles spotlight opacity (separate from animation layer)
             <div
               key={p.id}
-              className="snap-start shrink-0 w-[75vw] md:w-auto"
+              className="snap-center shrink-0 w-[78vw] first:ml-0 md:w-auto md:first:ml-0"
               style={{
                 opacity: activeCard !== null && activeCard !== i ? 0.45 : 1,
                 transition: "opacity 0.25s ease",

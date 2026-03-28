@@ -182,13 +182,6 @@ export default function StickyHeader() {
                 {company.phoneDisplay}
               </a>
 
-              <Link
-                href="/kontakty"
-                className="group hidden lg:block btn-primary text-sm px-5 py-2.5"
-              >
-                <RollLink>Обсудить проект</RollLink>
-              </Link>
-
               {/* Mobile: phone icon */}
               <a href={`tel:${company.phone}`} className="md:hidden text-text-invert/70 flex-shrink-0 p-1">
                 <Phone size={18} />
@@ -263,39 +256,6 @@ export default function StickyHeader() {
                 </motion.div>
               ))}
 
-              {/* Service sub-links */}
-              <motion.div
-                className="mt-6 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <p
-                  className="text-[9px] uppercase font-medium mb-3"
-                  style={{ color: "rgba(196,174,148,0.50)", letterSpacing: "0.26em" }}
-                >
-                  Направления
-                </p>
-                <div className="flex flex-col gap-0">
-                  {services.map((s, i) => (
-                    <motion.div
-                      key={s.id}
-                      initial={{ opacity: 0, x: -12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.45 + i * 0.04 }}
-                    >
-                      <Link
-                        href={`/uslugi/${s.slug}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center gap-3 py-2.5 text-sm text-text-invert/50 hover:text-accent transition-colors duration-150"
-                      >
-                        <span className="w-2 h-px flex-shrink-0" style={{ background: "rgba(196,174,148,0.35)" }} />
-                        {s.title}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
             </nav>
 
             {/* Bottom: contacts + CTA */}
