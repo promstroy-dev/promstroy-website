@@ -2,6 +2,7 @@
 import InquiryForm from "@/components/ui/InquiryForm";
 import { useInView } from "@/hooks/useInView";
 import CursorGlow from "@/components/ui/CursorGlow";
+import SplitText from "@/components/ui/SplitText";
 
 interface Props {
   headline?: string;
@@ -65,7 +66,7 @@ export default function CTASection({
               </span>
             </div>
 
-            <h2
+            <SplitText
               className="font-heading font-bold mb-5 leading-tight"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 52px)",
@@ -74,7 +75,7 @@ export default function CTASection({
               }}
             >
               {headline}
-            </h2>
+            </SplitText>
 
             <p
               className="leading-relaxed mb-10 max-w-sm text-sm"

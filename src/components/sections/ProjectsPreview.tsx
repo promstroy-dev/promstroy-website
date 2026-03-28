@@ -6,7 +6,7 @@ import TiltCard from "@/components/ui/TiltCard";
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import { ArrowRight } from "lucide-react";
-import CursorGlow from "@/components/ui/CursorGlow";
+import SplitText from "@/components/ui/SplitText";
 
 export default function ProjectsPreview() {
   const preview = projects.slice(0, 3);
@@ -15,24 +15,26 @@ export default function ProjectsPreview() {
 
   return (
     <section
-      className="py-20 md:py-32 relative overflow-hidden"
-      style={{ background: "#1A2B3D" }}
+      className="py-20 md:py-32 bg-bg relative overflow-hidden"
     >
-      {/* Background structural grid */}
+      {/* Subtle concrete grain */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 80px,
-            rgba(255,255,255,0.011) 80px,
-            rgba(255,255,255,0.011) 81px
-          )`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          opacity: 0.02,
         }}
       />
-
-      <CursorGlow />
+      {/* Fine architectural grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(196,174,148,0.05) 119px, rgba(196,174,148,0.05) 120px),
+            repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(196,174,148,0.05) 119px, rgba(196,174,148,0.05) 120px)
+          `,
+        }}
+      />
       <div ref={ref} className="relative max-w-content mx-auto px-4 md:px-8">
 
         {/* Header */}
@@ -45,25 +47,23 @@ export default function ProjectsPreview() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
               <span
-                className="text-[10px] uppercase font-medium"
-                style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
+                className="text-[10px] uppercase font-medium text-text-muted"
+                style={{ letterSpacing: "0.26em" }}
               >
                 Реализованные объекты
               </span>
             </div>
-            <h2
-              className="font-heading font-bold mb-2"
+            <SplitText
+              className="font-heading font-bold text-text mb-2"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
-                color: "#F0EBE3",
                 letterSpacing: "-0.01em",
               }}
             >
               Наши проекты
-            </h2>
+            </SplitText>
             <p
-              className="text-sm max-w-md leading-relaxed"
-              style={{ color: "#7A8E98" }}
+              className="text-sm max-w-md leading-relaxed text-text-muted"
             >
               Завершённые объекты коммерческого строительства и ремонта в Самаре
             </p>

@@ -3,7 +3,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import MagneticButton from "@/components/ui/MagneticButton";
+import RollLink from "@/components/ui/RollLink";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { motion } from "framer-motion";
 
 export default function HeroFull() {
   const [mounted, setMounted] = useState(false);
@@ -280,51 +282,67 @@ export default function HeroFull() {
         }}
       >
 
-        {/* Eyebrow — clipped reveal */}
-        <div
-          className={`mb-7 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={{ transitionDelay: "0.05s" }}
+        {/* Eyebrow — spring reveal */}
+        <motion.div
+          className="mb-7"
+          initial={{ opacity: 0, y: 24 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.1 }}
         >
           <span className="inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.30em]"
                 style={{ color: "#C4AE94" }}>
-            <span
-              className="inline-block h-px w-8"
+            <motion.span
+              className="inline-block h-px"
               style={{ background: "#C4AE94", opacity: 0.8 }}
+              initial={{ width: 0 }}
+              animate={visible ? { width: 32 } : {}}
+              transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.2 }}
             />
             Самара · Коммерческое строительство
           </span>
-        </div>
+        </motion.div>
 
-        {/* Headline — maximum scale on desktop */}
-        <div
-          className={`mb-7 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          style={{ transitionDelay: "0.15s" }}
+        {/* Headline — Unbounded display font, spring entrance */}
+        <motion.div
+          className="mb-7"
+          initial={{ opacity: 0, y: 36, filter: "blur(8px)" }}
+          animate={visible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          transition={{ type: "spring", stiffness: 50, damping: 18, delay: 0.2 }}
         >
           <h1
-            className="font-heading font-bold text-text-invert leading-[1.02] max-w-4xl"
-            style={{ fontSize: "clamp(42px, 6.5vw, 88px)", letterSpacing: "-0.02em" }}
+            className="font-bold text-text-invert leading-[1.0] max-w-4xl"
+            style={{
+              fontFamily: "var(--font-unbounded), var(--font-space-grotesk), sans-serif",
+              fontSize: "clamp(38px, 6vw, 82px)",
+              letterSpacing: "-0.03em",
+            }}
           >
             Коммерческое<br />
             <span style={{ color: "#C4AE94" }}>строительство</span><br />
             и ремонт
           </h1>
-        </div>
+        </motion.div>
 
-        {/* Divider line */}
-        <div
-          className={`mb-8 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={{ transitionDelay: "0.25s" }}
+        {/* Divider line — draw-in */}
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={visible ? { opacity: 1, scaleX: 1 } : {}}
+          transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.4 }}
+          style={{ originX: 0 }}
         >
           <div
             className="w-16 h-px"
             style={{ background: "rgba(240,235,227,0.18)" }}
           />
-        </div>
+        </motion.div>
 
         {/* Subheadline */}
-        <div
-          className={`mb-12 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={{ transitionDelay: "0.30s" }}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.45 }}
         >
           <p
             className="text-lg md:text-xl leading-relaxed max-w-[460px]"
@@ -334,20 +352,22 @@ export default function HeroFull() {
             <br className="hidden md:block" />
             Полный цикл. Один подрядчик.
           </p>
-        </div>
+        </motion.div>
 
         {/* CTAs */}
-        <div
-          className={`flex flex-wrap items-center gap-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={{ transitionDelay: "0.40s" }}
+        <motion.div
+          className="flex flex-wrap items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.55 }}
         >
           {/* Primary CTA — warm stone material */}
           <MagneticButton>
             <Link
               href="/kontakty"
-              className="btn-primary gap-2.5 px-8 py-4 text-sm"
+              className="group btn-primary gap-2.5 px-8 py-4 text-sm"
             >
-              Обсудить проект
+              <RollLink>Обсудить проект</RollLink>
               <ArrowRight size={15} />
             </Link>
           </MagneticButton>
@@ -356,13 +376,13 @@ export default function HeroFull() {
           <MagneticButton>
             <Link
               href="/proekty"
-              className="btn-ghost-dark inline-flex items-center gap-2.5 px-8 py-4 text-sm"
+              className="group btn-ghost-dark inline-flex items-center gap-2.5 px-8 py-4 text-sm"
             >
-              Смотреть проекты
+              <RollLink>Смотреть проекты</RollLink>
             </Link>
           </MagneticButton>
 
-        </div>
+        </motion.div>
       </div>
 
     </section>

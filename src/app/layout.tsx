@@ -4,6 +4,11 @@ import "./globals.css";
 import BackToTop from "@/components/ui/BackToTop";
 import MobileContactBar from "@/components/layout/MobileContactBar";
 import PageTransitionOverlay from "@/components/PageTransitionOverlay";
+import SmoothScroll from "@/components/SmoothScroll";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import VerticalScrollLine from "@/components/ui/VerticalScrollLine";
+import CursorFollower from "@/components/ui/CursorFollower";
+import GrainOverlay from "@/components/ui/GrainOverlay";
 
 const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
 
@@ -85,9 +90,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body>
+        <SmoothScroll />
+        <ScrollProgress />
+        <VerticalScrollLine />
         {children}
         <BackToTop />
         <MobileContactBar />
+        <CursorFollower />
+        <GrainOverlay />
         <PageTransitionOverlay />
         <Analytics />
       </body>

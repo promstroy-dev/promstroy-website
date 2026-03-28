@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import SplitText from "@/components/ui/SplitText";
 
 const faqs = [
   {
@@ -62,12 +63,12 @@ export default function FAQSection() {
               Частые вопросы
             </span>
           </div>
-          <h2
+          <SplitText
             className="font-heading font-bold text-text"
             style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em" }}
           >
             Вопросы и ответы
-          </h2>
+          </SplitText>
         </div>
 
         {/* Accordion */}

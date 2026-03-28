@@ -58,11 +58,12 @@ export default function PageHero({ title, subtitle, label = "ПромСтрой"
           </span>
         </div>
         <h1
-          className="font-heading font-bold mb-4 leading-tight"
+          className="font-bold mb-4 leading-tight"
           style={{
-            fontSize: "clamp(36px, 5vw, 68px)",
+            fontFamily: "var(--font-unbounded), var(--font-space-grotesk), sans-serif",
+            fontSize: "clamp(34px, 4.5vw, 64px)",
             color: "#F0EBE3",
-            letterSpacing: "-0.02em",
+            letterSpacing: "-0.03em",
           }}
         >
           {title}

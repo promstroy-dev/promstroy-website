@@ -122,12 +122,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                       Расскажите о задаче — перезвоним в течение 2 часов
                     </p>
                     <a
-                      href="tel:+79277111103"
-                      className="btn-call-ghost block text-center text-sm font-semibold py-3 mb-3"
-                    >
-                      Позвонить
-                    </a>
-                    <a
                       href="/kontakty"
                       className="btn-primary w-full justify-center text-sm py-3"
                     >

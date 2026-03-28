@@ -16,23 +16,24 @@ export default function TrustBlock() {
   const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
-    <section className="py-20 md:py-32 bg-bg relative overflow-hidden">
-      {/* Subtle concrete grain */}
+    <section
+      className="py-20 md:py-32 relative overflow-hidden"
+      style={{ background: "#1A2B3D" }}
+    >
+      {/* Brass vertical rule — left edge */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute left-0 top-0 bottom-0 w-[2px] pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-          opacity: 0.02,
+          background: `linear-gradient(to bottom, transparent 0%, #C4AE94 15%, #C4AE94 85%, transparent 100%)`,
+          opacity: 0.25,
         }}
       />
 
-      {/* Architectural grid overlay */}
+      {/* Structural grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(196,174,148,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(196,174,148,0.03) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
+          backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px)`,
         }}
       />
 
@@ -53,10 +54,10 @@ export default function TrustBlock() {
           }`}
         >
           <div className="flex items-center gap-3">
-            <div className="w-5 h-px bg-accent opacity-70" />
+            <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
             <span
-              className="text-[10px] uppercase font-medium text-text-muted"
-              style={{ letterSpacing: "0.26em" }}
+              className="text-[10px] uppercase font-medium"
+              style={{ color: "#7A8E98", letterSpacing: "0.26em" }}
             >
               Наши принципы
             </span>
@@ -64,8 +65,8 @@ export default function TrustBlock() {
         </div>
         <RevealText
           inView={inView}
-          className="font-heading font-bold text-text mb-14"
-          style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em" }}
+          className="font-heading font-bold mb-14"
+          style={{ fontSize: "clamp(28px, 3.5vw, 48px)", letterSpacing: "-0.01em", color: "#F0EBE3" }}
         >
           Почему выбирают ПромСтрой
         </RevealText>
@@ -79,16 +80,19 @@ export default function TrustBlock() {
               style={{ animationDelay: `${0.06 + i * 0.08}s` }}
             >
               {/* Icon block — CSS group-hover */}
-              <div className="flex-shrink-0 w-10 h-10 border border-border flex items-center justify-center text-accent transition-all duration-200 group-hover:bg-accent group-hover:border-accent group-hover:text-bg-deep">
+              <div
+                className="flex-shrink-0 w-10 h-10 border flex items-center justify-center transition-all duration-200 group-hover:border-accent"
+                style={{ borderColor: "rgba(196,174,148,0.35)", color: "#C4AE94" }}
+              >
                 <Icon size={17} />
               </div>
 
               <div>
-                <h3 className="font-heading font-semibold text-text mb-2 leading-snug"
-                    style={{ fontSize: "0.95rem" }}>
+                <h3 className="font-heading font-semibold mb-2 leading-snug"
+                    style={{ fontSize: "0.95rem", color: "rgba(240,235,227,0.88)" }}>
                   {title}
                 </h3>
-                <p className="text-text-muted text-sm leading-relaxed">{body}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(148,180,193,0.65)" }}>{body}</p>
               </div>
             </div>
           ))}

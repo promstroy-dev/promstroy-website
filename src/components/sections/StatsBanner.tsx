@@ -109,22 +109,7 @@ export default function StatsBanner() {
         }}
       />
 
-      <div className="relative max-w-content mx-auto px-4 md:px-8 py-20 md:py-28">
-
-        {/* Section label */}
-        <div
-          className={`mb-14 transition-all duration-600 ${inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"}`}
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.7 }} />
-            <span
-              className="text-[10px] uppercase font-medium"
-              style={{ color: "rgba(140,130,120,1)", letterSpacing: "0.26em" }}
-            >
-              Цифры и факты
-            </span>
-          </div>
-        </div>
+      <div className="relative max-w-content mx-auto px-4 md:px-8 py-10 md:py-14">
 
         {/* Stats grid — columns adapt to number of visible stats */}
         <div className={`grid gap-0 grid-cols-2 ${stats.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"}`}>
@@ -144,11 +129,11 @@ export default function StatsBanner() {
                 />
               )}
 
-              <div className={`${i > 0 ? "md:pl-12" : ""} ${i < stats.length - 1 ? "md:pr-12" : ""} pl-0 pr-0 pb-8 md:pb-0`}>
+              <div className={`${i > 0 ? "md:pl-10" : ""} ${i < stats.length - 1 ? "md:pr-10" : ""} pl-0 pr-0 pb-6 md:pb-0`}>
                 <p
                   className="stat-value-masked font-heading font-bold leading-none mb-3"
                   style={{
-                    fontSize: "clamp(48px, 6vw, 88px)",
+                    fontSize: "clamp(40px, 5vw, 72px)",
                     letterSpacing: "-0.03em",
                   }}
                 >
@@ -173,21 +158,6 @@ export default function StatsBanner() {
           ))}
         </div>
 
-        {/* Geographic anchor — preserves regional context without occupying a stat slot */}
-        <div
-          className={`mt-14 pt-8 border-t flex items-center gap-4 transition-all duration-600 ${
-            inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
-          }`}
-          style={{ borderColor: "#1E3348", animationDelay: "0.45s" }}
-        >
-          <div className="w-3 h-px flex-shrink-0" style={{ background: "#C4AE94", opacity: 0.5 }} />
-          <span
-            className="text-[10px] uppercase font-medium"
-            style={{ color: "rgba(140,130,120,0.65)", letterSpacing: "0.22em" }}
-          >
-            Самара и Самарская область
-          </span>
-        </div>
       </div>
     </section>
   );

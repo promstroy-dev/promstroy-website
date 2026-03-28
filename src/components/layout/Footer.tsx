@@ -4,6 +4,7 @@ import { Phone, Send, ArrowRight } from "lucide-react";
 import { company } from "@/data/company";
 import Logo from "@/components/ui/Logo";
 import CopyButton from "@/components/ui/CopyButton";
+import RollLink from "@/components/ui/RollLink";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -63,10 +64,10 @@ export default function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  className="hover:text-accent transition-colors duration-200"
+                  className="group hover:text-accent transition-colors duration-200"
                   style={{ color: "rgba(240,235,227,0.55)" }}
                 >
-                  {label}
+                  <RollLink>{label}</RollLink>
                 </Link>
               ))}
             </nav>
@@ -145,13 +146,13 @@ export default function Footer() {
           </div>
           <Link
             href="/kontakty"
-            className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 flex-shrink-0 transition-colors duration-200 hover:bg-accent hover:text-[#1A2B3D]"
+            className="group inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 flex-shrink-0 transition-colors duration-200 hover:bg-accent hover:text-[#1A2B3D]"
             style={{
               color: "#C4AE94",
               border: "1px solid rgba(196,174,148,0.25)",
             }}
           >
-            Начать проект
+            <RollLink>Начать проект</RollLink>
             <ArrowRight size={11} />
           </Link>
         </div>

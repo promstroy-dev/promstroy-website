@@ -50,10 +50,12 @@ export default function RevealText({
                 display: "inline-block",
                 transform: !reducedMotion && !inView ? "translateY(112%)" : "translateY(0)",
                 opacity: !reducedMotion && !inView ? 0 : 1,
+                filter: !reducedMotion && !inView ? "blur(3px)" : "blur(0px)",
                 transition: reducedMotion
                   ? "none"
                   : `transform 0.72s cubic-bezier(0.22, 1, 0.36, 1) ${(delay + i * 0.06).toFixed(3)}s,
-                     opacity 0.45s ease ${(delay + i * 0.06).toFixed(3)}s`,
+                     opacity 0.45s ease ${(delay + i * 0.06).toFixed(3)}s,
+                     filter 0.55s ease ${(delay + i * 0.06).toFixed(3)}s`,
               }}
             >
               {word}

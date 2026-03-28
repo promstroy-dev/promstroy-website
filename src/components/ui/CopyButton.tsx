@@ -42,11 +42,10 @@ export default function CopyButton({ text, children, className, style }: Props) 
       <span
         className="flex-shrink-0 transition-all duration-200"
         style={{
-          color: copied ? "#C4AE94" : "rgba(148,180,193,0.38)",
-          opacity: copied ? 1 : undefined,
+          color: copied ? "#C4AE94" : "rgba(196,174,148,0.55)",
         }}
       >
-        {copied ? <Check size={11} /> : <Copy size={11} className="opacity-40 group-hover:opacity-100 transition-opacity duration-200" />}
+        {copied ? <Check size={12} /> : <Copy size={12} className="opacity-65 group-hover:opacity-100 transition-opacity duration-200" />}
       </span>
     </button>
   );

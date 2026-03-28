@@ -5,6 +5,7 @@ import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { company } from "@/data/company";
 import { services } from "@/data/services";
 import Logo from "@/components/ui/Logo";
+import RollLink from "@/components/ui/RollLink";
 
 export default function StickyHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,7 +56,7 @@ export default function StickyHeader() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 border-b animate-nav-flip-in ${
           scrolled ? "border-border-dark shadow-2xl" : "border-transparent"
         }`}
         style={scrolled ? {
@@ -95,21 +96,21 @@ export default function StickyHeader() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-9">
               <div
                 className="relative"
                 onMouseEnter={openServices}
                 onMouseLeave={scheduleClose}
               >
                 <button
-                  className="flex items-center gap-1.5 text-sm font-medium text-text-invert/70 hover:text-text-invert transition-colors duration-200"
+                  className="group flex items-center gap-1.5 text-[11px] uppercase tracking-[0.14em] font-semibold text-text-invert/70 hover:text-text-invert transition-colors duration-200"
                   aria-haspopup="true"
                   aria-expanded={servicesOpen}
                   onClick={() => setServicesOpen((v) => !v)}
                 >
-                  Услуги
+                  <RollLink>Услуги</RollLink>
                   <ChevronDown
-                    size={12}
+                    size={10}
                     className={`opacity-50 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
                   />
                 </button>
@@ -163,9 +164,9 @@ export default function StickyHeader() {
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm font-medium text-text-invert/70 hover:text-text-invert transition-colors duration-200"
+                  className="group text-[11px] uppercase tracking-[0.14em] font-semibold text-text-invert/70 hover:text-text-invert transition-colors duration-200"
                 >
-                  {label}
+                  <RollLink>{label}</RollLink>
                 </Link>
               ))}
             </nav>
@@ -182,9 +183,9 @@ export default function StickyHeader() {
 
               <Link
                 href="/kontakty"
-                className="hidden lg:block btn-primary text-sm px-5 py-2.5"
+                className="group hidden lg:block btn-primary text-sm px-5 py-2.5"
               >
-                Обсудить проект
+                <RollLink>Обсудить проект</RollLink>
               </Link>
 
               <a href={`tel:${company.phone}`} className="md:hidden text-text-invert">

@@ -169,15 +169,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     </p>
                     <a
                       href="tel:+79277111103"
-                      className="btn-call-ghost block text-center text-sm font-semibold py-3 mb-3"
-                    >
-                      Позвонить
-                    </a>
-                    <a
-                      href="https://t.me/skpromstroy_samara"
                       className="btn-primary w-full justify-center text-sm py-3"
                     >
-                      Обсудить в Telegram
+                      Позвонить
                     </a>
                   </div>
                 </div>

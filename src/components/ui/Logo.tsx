@@ -103,7 +103,7 @@ export default function Logo({
       {variant !== "mark" && (
         <span
           className={`font-bold ${wordmarkSize} ${tracking} leading-none`}
-          style={{ color: textColor, fontFamily: "var(--font-exo2), sans-serif" }}
+          style={{ color: textColor, fontFamily: "var(--font-unbounded), sans-serif" }}
         >
           ПРОМСТРОЙ
         </span>

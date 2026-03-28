@@ -3,6 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useInView } from "@/hooks/useInView";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import SplitText from "@/components/ui/SplitText";
 
 interface Milestone {
   year: number;
@@ -179,12 +180,12 @@ export default function CompanyTimeline() {
               История компании
             </span>
           </div>
-          <h2
+          <SplitText
             className="font-heading font-bold text-3xl md:text-4xl"
             style={{ color: "#F0EBE3" }}
           >
             Наш путь
-          </h2>
+          </SplitText>
         </div>
 
         {/* Timeline container */}
