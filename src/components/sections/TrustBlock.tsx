@@ -17,7 +17,7 @@ export default function TrustBlock() {
 
   return (
     <section
-      className="py-20 md:py-32 relative overflow-hidden"
+      className="py-14 md:py-32 relative overflow-hidden"
       style={{ background: "#1A2B3D" }}
     >
       {/* Brass vertical rule — left edge */}
@@ -72,7 +72,7 @@ export default function TrustBlock() {
         </RevealText>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-7 md:gap-x-10 md:gap-y-10">
           {reasons.map(({ Icon, title, body }, i) => (
             <div
               key={i}

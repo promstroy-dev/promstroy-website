@@ -172,7 +172,7 @@ export default function StickyHeader() {
             </nav>
 
             {/* Right side */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
               <a
                 href={`tel:${company.phone}`}
                 className="hidden md:flex items-center gap-2 text-sm font-medium text-text-invert/65 hover:text-text-invert transition-colors duration-200"
@@ -188,12 +188,20 @@ export default function StickyHeader() {
                 <RollLink>Обсудить проект</RollLink>
               </Link>
 
-              <a href={`tel:${company.phone}`} className="md:hidden text-text-invert">
-                <Phone size={20} />
+              {/* Mobile CTA — compact version */}
+              <Link
+                href="/kontakty"
+                className="lg:hidden btn-primary text-[11px] px-3 py-1.5 whitespace-nowrap"
+              >
+                Обсудить
+              </Link>
+
+              <a href={`tel:${company.phone}`} className="md:hidden text-text-invert flex-shrink-0">
+                <Phone size={18} />
               </a>
 
               <button
-                className="md:hidden p-1 text-text-invert"
+                className="md:hidden p-1 text-text-invert flex-shrink-0"
                 onClick={() => setMobileOpen(true)}
                 aria-label="Открыть меню"
               >

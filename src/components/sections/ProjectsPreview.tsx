@@ -15,7 +15,7 @@ export default function ProjectsPreview() {
 
   return (
     <section
-      className="py-20 md:py-32 bg-bg relative overflow-hidden"
+      className="py-14 md:py-32 bg-bg relative overflow-hidden"
     >
       {/* Subtle concrete grain */}
       <div
@@ -84,7 +84,7 @@ export default function ProjectsPreview() {
             // Outer: handles spotlight opacity (separate from animation layer)
             <div
               key={p.id}
-              className="snap-start shrink-0 w-[82vw] md:w-auto"
+              className="snap-start shrink-0 w-[75vw] md:w-auto"
               style={{
                 opacity: activeCard !== null && activeCard !== i ? 0.45 : 1,
                 transition: "opacity 0.25s ease",

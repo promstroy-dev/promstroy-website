@@ -100,7 +100,7 @@ export default function OKompaniiPage() {
         </section>
 
         {/* ── Company Story + Leadership ── */}
-        <section className="py-20 md:py-32 bg-bg relative overflow-hidden">
+        <section className="py-14 md:py-32 bg-bg relative overflow-hidden">
           {/* Subtle concrete grain */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -121,7 +121,7 @@ export default function OKompaniiPage() {
           />
 
           <div className="relative max-w-content mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
               <div>
                 {/* Eyebrow */}
                 <div className="flex items-center gap-3 mb-5">
@@ -213,7 +213,7 @@ export default function OKompaniiPage() {
                   style={{ background: "radial-gradient(ellipse at top right, rgba(196,174,148,0.05) 0%, transparent 70%)" }}
                 />
 
-                <div className="p-8 pl-10">
+                <div className="p-6 md:p-8 md:pl-10">
                   {/* Year established */}
                   <div className="mb-6">
                     <div className="flex items-center gap-3 mb-1">

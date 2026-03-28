@@ -50,12 +50,12 @@ export default function TrustMarquee() {
     >
       {/* Left fade */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+        className="absolute left-0 top-0 bottom-0 w-8 md:w-20 z-10 pointer-events-none"
         style={{ background: "linear-gradient(to right, #152333, transparent)" }}
       />
       {/* Right fade */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+        className="absolute right-0 top-0 bottom-0 w-8 md:w-20 z-10 pointer-events-none"
         style={{ background: "linear-gradient(to left, #152333, transparent)" }}
       />
 

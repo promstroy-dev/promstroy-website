@@ -104,7 +104,7 @@ export default function KontaktyPage() {
               {/* ── LEFT: Form (takes 3 cols) ── */}
               <div className="lg:col-span-3">
                 <div
-                  className="relative p-7 md:p-10 overflow-hidden"
+                  className="relative p-5 md:p-10 overflow-hidden"
                   style={{
                     background: "#152333",
                     border: "1px solid rgba(30,51,72,0.9)",

@@ -72,7 +72,7 @@ export default function ServicesOverview({ expanded = false }: Props) {
     return (
       <section
         ref={sectionRef}
-        className="py-20 md:py-32 bg-bg relative overflow-hidden"
+        className="py-14 md:py-32 bg-bg relative overflow-hidden"
         onMouseMove={handleMouseMove}
       >
         {/* Concrete grain */}
@@ -104,7 +104,7 @@ export default function ServicesOverview({ expanded = false }: Props) {
             {services.map((s, i) => (
               <div
                 key={s.id}
-                className="snap-start shrink-0 w-[82vw] sm:w-[48vw] md:w-auto"
+                className="snap-start shrink-0 w-[75vw] sm:w-[48vw] md:w-auto"
                 style={{
                   opacity: activeCard !== null && activeCard !== i ? 0.42 : 1,
                   transition: "opacity 0.28s ease",
@@ -170,7 +170,7 @@ export default function ServicesOverview({ expanded = false }: Props) {
         УСЛУГИ
       </div>
 
-      <div ref={ref} className="relative max-w-content mx-auto px-4 md:px-8 py-20 md:py-32">
+      <div ref={ref} className="relative max-w-content mx-auto px-4 md:px-8 py-14 md:py-32">
 
         {/* Header */}
         <div
@@ -280,9 +280,10 @@ export default function ServicesOverview({ expanded = false }: Props) {
                   className="group block border-b transition-all duration-500"
                   style={{
                     borderColor: "rgba(196,174,148,0.10)",
-                    padding: "clamp(18px, 2.5vw, 28px) 0",
+                    padding: "clamp(16px, 2.5vw, 28px) 0",
                   }}
                   onMouseEnter={() => setActiveGallery(i)}
+                  onClick={() => setActiveGallery(i)}
                 >
                   <div className="flex items-start gap-4 md:gap-6">
                     {/* Service number */}

@@ -109,7 +109,7 @@ export default function StatsBanner() {
         }}
       />
 
-      <div className="relative max-w-content mx-auto px-4 md:px-8 py-10 md:py-14">
+      <div className="relative max-w-content mx-auto px-4 md:px-8 py-7 md:py-14">
 
         {/* Stats grid — columns adapt to number of visible stats */}
         <div className={`grid gap-0 grid-cols-2 ${stats.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"}`}>
@@ -129,11 +129,11 @@ export default function StatsBanner() {
                 />
               )}
 
-              <div className={`${i > 0 ? "md:pl-10" : ""} ${i < stats.length - 1 ? "md:pr-10" : ""} pl-0 pr-0 pb-6 md:pb-0`}>
+              <div className={`${i > 0 ? "md:pl-10" : ""} ${i < stats.length - 1 ? "md:pr-10" : ""} pl-0 pr-0 pb-4 md:pb-0`}>
                 <p
                   className="stat-value-masked font-heading font-bold leading-none mb-3"
                   style={{
-                    fontSize: "clamp(40px, 5vw, 72px)",
+                    fontSize: "clamp(32px, 8vw, 72px)",
                     letterSpacing: "-0.03em",
                   }}
                 >

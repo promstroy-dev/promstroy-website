@@ -69,24 +69,24 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
         }}
       />
 
-      {/* Corner bracket decorators */}
+      {/* Corner bracket decorators — visible on mobile, enhanced on hover */}
       {/* Top-left */}
-      <div className="absolute top-2 left-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute top-2 left-2 pointer-events-none opacity-40 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.35 }} />
         <div className="w-px h-3" style={{ background: "#C4AE94", opacity: 0.35 }} />
       </div>
       {/* Top-right */}
-      <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute top-2 right-2 pointer-events-none opacity-40 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="w-3 h-px ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
         <div className="w-px h-3 ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
       </div>
       {/* Bottom-left */}
-      <div className="absolute bottom-2 left-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end" style={{ height: "14px" }}>
+      <div className="absolute bottom-2 left-2 pointer-events-none opacity-40 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end" style={{ height: "14px" }}>
         <div className="w-px h-3" style={{ background: "#C4AE94", opacity: 0.35 }} />
         <div className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.35 }} />
       </div>
       {/* Bottom-right */}
-      <div className="absolute bottom-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end" style={{ height: "14px" }}>
+      <div className="absolute bottom-2 right-2 pointer-events-none opacity-40 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end" style={{ height: "14px" }}>
         <div className="w-px h-3 ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
         <div className="w-3 h-px ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
       </div>

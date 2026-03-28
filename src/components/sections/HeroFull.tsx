@@ -274,7 +274,7 @@ export default function HeroFull() {
       {/* ── Main content ──────────────────────────────────────────── */}
       {/* Foreground layer: moves opposite to background (pops toward viewer) */}
       <div
-        className="relative flex-1 flex flex-col justify-center max-w-content mx-auto px-6 md:px-8 pt-32 pb-10 w-full"
+        className="relative flex-1 flex flex-col justify-center max-w-content mx-auto px-5 md:px-8 pt-24 md:pt-32 pb-20 md:pb-10 w-full"
         style={{
           transform: `translateX(${mouse.x * -5}px) translateY(${mouse.y * -3}px)`,
           transition: "transform 1.0s cubic-bezier(0.19, 1, 0.22, 1)",
@@ -339,7 +339,7 @@ export default function HeroFull() {
 
         {/* Subheadline */}
         <motion.div
-          className="mb-12"
+          className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={visible ? { opacity: 1, y: 0 } : {}}
           transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.45 }}
@@ -365,7 +365,7 @@ export default function HeroFull() {
           <MagneticButton>
             <Link
               href="/kontakty"
-              className="group btn-primary gap-2.5 px-8 py-4 text-sm"
+              className="group btn-primary gap-2 md:gap-2.5 px-5 py-3 md:px-8 md:py-4 text-[13px] md:text-sm"
             >
               <RollLink>Обсудить проект</RollLink>
               <ArrowRight size={15} />
@@ -376,7 +376,7 @@ export default function HeroFull() {
           <MagneticButton>
             <Link
               href="/proekty"
-              className="group btn-ghost-dark inline-flex items-center gap-2.5 px-8 py-4 text-sm"
+              className="group btn-ghost-dark inline-flex items-center gap-2 md:gap-2.5 px-5 py-3 md:px-8 md:py-4 text-[13px] md:text-sm"
             >
               <RollLink>Смотреть проекты</RollLink>
             </Link>

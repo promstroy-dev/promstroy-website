@@ -33,7 +33,7 @@ export default function TestimonialMarquee() {
 
   return (
     <section
-      className="relative py-16 md:py-20 overflow-hidden"
+      className="relative py-12 md:py-20 overflow-hidden"
       style={{ background: "#152333" }}
     >
       {/* Top border */}
@@ -63,22 +63,22 @@ export default function TestimonialMarquee() {
 
       {/* Left / right fades */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        className="absolute left-0 top-0 bottom-0 w-10 md:w-24 z-10 pointer-events-none"
         style={{ background: "linear-gradient(to right, #152333, transparent)" }}
       />
       <div
-        className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        className="absolute right-0 top-0 bottom-0 w-10 md:w-24 z-10 pointer-events-none"
         style={{ background: "linear-gradient(to left, #152333, transparent)" }}
       />
 
       {/* Marquee track */}
-      <div className="animate-marquee-slow flex items-stretch gap-8 whitespace-nowrap w-max">
+      <div className="animate-marquee-slow flex items-stretch gap-4 md:gap-8 whitespace-nowrap w-max">
         {track.map((t, i) => (
           <blockquote
             key={i}
-            className="inline-flex flex-col justify-between flex-shrink-0 whitespace-normal px-7 py-6"
+            className="inline-flex flex-col justify-between flex-shrink-0 whitespace-normal px-5 py-5 md:px-7 md:py-6"
             style={{
-              width: "340px",
+              width: "min(280px, 75vw)",
               background: "rgba(26,43,61,0.55)",
               border: "1px solid rgba(84,119,146,0.12)",
             }}

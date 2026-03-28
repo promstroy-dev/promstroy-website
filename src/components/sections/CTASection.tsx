@@ -19,7 +19,7 @@ export default function CTASection({
 
   return (
     <section
-      className="py-20 md:py-32 relative overflow-hidden"
+      className="py-14 md:py-32 relative overflow-hidden"
       style={{ background: "#1A2B3D" }}
     >
       {/* Subtle brass ambient — top right */}

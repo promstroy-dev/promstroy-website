@@ -13,7 +13,7 @@ export default function ProcessSteps() {
 
   return (
     <section
-      className="py-20 md:py-32 bg-bg relative overflow-hidden"
+      className="py-14 md:py-32 bg-bg relative overflow-hidden"
     >
       {/* Subtle concrete grain */}
       <div

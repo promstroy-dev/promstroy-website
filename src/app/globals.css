@@ -496,6 +496,14 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+/* ── Mobile contact bar safe area ───────────────────────────────── */
+/* Ensure footer/last sections aren't hidden behind the fixed MobileContactBar */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 56px; /* MobileContactBar height (py-4 + text = ~56px) */
+  }
+}
+
 /* ── Respect reduced-motion preferences ─────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

@@ -36,7 +36,7 @@ export default function FAQSection() {
   const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
-    <section className="py-20 md:py-32 bg-bg relative overflow-hidden">
+    <section className="py-14 md:py-32 bg-bg relative overflow-hidden">
       {/* Concrete grain */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -108,7 +108,7 @@ export default function FAQSection() {
                   </span>
                   {/* Square toggle — zero radius, architectural */}
                   <span
-                    className="flex-shrink-0 w-6 h-6 flex items-center justify-center border transition-all duration-200"
+                    className="flex-shrink-0 w-8 h-8 md:w-6 md:h-6 flex items-center justify-center border transition-all duration-200"
                     style={{
                       background: isOpen ? "#1A2B3D" : "transparent",
                       borderColor: isOpen ? "#1A2B3D" : "#D0C4B0",
