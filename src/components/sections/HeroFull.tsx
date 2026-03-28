@@ -372,11 +372,11 @@ export default function HeroFull() {
             </Link>
           </MagneticButton>
 
-          {/* Secondary CTA — warm stone ghost */}
+          {/* Secondary CTA — warm stone ghost, hidden on mobile to reduce CTA density */}
           <MagneticButton>
             <Link
               href="/proekty"
-              className="group btn-ghost-dark inline-flex items-center gap-2 md:gap-2.5 px-5 py-3 md:px-8 md:py-4 text-[13px] md:text-sm"
+              className="group btn-ghost-dark hidden md:inline-flex items-center gap-2.5 px-8 py-4 text-sm"
             >
               <RollLink>Смотреть проекты</RollLink>
             </Link>

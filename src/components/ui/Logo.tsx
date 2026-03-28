@@ -28,9 +28,9 @@ interface LogoProps {
 }
 
 const SIZES = {
-  sm: { mark: 18, wordmarkSize: "text-sm",   tracking: "tracking-[0.10em]", gap: "gap-2.5" },
-  md: { mark: 24, wordmarkSize: "text-base", tracking: "tracking-[0.12em]", gap: "gap-3"   },
-  lg: { mark: 30, wordmarkSize: "text-xl",   tracking: "tracking-[0.13em]", gap: "gap-3.5" },
+  sm: { mark: 18, wordmarkSize: "text-sm",                     tracking: "tracking-[0.10em]", gap: "gap-2.5" },
+  md: { mark: 24, wordmarkSize: "text-[13px] md:text-base",    tracking: "tracking-[0.08em] md:tracking-[0.12em]", gap: "gap-2 md:gap-3"   },
+  lg: { mark: 30, wordmarkSize: "text-xl",                     tracking: "tracking-[0.13em]", gap: "gap-3.5" },
 };
 
 const BRASS = "#C4AE94";

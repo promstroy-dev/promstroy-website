@@ -113,9 +113,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Description */}
-        <section className="py-16 bg-bg">
+        <section className="py-12 md:py-16 bg-bg">
           <div className="max-w-content mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
               <div className="lg:col-span-2">
                 <h2 className="font-heading font-semibold text-text text-2xl mb-6">О проекте</h2>
                 <p className="text-text-muted leading-relaxed mb-10">{project.description}</p>

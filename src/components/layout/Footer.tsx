@@ -26,8 +26,92 @@ export default function Footer() {
         }}
       />
 
-      <div className="max-w-content mx-auto px-4 md:px-8 py-10 md:py-16 pb-24 md:pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 md:gap-10">
+      <div className="max-w-content mx-auto px-4 md:px-8 py-10 md:py-16">
+
+        {/* ── Mobile footer: stacked, compact ──────────────────────── */}
+        <div className="md:hidden">
+          {/* Brand */}
+          <div className="mb-6">
+            <Logo size="md" light />
+            <p className="text-xs mt-3 leading-relaxed" style={{ color: "rgba(240,235,227,0.40)" }}>
+              Коммерческое строительство в Самаре с 2015 года
+            </p>
+          </div>
+
+          {/* Nav — horizontal row */}
+          <div className="flex flex-wrap gap-x-5 gap-y-2 mb-6 pb-6 border-b border-border-dark/40">
+            {[
+              { href: "/uslugi",     label: "Услуги"      },
+              { href: "/proekty",    label: "Проекты"     },
+              { href: "/o-kompanii", label: "О компании"  },
+              { href: "/kontakty",   label: "Контакты"    },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm hover:text-accent transition-colors duration-200"
+                style={{ color: "rgba(240,235,227,0.55)" }}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Contacts — compact list */}
+          <div className="flex flex-col gap-2 mb-6 pb-6 border-b border-border-dark/40">
+            <CopyButton
+              text={company.phone}
+              className="hover:text-accent transition-colors duration-200"
+              style={{ color: "rgba(240,235,227,0.55)" }}
+            >
+              <Phone size={12} className="text-accent flex-shrink-0" />
+              <a
+                href={`tel:${company.phone}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-sm hover:text-accent transition-colors"
+              >
+                {company.phoneDisplay}
+              </a>
+            </CopyButton>
+            <CopyButton
+              text={company.telegram}
+              className="hover:text-accent transition-colors duration-200"
+              style={{ color: "rgba(240,235,227,0.55)" }}
+            >
+              <Send size={12} className="text-accent flex-shrink-0" />
+              <a
+                href={`https://t.me/${company.telegram.replace("@", "")}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-sm hover:text-accent transition-colors"
+              >
+                {company.telegram}
+              </a>
+            </CopyButton>
+            {company.email && (
+              <p className="text-xs text-text-muted">{company.email}</p>
+            )}
+          </div>
+
+          {/* Legal — compact block */}
+          <div className="text-[11px] text-text-muted leading-relaxed space-y-1">
+            <p>© {year} ПромСтрой. ИП Алимбеков О.В.</p>
+            {(company.inn || company.ogrn) && (
+              <p>
+                {[
+                  company.inn  && `ИНН ${company.inn}`,
+                  company.ogrn && `ОГРНИП ${company.ogrn}`,
+                ].filter(Boolean).join(" · ")}
+              </p>
+            )}
+            {company.address && <p>{company.address}</p>}
+            <Link href="/privacy" className="block mt-2 hover:text-accent transition-colors" style={{ color: "rgba(240,235,227,0.45)" }}>
+              Политика конфиденциальности
+            </Link>
+          </div>
+        </div>
+
+        {/* ── Desktop footer: 4-column grid ────────────────────────── */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Col 1: Brand */}
           <div>
@@ -79,7 +163,6 @@ export default function Footer() {
               Контакты
             </p>
             <div className="flex flex-col gap-2.5 text-sm">
-              {/* Phone: click to call | copy icon */}
               <CopyButton
                 text={company.phone}
                 className="hover:text-accent transition-colors duration-200"
@@ -94,7 +177,6 @@ export default function Footer() {
                   {company.phoneDisplay}
                 </a>
               </CopyButton>
-              {/* Telegram: click to open | copy icon */}
               <CopyButton
                 text={company.telegram}
                 className="hover:text-accent transition-colors duration-200"
@@ -135,13 +217,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Mini CTA */}
+        {/* Mini CTA — desktop only */}
         <div
-          className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border-dark/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+          className="hidden md:flex mt-12 pt-8 border-t border-border-dark/60 flex-row justify-between items-center gap-4"
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-3">
+          <div className="flex flex-row items-center gap-3">
             <span className="text-xs text-text-muted">Строительная компания ПромСтрой — Самара</span>
-            <span className="hidden md:inline text-text-muted">·</span>
+            <span className="text-text-muted">·</span>
             <span className="text-xs text-text-muted">Сайт для коммерческих клиентов и застройщиков</span>
           </div>
           <Link

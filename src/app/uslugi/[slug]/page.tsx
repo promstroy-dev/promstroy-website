@@ -67,9 +67,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       <StickyHeader />
       <main>
         <PageHero title={service.title} label="Услуги" />
-        <section className="py-20 bg-bg">
+        <section className="py-14 md:py-20 bg-bg">
           <div className="max-w-content mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
               <div className="lg:col-span-2">
                 <div className="mb-6">
                   <ServiceIconTilt>{icons[service.icon]}</ServiceIconTilt>
