@@ -160,6 +160,14 @@ export default function StatsBanner() {
                 >
                   {s.label}
                 </p>
+                {s.sublabel && (
+                  <p
+                    className="text-[10px] mt-1.5"
+                    style={{ color: "rgba(140,130,120,0.50)", letterSpacing: "0.04em" }}
+                  >
+                    {s.sublabel}
+                  </p>
+                )}
               </div>
             </div>
           ))}

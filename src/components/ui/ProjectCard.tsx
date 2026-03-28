@@ -116,6 +116,28 @@ export default function ProjectCard({ project }: Props) {
           }}
         />
 
+        {/* Corner bracket decorators — steel blue */}
+        {/* Top-left */}
+        <div className="absolute top-2 left-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+          <div className="w-3 h-px" style={{ background: "#547792", opacity: 0.4 }} />
+          <div className="w-px h-3" style={{ background: "#547792", opacity: 0.4 }} />
+        </div>
+        {/* Top-right — avoid badge overlap */}
+        <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+          <div className="w-3 h-px ml-auto" style={{ background: "#547792", opacity: 0.4 }} />
+          <div className="w-px h-3 ml-auto" style={{ background: "#547792", opacity: 0.4 }} />
+        </div>
+        {/* Bottom-left */}
+        <div className="absolute bottom-2 left-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end" style={{ height: "14px" }}>
+          <div className="w-px h-3" style={{ background: "#547792", opacity: 0.4 }} />
+          <div className="w-3 h-px" style={{ background: "#547792", opacity: 0.4 }} />
+        </div>
+        {/* Bottom-right */}
+        <div className="absolute bottom-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-end justify-end" style={{ height: "14px" }}>
+          <div className="w-px h-3 ml-auto" style={{ background: "#547792", opacity: 0.4 }} />
+          <div className="w-3 h-px ml-auto" style={{ background: "#547792", opacity: 0.4 }} />
+        </div>
+
         {/* Type badge — top left */}
         <div className="absolute top-3 left-3 z-10">
           <span

@@ -26,6 +26,24 @@ export default function TrustBlock() {
         }}
       />
 
+      {/* Architectural grid overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(196,174,148,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(196,174,148,0.03) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
+
+      {/* Warm ambient glow — center */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(196,174,148,0.04) 0%, transparent 70%)",
+        }}
+      />
+
       <div ref={ref} className="relative max-w-content mx-auto px-4 md:px-8">
 
         {/* Header */}

@@ -1,16 +1,21 @@
-const items = [
-  "18 лет на рынке",
-  "Официальный договор",
-  "СРО допуски",
-  "Полный цикл работ",
-  "Самара и область",
-  "Гарантия на работы",
-  "Складские комплексы",
-  "Офисные помещения",
-  "Торговые объекты",
-  "Рестораны и кафе",
-  "Производственные объекты",
-  "Исполнительная документация",
+interface MarqueeItem {
+  text: string;
+  accent?: boolean;
+}
+
+const items: MarqueeItem[] = [
+  { text: "18 лет на рынке" },
+  { text: "Официальный договор" },
+  { text: "СРО допуски", accent: true },
+  { text: "Полный цикл работ" },
+  { text: "Самара и область" },
+  { text: "Гарантия на работы", accent: true },
+  { text: "Складские комплексы" },
+  { text: "Офисные помещения" },
+  { text: "Торговые объекты" },
+  { text: "Рестораны и кафе" },
+  { text: "Производственные объекты" },
+  { text: "Исполнительная документация", accent: true },
 ];
 
 // Diamond separator
@@ -57,16 +62,29 @@ export default function TrustMarquee() {
       <div className="animate-marquee flex items-center gap-6 whitespace-nowrap w-max">
         {track.map((item, i) => (
           <span key={i} className="flex items-center gap-6">
+            {item.accent && (
+              <span
+                aria-hidden
+                className="inline-block flex-shrink-0"
+                style={{
+                  width: "5px",
+                  height: "5px",
+                  background: "#C4AE94",
+                  transform: "rotate(45deg)",
+                  opacity: 0.45,
+                }}
+              />
+            )}
             <span
               className="font-body font-medium"
               style={{
                 fontSize: "10px",
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                color: "rgba(196,174,148,0.40)",
+                color: item.accent ? "rgba(196,174,148,0.65)" : "rgba(196,174,148,0.40)",
               }}
             >
-              {item}
+              {item.text}
             </span>
             <Sep />
           </span>

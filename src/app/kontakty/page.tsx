@@ -66,7 +66,7 @@ export default function KontaktyPage() {
                     className="font-heading font-semibold text-2xl"
                     style={{ color: "#F0EBE3", letterSpacing: "-0.01em" }}
                   >
-                    Оставить заявку
+                    Начать проект
                   </h2>
                 </div>
 

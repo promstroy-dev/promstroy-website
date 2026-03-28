@@ -6,6 +6,7 @@ import CTASection from "@/components/sections/CTASection";
 import ProjectCard from "@/components/ui/ProjectCard";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
+import ServiceIconTilt from "@/components/ui/ServiceIconTilt";
 import { Building2, Hammer, Wrench, Network } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -70,7 +71,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <div className="max-w-content mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-2">
-                <div className="mb-6">{icons[service.icon]}</div>
+                <div className="mb-6">
+                  <ServiceIconTilt>{icons[service.icon]}</ServiceIconTilt>
+                </div>
                 <p className="text-text-muted text-lg leading-relaxed mb-10">{service.description}</p>
                 <h3 className="font-heading font-semibold text-text text-xl mb-6">Виды работ</h3>
                 <ul className="flex flex-col gap-3">
@@ -128,7 +131,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                       href="/kontakty"
                       className="btn-primary w-full justify-center text-sm py-3"
                     >
-                      Оставить заявку
+                      Начать проект
                     </a>
                   </div>
                 </div>

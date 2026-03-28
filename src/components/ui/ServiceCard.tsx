@@ -69,6 +69,28 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
         }}
       />
 
+      {/* Corner bracket decorators */}
+      {/* Top-left */}
+      <div className="absolute top-2 left-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.35 }} />
+        <div className="w-px h-3" style={{ background: "#C4AE94", opacity: 0.35 }} />
+      </div>
+      {/* Top-right */}
+      <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="w-3 h-px ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
+        <div className="w-px h-3 ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
+      </div>
+      {/* Bottom-left */}
+      <div className="absolute bottom-2 left-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end" style={{ height: "14px" }}>
+        <div className="w-px h-3" style={{ background: "#C4AE94", opacity: 0.35 }} />
+        <div className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.35 }} />
+      </div>
+      {/* Bottom-right */}
+      <div className="absolute bottom-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end" style={{ height: "14px" }}>
+        <div className="w-px h-3 ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
+        <div className="w-3 h-px ml-auto" style={{ background: "#C4AE94", opacity: 0.35 }} />
+      </div>
+
       {/* Architectural background number */}
       {cardNumber && (
         <div
@@ -88,16 +110,27 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
       {/* Card content */}
       <div className="p-6 md:p-7 flex flex-col flex-1">
 
-        {/* Icon container */}
-        <div
-          className="mb-6 w-11 h-11 flex items-center justify-center flex-shrink-0 transition-all duration-250 group-hover:scale-105 group-hover:border-[rgba(196,174,148,0.45)] origin-left"
-          style={{
-            background: "rgba(196,174,148,0.09)",
-            border: "1px solid rgba(196,174,148,0.22)",
-            color: "#9A7E64",
-          }}
-        >
-          {icons[service.icon] ?? <Building2 size={22} />}
+        {/* Icon container with grid decorator */}
+        <div className="relative mb-6 w-11 h-11 flex-shrink-0">
+          {/* Grid pattern behind icon */}
+          <div
+            className="absolute -inset-1.5 pointer-events-none"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(196,174,148,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(196,174,148,0.06) 1px, transparent 1px)",
+              backgroundSize: "6px 6px",
+            }}
+          />
+          <div
+            className="relative w-full h-full flex items-center justify-center transition-all duration-250 group-hover:scale-105 group-hover:border-[rgba(196,174,148,0.45)] origin-left"
+            style={{
+              background: "rgba(196,174,148,0.09)",
+              border: "1px solid rgba(196,174,148,0.22)",
+              color: "#9A7E64",
+            }}
+          >
+            {icons[service.icon] ?? <Building2 size={22} />}
+          </div>
         </div>
 
         {/* Title */}

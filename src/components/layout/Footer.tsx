@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Phone, Send } from "lucide-react";
+import { Phone, Send, ArrowRight } from "lucide-react";
 import { company } from "@/data/company";
 import Logo from "@/components/ui/Logo";
 import CopyButton from "@/components/ui/CopyButton";
@@ -8,7 +8,15 @@ import CopyButton from "@/components/ui/CopyButton";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t bg-bg-deep border-border-dark" style={{ color: "rgba(240,235,227,0.55)" }}>
+    <footer className="relative border-t bg-bg-deep border-border-dark" style={{ color: "rgba(240,235,227,0.55)" }}>
+      {/* Warm ambient glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(196,174,148,0.035) 0%, transparent 70%)",
+        }}
+      />
+
       {/* Top brass accent */}
       <div
         className="h-[1px]"
@@ -126,12 +134,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom rule */}
+        {/* Mini CTA */}
         <div
-          className="mt-12 pt-6 border-t border-border-dark/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 text-xs text-text-muted"
+          className="mt-12 pt-8 border-t border-border-dark/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
         >
-          <span>Строительная компания ПромСтрой — Самара</span>
-          <span>Сайт для коммерческих клиентов и застройщиков</span>
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            <span className="text-xs text-text-muted">Строительная компания ПромСтрой — Самара</span>
+            <span className="hidden md:inline text-text-muted">·</span>
+            <span className="text-xs text-text-muted">Сайт для коммерческих клиентов и застройщиков</span>
+          </div>
+          <Link
+            href="/kontakty"
+            className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 flex-shrink-0 transition-colors duration-200 hover:bg-accent hover:text-[#1A2B3D]"
+            style={{
+              color: "#C4AE94",
+              border: "1px solid rgba(196,174,148,0.25)",
+            }}
+          >
+            Начать проект
+            <ArrowRight size={11} />
+          </Link>
         </div>
       </div>
     </footer>

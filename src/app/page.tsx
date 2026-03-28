@@ -4,6 +4,7 @@ import TrustMarquee from "@/components/sections/TrustMarquee";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import ProjectsPreview from "@/components/sections/ProjectsPreview";
 import TrustBlock from "@/components/sections/TrustBlock";
+import TestimonialMarquee from "@/components/sections/TestimonialMarquee";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
@@ -81,6 +82,7 @@ export default function HomePage() {
         <ProjectsPreview />
         <TrustBlock />
         <ProcessSteps />
+        <TestimonialMarquee />
         <FAQSection />
         <CTASection sourcePage="homepage" />
       </main>

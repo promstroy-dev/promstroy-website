@@ -37,5 +37,5 @@ export interface CompanyData {
   address: string;
   inn: string;
   ogrn: string;
-  stats: { value: string; label: string }[];
+  stats: { value: string; label: string; sublabel?: string }[];
 }

@@ -268,7 +268,7 @@ export default function InquiryForm({ sourcePage, dark = false }: Props) {
               Отправляем...
             </>
           ) : (
-            "Отправить заявку"
+            "Начать проект"
           )}
         </button>
       </MagneticButton>

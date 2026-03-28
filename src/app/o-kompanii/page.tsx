@@ -1,5 +1,5 @@
 import PageHero from "@/components/sections/PageHero";
-import StatsBanner from "@/components/sections/StatsBanner";
+import CompanyTimeline from "@/components/sections/CompanyTimeline";
 import CTASection from "@/components/sections/CTASection";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
@@ -107,7 +107,7 @@ export default function OKompaniiPage() {
           </div>
         </section>
 
-        <StatsBanner />
+        <CompanyTimeline />
 
         {/* Документы — pending real content */}
         <section className="py-16 bg-bg border-t border-border">

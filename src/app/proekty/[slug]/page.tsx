@@ -177,7 +177,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       href="https://t.me/skpromstroy_samara"
                       className="btn-primary w-full justify-center text-sm py-3"
                     >
-                      Написать в Telegram
+                      Обсудить в Telegram
                     </a>
                   </div>
                 </div>

@@ -12,8 +12,8 @@ export const company: CompanyData = {
   inn: "632507052478",
   ogrn: "324632700128069",
   stats: [
-    { value: "11",       label: "лет на рынке"    },
-    { value: "50+",      label: "объектов сдано"  },
-    { value: "10 000+",  label: "м² построено"    },
+    { value: "11",       label: "лет на рынке",   sublabel: "с 2015 года в Самаре"     },
+    { value: "50+",      label: "объектов сдано",  sublabel: "офисы, склады, рестораны"  },
+    { value: "10 000+",  label: "м² построено",   sublabel: "коммерческая недвижимость" },
   ],
 };
