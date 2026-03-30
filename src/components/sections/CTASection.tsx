@@ -92,7 +92,7 @@ export default function CTASection({
                 "Работаем официально, с договором",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-sm"
-                     style={{ color: "rgba(240,235,227,0.52)" }}>
+                     style={{ color: "rgba(240,235,227,0.55)" }}>
                   {/* Architectural tick mark — rectangular, zero-radius */}
                   <span
                     className="flex-shrink-0 w-3 h-px"

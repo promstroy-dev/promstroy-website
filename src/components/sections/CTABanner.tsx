@@ -83,7 +83,7 @@ export default function CTABanner() {
           </h2>
           <p
             className="text-sm md:text-base mb-8 max-w-md mx-auto leading-relaxed"
-            style={{ color: "rgba(148,180,193,0.70)" }}
+            style={{ color: "rgba(148,180,193,0.72)" }}
           >
             Расскажите о задаче — подготовим смету и план работ. Консультация бесплатная.
           </p>

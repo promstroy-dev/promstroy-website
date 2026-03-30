@@ -73,7 +73,7 @@ export default function PrivacyPage() {
               {company.address && <li>Адрес: {company.address}</li>}
             </ul>
 
-            <p className="text-text-muted text-sm mt-10" style={{ borderTop: "1px solid #D0C4B0", paddingTop: "1.5rem" }}>
+            <p className="text-text-muted text-sm mt-10" style={{ borderTop: "1px solid #D5CBBA", paddingTop: "1.5rem" }}>
               Политика может обновляться. Актуальная версия всегда доступна на этой странице.
             </p>
           </div>

@@ -203,7 +203,7 @@ export default function ServicesOverview({ expanded = false }: Props) {
           className={`max-w-md text-sm leading-relaxed mb-14 transition-all duration-600 ${
             inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
           }`}
-          style={{ color: "rgba(148,180,193,0.60)", animationDelay: "0.32s" }}
+          style={{ color: "rgba(148,180,193,0.55)", animationDelay: "0.32s" }}
         >
           Один подрядчик — полный цикл. От фундамента до финишной отделки.
         </p>
@@ -332,7 +332,7 @@ export default function ServicesOverview({ expanded = false }: Props) {
                       >
                         <p
                           className="text-sm leading-relaxed mt-2 max-w-sm"
-                          style={{ color: "rgba(148,180,193,0.60)" }}
+                          style={{ color: "rgba(148,180,193,0.55)" }}
                         >
                           {s.description.length > 120
                             ? s.description.slice(0, 120) + "…"

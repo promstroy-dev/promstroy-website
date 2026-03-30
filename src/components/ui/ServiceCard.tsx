@@ -25,8 +25,8 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
     <div
       className="group relative flex flex-col h-full"
       style={{
-        background: "#F5EFE6",
-        border: "1px solid #D8CCBA",
+        background: "#F6F1E8",
+        border: "1px solid #D5CBBA",
         boxShadow: "0 1px 3px rgba(26,43,61,0.06), inset 0 1px 0 rgba(255,255,255,0.60)",
         transition: "transform 0.30s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.30s ease, border-color 0.30s ease",
       }}
@@ -42,7 +42,7 @@ export default function ServiceCard({ service, expanded = false, index }: Props)
         const el = e.currentTarget;
         el.style.transform = "translateY(0)";
         el.style.boxShadow = "0 1px 3px rgba(26,43,61,0.06), inset 0 1px 0 rgba(255,255,255,0.60)";
-        el.style.borderColor = "#D8CCBA";
+        el.style.borderColor = "#D5CBBA";
       }}
     >
       {/* Top structural rule */}

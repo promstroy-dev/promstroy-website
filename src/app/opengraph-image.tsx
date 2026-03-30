@@ -60,7 +60,7 @@ export default function OGImage() {
           style={{
             fontSize: "72px",
             fontWeight: 700,
-            color: "#EAE0CF",
+            color: "#EBE5D4",
             fontFamily: "sans-serif",
             letterSpacing: "-0.02em",
             lineHeight: 1,

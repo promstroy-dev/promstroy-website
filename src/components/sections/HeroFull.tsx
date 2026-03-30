@@ -348,9 +348,9 @@ export default function HeroFull() {
             className="text-lg md:text-xl leading-relaxed max-w-[460px]"
             style={{ color: "rgba(240,235,227,0.52)", fontFamily: "var(--font-inter)" }}
           >
-            Офисы, рестораны, торговые центры, склады.{" "}
+            Офисы, склады, торговые центры, рестораны.{" "}
             <br className="hidden md:block" />
-            Полный цикл. Один подрядчик.
+            От нулевого цикла до ключей. Один подрядчик.
           </p>
         </motion.div>
 

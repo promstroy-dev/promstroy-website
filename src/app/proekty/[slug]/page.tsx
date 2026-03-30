@@ -46,27 +46,96 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       />
       <StickyHeader />
       <main>
-        {/* Breadcrumb */}
-        <div className="bg-bg-dark pt-24 pb-8">
-          <div className="max-w-content mx-auto px-4 md:px-8">
-            <nav className="flex items-center gap-2 text-sm text-text-muted mb-6">
+        {/* ── Immersive project hero ── */}
+        <section
+          className="relative min-h-[50vh] overflow-hidden flex items-end"
+          style={{ background: "#0D1A28" }}
+        >
+          {/* Noise texture */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+              opacity: 0.025,
+            }}
+          />
+          {/* Structural grid */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px)`,
+            }}
+          />
+          {/* Brass vertical rule — left edge */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-[2px] pointer-events-none"
+            style={{
+              background: `linear-gradient(to bottom, transparent 0%, #C4AE94 12%, #C4AE94 88%, transparent 100%)`,
+              opacity: 0.45,
+            }}
+          />
+          {/* Warm ambient — top right */}
+          <div
+            className="absolute top-0 right-0 w-[500px] h-[400px] pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at top right, rgba(196,174,148,0.06) 0%, transparent 65%)",
+            }}
+          />
+          {/* Background word */}
+          <div
+            className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none font-heading font-bold leading-none hidden lg:block"
+            aria-hidden="true"
+            style={{
+              fontSize: "clamp(70px, 12vw, 180px)",
+              color: "rgba(196,174,148,0.02)",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            {project.type.toUpperCase()}
+          </div>
+
+          <div className="relative max-w-content mx-auto px-4 md:px-8 pt-28 md:pt-36 pb-14 md:pb-20 w-full">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm mb-6" style={{ color: "#7A8E98" }}>
               <Link href="/" className="hover:text-accent transition-colors">Главная</Link>
-              <span>→</span>
+              <span style={{ opacity: 0.4 }}>→</span>
               <Link href="/proekty" className="hover:text-accent transition-colors">Проекты</Link>
-              <span>→</span>
-              <span className="text-text-invert">{project.title}</span>
+              <span style={{ opacity: 0.4 }}>→</span>
+              <span style={{ color: "#F0EBE3" }}>{project.title}</span>
             </nav>
-            <div className="flex flex-wrap items-center gap-4 mb-4">
+
+            <div className="flex flex-wrap items-center gap-4 mb-5">
               <Badge label={project.type} />
             </div>
-            <h1 className="font-heading font-bold text-text-invert text-3xl md:text-5xl mb-4">{project.title}</h1>
-            <div className="flex flex-wrap gap-6 text-sm text-text-muted">
-              {project.area && <span>Площадь: {project.area}</span>}
-              <span>Год: {project.year}</span>
-              <span>Город: {project.city}</span>
+            <h1
+              className="font-bold mb-5 leading-tight max-w-3xl"
+              style={{
+                fontFamily: "var(--font-unbounded), var(--font-space-grotesk), sans-serif",
+                fontSize: "clamp(30px, 4vw, 56px)",
+                color: "#F0EBE3",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              {project.title}
+            </h1>
+            <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(148,180,193,0.55)" }}>
+              {project.area && (
+                <span className="flex items-center gap-2">
+                  <span className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.5 }} />
+                  {project.area}
+                </span>
+              )}
+              <span className="flex items-center gap-2">
+                <span className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.5 }} />
+                {project.year}
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-3 h-px" style={{ background: "#C4AE94", opacity: 0.5 }} />
+                {project.city}
+              </span>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Gallery placeholder — architectural treatment until photos arrive */}
         <section className="bg-bg py-16">
@@ -113,8 +182,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Description */}
-        <section className="py-12 md:py-16 bg-bg">
-          <div className="max-w-content mx-auto px-4 md:px-8">
+        <section className="py-12 md:py-16 bg-bg relative overflow-hidden">
+          {/* Subtle grain */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+              opacity: 0.018,
+            }}
+          />
+          <div className="relative max-w-content mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
               <div className="lg:col-span-2">
                 <h2 className="font-heading font-semibold text-text text-2xl mb-6">О проекте</h2>
@@ -136,9 +213,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 <div
                   className="relative overflow-hidden"
                   style={{
-                    background: "#192C40",
+                    background: "#1D3044",
                     border: "1px solid #1E3348",
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(196,174,148,0.06)",
                   }}
                 >
                   {/* Top structural rule */}
@@ -164,7 +241,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <h3 className="font-heading font-semibold mb-2 leading-snug" style={{ fontSize: "1.0rem", color: "#F0EBE3" }}>
                       Обсудить похожий проект
                     </h3>
-                    <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.70)" }}>
+                    <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.72)" }}>
                       Перезвоним, уточним детали, составим смету
                     </p>
                     <a

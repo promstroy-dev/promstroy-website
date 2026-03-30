@@ -82,7 +82,7 @@ export default function FAQSection() {
                   inView ? "animate-fade-up opacity-100" : "opacity-0 translate-y-5"
                 } ${i === 0 ? "border-t" : ""}`}
                 style={{
-                  borderColor: "#D0C4B0",
+                  borderColor: "#D5CBBA",
                   animationDelay: `${0.06 + i * 0.07}s`,
                 }}
               >
@@ -111,8 +111,8 @@ export default function FAQSection() {
                     className="flex-shrink-0 w-8 h-8 md:w-6 md:h-6 flex items-center justify-center border transition-all duration-200"
                     style={{
                       background: isOpen ? "#1A2B3D" : "transparent",
-                      borderColor: isOpen ? "#1A2B3D" : "#D0C4B0",
-                      color: isOpen ? "#EAE0CF" : "#7A8E98",
+                      borderColor: isOpen ? "#1A2B3D" : "#D5CBBA",
+                      color: isOpen ? "#EBE5D4" : "#7A8E98",
                     }}
                   >
                     {isOpen ? <Minus size={12} /> : <Plus size={12} />}

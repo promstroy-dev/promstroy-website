@@ -9,9 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // ── Light surfaces — warm stone/travertine ───────────────────────
-        bg:         "#EAE0CF",   // primary light surface; warm stone/Portland cement
-        "bg-soft":  "#D8CCB8",   // recessed light surface; deeper warm stone
+        // ── Light surfaces — ivory / limestone ─────────────────────────────
+        bg:         "#EBE5D4",   // primary light surface; ivory limestone
+        "bg-soft":  "#DED7C6",   // recessed light surface; deeper warm stone
+        "bg-warm":  "#E3DBC9",   // intermediate surface; layered depth on light
         // ── Dark surfaces — deep naval steel ────────────────────────────
         // Deep naval darks from Palette F direction. The warm stone accent
         // now reads as travertine/concrete against a structural steel ground.
@@ -33,10 +34,10 @@ const config: Config = {
         "accent-blue":       "#547792",  // structural steel blue; links, focus
         "accent-blue-light": "#94B4C1",  // light steel; hover states, muted on dark
         // ── Borders ─────────────────────────────────────────────────────
-        border:       "#D0C4B0",  // warm stone border on light surfaces
+        border:       "#D5CBBA",  // warm stone border on light surfaces
         "border-dark": "#1E3348", // barely visible on dark surfaces (naval)
         // ── Card ────────────────────────────────────────────────────────
-        "card-bg": "#FFFFFF",
+        "card-bg": "#F6F1E8",   // elevated card on light surface
       },
       fontFamily: {
         heading: ["var(--font-space-grotesk)", "sans-serif"],

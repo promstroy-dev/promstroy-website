@@ -19,6 +19,13 @@ const icons: Record<string, React.ReactNode> = {
 
 const siteUrl = process.env.SITE_URL ?? "https://sk-promstroy.ru";
 
+const ctaVerb: Record<string, string> = {
+  "stroitelstvo-pod-klyuch": "Нужно",
+  "remont-i-renovaciya": "Нужны",
+  "konstruktivnye-raboty": "Нужны",
+  "inzhenernye-seti": "Нужны",
+};
+
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -66,15 +73,23 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       />
       <StickyHeader />
       <main>
-        <PageHero title={service.title} label="Услуги" />
-        <section className="py-14 md:py-20 bg-bg">
-          <div className="max-w-content mx-auto px-4 md:px-8">
+        <PageHero title={service.title} subtitle={service.description} label="Услуги" />
+        <section className="py-14 md:py-20 bg-bg relative overflow-hidden">
+          {/* Subtle grain */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+              opacity: 0.018,
+            }}
+          />
+          <div className="relative max-w-content mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
               <div className="lg:col-span-2">
                 <div className="mb-6">
                   <ServiceIconTilt>{icons[service.icon]}</ServiceIconTilt>
                 </div>
-                <p className="text-text-muted text-lg leading-relaxed mb-8">{service.description}</p>
+                {/* Description is now in the hero — jump straight to timeline/items */}
 
                 {service.timeline && (
                   <div
@@ -105,9 +120,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 <div
                   className="relative overflow-hidden sticky top-24"
                   style={{
-                    background: "#213448",
+                    background: "#1D3044",
                     border: "1px solid #1E3348",
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(196,174,148,0.06)",
                   }}
                 >
                   {/* Top structural rule */}
@@ -134,7 +149,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                     <h3 className="font-heading font-semibold mb-2 leading-snug" style={{ fontSize: "1.05rem", color: "#F0EBE3" }}>
                       Обсудить проект
                     </h3>
-                    <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.75)" }}>
+                    <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.72)" }}>
                       Расскажите о задаче — перезвоним в течение 2 часов
                     </p>
                     <a
@@ -161,7 +176,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </section>
         )}
 
-        <CTASection sourcePage={`uslugi/${service.slug}`} headline={`Нужна ${service.title.toLowerCase()}?`} subtitle="Расскажите о задаче — перезвоним, уточним детали, назовём сроки и стоимость." />
+        <CTASection sourcePage={`uslugi/${service.slug}`} headline={`${ctaVerb[service.slug] ?? "Нужна"} ${service.title.toLowerCase()}?`} subtitle="Расскажите о задаче — перезвоним, уточним детали, назовём сроки и стоимость." />
       </main>
       <Footer />
     </>
