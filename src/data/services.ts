@@ -15,6 +15,7 @@ export const services: Service[] = [
       "Частные коммерческие объекты",
     ],
     icon: "Building2",
+    timeline: "от 3 до 12 месяцев в зависимости от площади и сложности",
   },
   {
     id: "remont",
@@ -30,6 +31,7 @@ export const services: Service[] = [
       "Отделочные работы полного цикла",
     ],
     icon: "Hammer",
+    timeline: "от 4 недель до 6 месяцев — зависит от площади и объёма перепланировок",
   },
   {
     id: "konstruktivnye",
@@ -47,6 +49,7 @@ export const services: Service[] = [
       "Аварийные работы",
     ],
     icon: "Wrench",
+    timeline: "от 1 недели до 3 месяцев — зависит от масштаба и доступа к объекту",
   },
   {
     id: "inzhenernye",
@@ -61,5 +64,6 @@ export const services: Service[] = [
       "Изделия из металла на заказ",
     ],
     icon: "Network",
+    timeline: "от 2 недель до 2 месяцев — зависит от типа изделия и объёма монтажа",
   },
 ];

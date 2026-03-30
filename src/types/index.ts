@@ -5,6 +5,7 @@ export interface Service {
   description: string;
   items: string[];
   icon: string; // lucide icon name
+  timeline?: string;
 }
 
 export interface Project {

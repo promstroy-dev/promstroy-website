@@ -67,3 +67,9 @@ The brand/trade name on the website does NOT need to match the legal entity name
 
 ### L15: ОКН (Объект культурного наследия) projects are premium credentials
 **Rule**: If a client has worked on a listed heritage building (ОКН), treat it as a premium trust signal and feature it prominently in the portfolio. Heritage work requires government approval, coordination with preservation authorities, and specialist methods — it signals a level of trust and institutional capability that ordinary construction projects don't.
+
+### L16: Cross-check hardcoded numbers across components
+**Rule**: When the same fact (years in business, project count, area built) appears in multiple places (TrustMarquee, StatsBanner, TrustBlock, About page), all instances MUST match. The TrustMarquee said "18 лет" while StatsBanner said "11 лет" — a direct trust contradiction. Before any content sprint, grep for key numbers across all components and verify consistency.
+
+### L17: Every page needs a CTA — no dead ends
+**Rule**: The /proekty index page had no CTASection — a prospect could browse projects, reach the bottom, and have no clear next step. Every page must end with either a CTASection or a clear conversion path. Audit every page for CTA presence after content changes.

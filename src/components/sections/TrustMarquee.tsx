@@ -4,7 +4,7 @@ interface MarqueeItem {
 }
 
 const items: MarqueeItem[] = [
-  { text: "18 лет на рынке" },
+  { text: "11 лет на рынке" },
   { text: "Официальный договор" },
   { text: "СРО допуски", accent: true },
   { text: "Полный цикл работ" },

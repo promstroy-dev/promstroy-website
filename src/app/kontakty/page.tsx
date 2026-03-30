@@ -1,7 +1,7 @@
 import InquiryForm from "@/components/ui/InquiryForm";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
-import { Phone, Send, Clock } from "lucide-react";
+import { Phone, Send, Clock, PhoneCall, ClipboardList, Handshake } from "lucide-react";
 import { company } from "@/data/company";
 import type { Metadata } from "next";
 
@@ -231,6 +231,65 @@ export default function KontaktyPage() {
 
               </div>
             </div>
+
+            {/* ── What happens next — lead reassurance ── */}
+            <div className="mt-16 pt-14 border-t" style={{ borderColor: "rgba(196,174,148,0.10)" }}>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-5 h-px" style={{ background: "#C4AE94", opacity: 0.5 }} />
+                <span
+                  className="text-[10px] uppercase font-medium"
+                  style={{ color: "#7A8E98", letterSpacing: "0.22em" }}
+                >
+                  Что будет дальше
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    Icon: PhoneCall,
+                    step: "01",
+                    title: "Перезвоним",
+                    text: "В течение 2 часов свяжемся, уточним детали и объём задачи.",
+                  },
+                  {
+                    Icon: ClipboardList,
+                    step: "02",
+                    title: "Оценим и предложим",
+                    text: "Бесплатный выезд на объект, предварительная смета, сроки.",
+                  },
+                  {
+                    Icon: Handshake,
+                    step: "03",
+                    title: "Договор и старт",
+                    text: "Фиксированная смета, договор подряда, начало работ по графику.",
+                  },
+                ].map(({ Icon, step, title, text }) => (
+                  <div key={step} className="flex gap-4">
+                    <div
+                      className="w-10 h-10 flex-shrink-0 flex items-center justify-center"
+                      style={{ border: "1px solid rgba(196,174,148,0.20)", color: "#C4AE94" }}
+                    >
+                      <Icon size={16} />
+                    </div>
+                    <div>
+                      <span
+                        className="text-[10px] uppercase font-medium block mb-1"
+                        style={{ color: "rgba(196,174,148,0.40)", letterSpacing: "0.18em" }}
+                      >
+                        Шаг {step}
+                      </span>
+                      <p className="font-semibold text-sm mb-1" style={{ color: "#F0EBE3" }}>
+                        {title}
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: "rgba(148,180,193,0.55)" }}>
+                        {text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
       </main>

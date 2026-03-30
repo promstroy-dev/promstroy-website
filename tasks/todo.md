@@ -148,6 +148,22 @@
 - [x] SITE_URL env var in Vercel: updated to https://sk-promstroy.ru ✅ (2026-03-20)
 - [ ] Brand name confirmed: ПромСтрой (trade name, legal entity is ИП Алимбеков О.В.)
 
+## Site Architecture Audit — 2026-03-30
+
+### Trust & Conversion Fixes ✅
+- [x] TrustMarquee: fixed "18 лет" → "11 лет" (was contradicting StatsBanner which correctly says 11)
+- [x] Contact page: added "Что будет дальше" 3-step lead reassurance section
+- [x] About page: replaced thin Documents strip with full Credentials + Geography section (SRO, permits, guarantee, geographic coverage)
+- [x] CTASection: contextual headlines per page (services, projects, service detail)
+- [x] Projects index: added intro paragraph + CTASection (was missing CTA)
+- [x] Service detail pages: added "Типичные сроки" timeline hint from service data
+- [x] Service type: added optional `timeline` field
+
+### Remaining — Requires Owner Content
+- [ ] Owner to confirm SRO membership number → display on About page credentials section
+- [ ] Owner to provide SRO issuing organization name → display on About page
+- [ ] Real project photos → still images: [] for all projects (biggest trust gap)
+
 ## Post-Launch / Growth (defer)
 - [ ] Apple touch icon (192×192 PNG)
 - [ ] CRM integration when lead volume justifies it

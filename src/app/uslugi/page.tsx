@@ -32,7 +32,7 @@ export default function UslugiPage() {
             </a>
           </div>
         </div>
-        <CTASection sourcePage="uslugi" />
+        <CTASection sourcePage="uslugi" headline="Нужна конкретная услуга?" subtitle="Опишите задачу — подберём решение и назовём сроки." />
       </main>
       <Footer />
     </>

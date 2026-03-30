@@ -1,7 +1,7 @@
 import CompanyTimeline from "@/components/sections/CompanyTimeline";
 import StickyHeader from "@/components/layout/StickyHeader";
 import Footer from "@/components/layout/Footer";
-import { ArrowRight, Shield, Wrench, FileCheck } from "lucide-react";
+import { ArrowRight, Shield, Wrench, FileCheck, MapPin, BadgeCheck } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -267,9 +267,9 @@ export default function OKompaniiPage() {
 
         <CompanyTimeline />
 
-        {/* ── Documents — elevated dark strip ── */}
+        {/* ── Credentials & Geography — elevated dark section ── */}
         <section
-          className="relative py-14 md:py-20 overflow-hidden"
+          className="relative py-14 md:py-24 overflow-hidden"
           style={{ background: "#152333", borderTop: "1px solid #1E3348", borderBottom: "1px solid #1E3348" }}
         >
           {/* Structural grid */}
@@ -286,43 +286,83 @@ export default function OKompaniiPage() {
           />
 
           <div className="relative max-w-content mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-              {/* Icon + label */}
-              <div className="md:col-span-2">
-                <div className="flex items-center gap-3">
+
+            {/* ── Licenses & Permits ── */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-14 md:mb-20">
+              <div>
+                <div className="flex items-center gap-3 mb-5">
                   <div
                     className="w-10 h-10 flex items-center justify-center flex-shrink-0"
                     style={{ border: "1px solid rgba(196,174,148,0.25)", color: "#C4AE94" }}
                   >
-                    <FileCheck size={18} />
+                    <BadgeCheck size={18} />
                   </div>
                   <span
                     className="text-[10px] uppercase font-medium"
                     style={{ color: "#7A8E98", letterSpacing: "0.22em" }}
                   >
-                    Документы
+                    Лицензии и допуски
                   </span>
                 </div>
-              </div>
-
-              {/* Description */}
-              <div className="md:col-span-7">
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(148,180,193,0.75)" }}>
-                  Работаем официально — СРО, строительные допуски, полный пакет исполнительной документации для бухгалтерии заказчика. Документы предоставляем по запросу.
+                <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.75)" }}>
+                  Член саморегулируемой организации (СРО) с допуском к строительным работам, влияющим на безопасность объектов капитального строительства. Работаем по договору подряда с полным пакетом исполнительной документации.
                 </p>
-              </div>
-
-              {/* CTA */}
-              <div className="md:col-span-3 md:text-right">
+                <div className="flex flex-col gap-3">
+                  {[
+                    "Допуск СРО на строительство",
+                    "Договор подряда с фиксированной сметой",
+                    "Исполнительная документация для бухгалтерии",
+                    "Гарантия на конструктивные элементы — от 3 лет",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-sm" style={{ color: "rgba(240,235,227,0.50)" }}>
+                      <span className="flex-shrink-0 w-3 h-px" style={{ background: "#C4AE94", opacity: 0.6 }} />
+                      {item}
+                    </div>
+                  ))}
+                </div>
                 <a
                   href="/kontakty"
-                  className="link-accent-brass inline-flex items-center gap-2 text-sm font-semibold"
+                  className="link-accent-brass inline-flex items-center gap-2 text-sm font-semibold mt-6"
                 >
                   Запросить документы
                   <ArrowRight size={12} />
                 </a>
               </div>
+
+              {/* ── Geographic Coverage ── */}
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="w-10 h-10 flex items-center justify-center flex-shrink-0"
+                    style={{ border: "1px solid rgba(196,174,148,0.25)", color: "#C4AE94" }}
+                  >
+                    <MapPin size={18} />
+                  </div>
+                  <span
+                    className="text-[10px] uppercase font-medium"
+                    style={{ color: "#7A8E98", letterSpacing: "0.22em" }}
+                  >
+                    География работ
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(148,180,193,0.75)" }}>
+                  Основная зона — Самара и Самарская область. Работали в Самаре, Кинеле, Усть-Кинельском, на объектах от 250 до 1&nbsp;600&nbsp;м². По крупным проектам рассматриваем выезд в другие регионы.
+                </p>
+                <div className="flex flex-col gap-3">
+                  {[
+                    "Самара — центр, промзоны, пригород",
+                    "Самарская область — Кинель, Усть-Кинельский",
+                    "Другие регионы — по запросу для крупных объектов",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-sm" style={{ color: "rgba(240,235,227,0.50)" }}>
+                      <span className="flex-shrink-0 w-3 h-px" style={{ background: "#C4AE94", opacity: 0.6 }} />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
+
           </div>
         </section>
 

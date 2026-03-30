@@ -74,7 +74,23 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 <div className="mb-6">
                   <ServiceIconTilt>{icons[service.icon]}</ServiceIconTilt>
                 </div>
-                <p className="text-text-muted text-lg leading-relaxed mb-10">{service.description}</p>
+                <p className="text-text-muted text-lg leading-relaxed mb-8">{service.description}</p>
+
+                {service.timeline && (
+                  <div
+                    className="flex items-start gap-3 mb-10 p-4"
+                    style={{ background: "rgba(196,174,148,0.04)", border: "1px solid rgba(196,174,148,0.10)" }}
+                  >
+                    <span className="flex-shrink-0 w-3 h-px mt-2.5" style={{ background: "#C4AE94", opacity: 0.7 }} />
+                    <div>
+                      <span className="text-[10px] uppercase font-medium block mb-1" style={{ color: "#C4AE94", letterSpacing: "0.18em", opacity: 0.65 }}>
+                        Типичные сроки
+                      </span>
+                      <p className="text-sm text-text-muted leading-relaxed">{service.timeline}</p>
+                    </div>
+                  </div>
+                )}
+
                 <h3 className="font-heading font-semibold text-text text-xl mb-6">Виды работ</h3>
                 <ul className="flex flex-col gap-3">
                   {service.items.map((item, i) => (
@@ -145,7 +161,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </section>
         )}
 
-        <CTASection sourcePage={`uslugi/${service.slug}`} />
+        <CTASection sourcePage={`uslugi/${service.slug}`} headline={`Нужна ${service.title.toLowerCase()}?`} subtitle="Расскажите о задаче — перезвоним, уточним детали, назовём сроки и стоимость." />
       </main>
       <Footer />
     </>
