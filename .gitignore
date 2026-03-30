@@ -38,5 +38,17 @@ TEST*.xml
 # vercel
 .vercel
 
-# Claude Code plugin cache
+# typescript
+tsconfig.tsbuildinfo
+
+# next.js auto-generated
+next-env.d.ts
+
+# next-sitemap (generated on build)
+public/sitemap*.xml
+
+# Claude Code
 /ui-ux-pro-max-skill
+.agents/
+.claude/
+skills-lock.json
